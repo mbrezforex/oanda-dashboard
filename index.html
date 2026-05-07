@@ -225,7 +225,7 @@ th {
 <div class="topbar">
     <div>
         <h1>Live ML Forex Bot Dashboard</h1>
-        <div class="muted">Last refresh: 2026-05-07 07:57:43 UTC</div>
+        <div class="muted">Last refresh: 2026-05-07 08:00:53 UTC</div>
     </div>
     <div class="mode">OANDA PRACTICE</div>
 </div>
@@ -234,11 +234,11 @@ th {
     <h2>Account Summary</h2>
     <div class="stats">
         <div class="stat"><span>Balance</span><strong>$99,998.45</strong></div>
-        <div class="stat"><span>NAV</span><strong>$99,998.45</strong></div>
-        <div class="stat"><span>Margin Used</span><strong>$0.00</strong></div>
-        <div class="stat"><span>Open P/L</span><strong class="positive">$0.00</strong></div>
+        <div class="stat"><span>NAV</span><strong>$99,895.59</strong></div>
+        <div class="stat"><span>Margin Used</span><strong>$14,006.22</strong></div>
+        <div class="stat"><span>Open P/L</span><strong class="negative">$-96.43</strong></div>
         <div class="stat"><span>Realized P/L</span><strong class="positive">$0.00</strong></div>
-        <div class="stat"><span>Open Trades</span><strong>0</strong></div>
+        <div class="stat"><span>Open Trades</span><strong>1</strong></div>
     </div>
 </div>
 
@@ -271,13 +271,24 @@ th {
 <tbody>
 
         <tr>
+            <td>AUD_USD</td>
+            <td><span class="badge long">TRADE READY</span></td>
+            <td>short</td>
+            <td>0.866</td>
+            <td>0.65</td>
+            <td>-0.216</td>
+            <td>1.30</td>
+            <td>passed_all_filters</td>
+        </tr>
+        
+        <tr>
             <td>EUR_USD</td>
             <td><span class="badge neutral">COLD</span></td>
             <td>nan</td>
             <td>—</td>
             <td>0.68</td>
             <td>—</td>
-            <td>1.60</td>
+            <td>1.50</td>
             <td>no_candidate</td>
         </tr>
         
@@ -288,7 +299,7 @@ th {
             <td>—</td>
             <td>0.75</td>
             <td>—</td>
-            <td>1.70</td>
+            <td>1.60</td>
             <td>no_candidate</td>
         </tr>
         
@@ -299,18 +310,7 @@ th {
             <td>—</td>
             <td>0.70</td>
             <td>—</td>
-            <td>1.90</td>
-            <td>no_candidate</td>
-        </tr>
-        
-        <tr>
-            <td>AUD_USD</td>
-            <td><span class="badge neutral">COLD</span></td>
-            <td>nan</td>
-            <td>—</td>
-            <td>0.65</td>
-            <td>—</td>
-            <td>1.40</td>
+            <td>1.60</td>
             <td>no_candidate</td>
         </tr>
         
@@ -332,7 +332,7 @@ th {
             <td>—</td>
             <td>0.60</td>
             <td>—</td>
-            <td>3.30</td>
+            <td>2.80</td>
             <td>no_candidate</td>
         </tr>
         
@@ -343,7 +343,7 @@ th {
             <td>—</td>
             <td>0.60</td>
             <td>—</td>
-            <td>1.30</td>
+            <td>1.60</td>
             <td>no_candidate</td>
         </tr>
         
@@ -354,7 +354,30 @@ th {
 <div class="section">
     <h2>Active Trade Cards</h2>
     <div class="trade-grid-wrap">
-        <div class='empty-card'>No active trades.</div>
+        
+        <div class="trade-card">
+            <div class="trade-top">
+                <div>
+                    <h3>AUD_USD SHORT</h3>
+                    <p>Trade ID: 37</p>
+                </div>
+                <span class="negative">$-96.43</span>
+            </div>
+
+            <div class="trade-grid">
+                <div><span>Units</span><strong>-642,847</strong></div>
+                <div><span>Age Min</span><strong>0.6</strong></div>
+                <div><span>Max Hold</span><strong>45 min</strong></div>
+                <div><span>Entry</span><strong>0.72616</strong></div>
+                <div><span>TP</span><strong>0.72497</strong></div>
+                <div><span>SL</span><strong>0.72684</strong></div>
+                <div><span>ML Prob</span><strong>0.866</strong></div>
+                <div><span>Threshold</span><strong>0.65</strong></div>
+                <div><span>Entry Spread</span><strong>1.30</strong></div>
+                <div><span>Risk %</span><strong>0.45%</strong></div>
+            </div>
+        </div>
+        
     </div>
 </div>
 
@@ -377,9 +400,9 @@ th {
         <tr>
             <td>EUR_USD</td>
             <td>0.68</td>
-            <td>1.17655</td>
-            <td>1.17671</td>
-            <td>1.60</td>
+            <td>1.17661</td>
+            <td>1.17678</td>
+            <td>1.70</td>
             <td>OK</td>
             <td>NO</td>
         </tr>
@@ -387,9 +410,9 @@ th {
         <tr>
             <td>GBP_USD</td>
             <td>0.75</td>
-            <td>1.36190</td>
-            <td>1.36207</td>
-            <td>1.70</td>
+            <td>1.36201</td>
+            <td>1.36219</td>
+            <td>1.80</td>
             <td>OK</td>
             <td>NO</td>
         </tr>
@@ -397,9 +420,9 @@ th {
         <tr>
             <td>USD_JPY</td>
             <td>0.7</td>
-            <td>156.238</td>
-            <td>156.255</td>
-            <td>1.70</td>
+            <td>156.271</td>
+            <td>156.285</td>
+            <td>1.40</td>
             <td>OK</td>
             <td>NO</td>
         </tr>
@@ -407,9 +430,9 @@ th {
         <tr>
             <td>AUD_USD</td>
             <td>0.65</td>
-            <td>0.72602</td>
-            <td>0.72615</td>
-            <td>1.30</td>
+            <td>0.72617</td>
+            <td>0.72631</td>
+            <td>1.40</td>
             <td>OK</td>
             <td>NO</td>
         </tr>
@@ -417,8 +440,8 @@ th {
         <tr>
             <td>GBP_AUD</td>
             <td>0.72</td>
-            <td>1.87550</td>
-            <td>1.87604</td>
+            <td>1.87530</td>
+            <td>1.87584</td>
             <td>5.40</td>
             <td>OK</td>
             <td>NO</td>
@@ -427,9 +450,9 @@ th {
         <tr>
             <td>EUR_CAD</td>
             <td>0.6</td>
-            <td>1.60283</td>
-            <td>1.60324</td>
-            <td>4.10</td>
+            <td>1.60301</td>
+            <td>1.60338</td>
+            <td>3.70</td>
             <td>OK</td>
             <td>NO</td>
         </tr>
@@ -437,9 +460,9 @@ th {
         <tr>
             <td>NZD_USD</td>
             <td>0.6</td>
-            <td>0.59741</td>
-            <td>0.59765</td>
-            <td>2.40</td>
+            <td>0.59746</td>
+            <td>0.59771</td>
+            <td>2.50</td>
             <td>OK</td>
             <td>NO</td>
         </tr>
@@ -474,7 +497,21 @@ th {
 </tr>
 </thead>
 <tbody>
-<tr><td colspan='11'>No live demo trade log rows yet.</td></tr>
+
+        <tr>
+            <td>2026-05-07 08:00:14.150245+00:00</td>
+            <td>AUD_USD</td>
+            <td>short</td>
+            <td>0.866</td>
+            <td>0.65</td>
+            <td>-0.216</td>
+            <td>TRADE_READY</td>
+            <td>1.30</td>
+            <td>-642,847</td>
+            <td>0.72616</td>
+            <td>0.72497 / 0.72684</td>
+        </tr>
+        
 </tbody>
 </table>
 </div>
