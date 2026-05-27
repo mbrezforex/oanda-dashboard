@@ -345,12 +345,12 @@ th {
 <div class="topbar">
     <div>
         <h1>OANDA ML Prop-Style Dashboard</h1>
-        <div class="muted">Live OANDA connection | 23-pair readiness monitor | Basket strategy dashboard | Last scan: 2026-05-27 23:15:44 UTC</div>
+        <div class="muted">Live OANDA connection | 23-pair readiness monitor | Basket strategy dashboard | Last scan: 2026-05-27 23:17:32 UTC</div>
         <div class="cutoff">Current-system stats only: trades opened after 2026-04-28 14:27:00 UTC</div>
     </div>
 
     <div class="top-status">
-        <div class="latency">Build Latency: 50.292s</div>
+        <div class="latency">Build Latency: 44.128s</div>
         <div class="mode">LIVE OANDA + GITHUB PAGES</div>
     </div>
 </div>
@@ -359,10 +359,10 @@ th {
     <h2>Prop-Firm Account Snapshot</h2>
     <div class="stats">
         <div class="stat"><span>Balance</span><strong>$100,127.02</strong></div>
-        <div class="stat"><span>NAV / Equity</span><strong>$99,974.25</strong></div>
-        <div class="stat"><span>Open P/L</span><strong class="negative">$-152.76</strong></div>
+        <div class="stat"><span>NAV / Equity</span><strong>$99,937.55</strong></div>
+        <div class="stat"><span>Open P/L</span><strong class="negative">$-185.38</strong></div>
         <div class="stat"><span>Realized P/L</span><strong class="positive">$128.57</strong></div>
-        <div class="stat"><span>Open Trades</span><strong>11</strong></div>
+        <div class="stat"><span>Open Trades</span><strong>13</strong></div>
         <div class="stat"><span>Active Signals</span><strong>0</strong></div>
     </div>
 </div>
@@ -385,7 +385,7 @@ th {
             <div class="card-header">
                 <div>
                     <h2>EUR_USD</h2>
-                    <p>2026-05-27 22:45:00+00:00</p>
+                    <p>2026-05-27 23:00:00+00:00</p>
                 </div>
                 <span class="badge neutral">NO SIGNAL</span>
             </div>
@@ -403,15 +403,15 @@ th {
             <div class="metrics">
                 <div><span>Model Probability</span><strong>20%</strong></div>
                 <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>1.16278</strong></div>
-                <div><span>Spread</span><strong>1.50 / 2.00</strong></div>
+                <div><span>Latest Price</span><strong>1.16283</strong></div>
+                <div><span>Spread</span><strong>1.70 / 2.00</strong></div>
             </div>
 
             <div class="conditions">
-                <div><span>Fisher M15</span><strong>SHORT</strong></div>
-                <div><span>ZL MACD M15</span><strong>SHORT</strong></div>
+                <div><span>Fisher M15</span><strong>LONG</strong></div>
+                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
                 <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>SHORT</strong></div>
+                <div><span>M15 Combo</span><strong>NONE</strong></div>
                 <div><span>H1 Combo</span><strong>NONE</strong></div>
                 <div><span>H4 Combo</span><strong>SHORT</strong></div>
                 <div><span>Spread OK</span><span class="badge good">YES</span></div>
@@ -437,8 +437,61 @@ th {
         <div class="card pair-card ready-cold">
             <div class="card-header">
                 <div>
+                    <h2>GBP_USD</h2>
+                    <p>2026-05-27 23:00:00+00:00</p>
+                </div>
+                <span class="badge neutral">NO SIGNAL</span>
+            </div>
+
+            <div class="readiness-block">
+                <div class="readiness-top">
+                    <span>Signal Readiness</span>
+                    <strong>20%</strong>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill ready-cold" style="width:20.0%;"></div>
+                </div>
+            </div>
+
+            <div class="metrics">
+                <div><span>Model Probability</span><strong>20%</strong></div>
+                <div><span>Confidence</span><strong>LOW</strong></div>
+                <div><span>Latest Price</span><strong>1.34289</strong></div>
+                <div><span>Spread</span><strong>2.00 / 2.00</strong></div>
+            </div>
+
+            <div class="conditions">
+                <div><span>Fisher M15</span><strong>LONG</strong></div>
+                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
+                <div><span>McGinley M15</span><strong>SHORT</strong></div>
+                <div><span>M15 Combo</span><strong>NONE</strong></div>
+                <div><span>H1 Combo</span><strong>NONE</strong></div>
+                <div><span>H4 Combo</span><strong>NONE</strong></div>
+                <div><span>Spread OK</span><span class="badge good">YES</span></div>
+                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
+                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
+            </div>
+
+            <div class="avgdown-box">
+                <strong>Basket / Risk-Based Average Down</strong><br>
+                Risk Target: —% basket risk<br>
+                Base Units: —<br>
+                Max Units: —<br>
+                Entries: 0.0 / 5<br>
+                Avg Entry: —<br>
+                Basket Pips: —<br>
+                Next Add: —
+                at — ATR
+            </div>
+
+            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
+        </div>
+        
+        <div class="card pair-card ready-cold">
+            <div class="card-header">
+                <div>
                     <h2>USD_JPY</h2>
-                    <p>2026-05-27 22:45:00+00:00</p>
+                    <p>2026-05-27 23:00:00+00:00</p>
                 </div>
                 <span class="badge neutral">NO SIGNAL</span>
             </div>
@@ -457,7 +510,7 @@ th {
                 <div><span>Model Probability</span><strong>20%</strong></div>
                 <div><span>Confidence</span><strong>LOW</strong></div>
                 <div><span>Latest Price</span><strong>159.50800</strong></div>
-                <div><span>Spread</span><strong>1.70 / 2.00</strong></div>
+                <div><span>Spread</span><strong>1.40 / 2.00</strong></div>
             </div>
 
             <div class="conditions">
@@ -491,59 +544,6 @@ th {
             <div class="card-header">
                 <div>
                     <h2>AUD_USD</h2>
-                    <p>2026-05-27 22:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>20%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:20.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>20%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.71430</strong></div>
-                <div><span>Spread</span><strong>1.20 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>LONG</strong></div>
-                <div><span>M15 Combo</span><strong>LONG</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge good">YES</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0.0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>AUD_CHF</h2>
                     <p>2026-05-27 23:00:00+00:00</p>
                 </div>
                 <span class="badge neutral">NO SIGNAL</span>
@@ -562,8 +562,8 @@ th {
             <div class="metrics">
                 <div><span>Model Probability</span><strong>20%</strong></div>
                 <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.56221</strong></div>
-                <div><span>Spread</span><strong>2.00 / 2.00</strong></div>
+                <div><span>Latest Price</span><strong>0.71437</strong></div>
+                <div><span>Spread</span><strong>1.30 / 2.00</strong></div>
             </div>
 
             <div class="conditions">
@@ -572,7 +572,7 @@ th {
                 <div><span>McGinley M15</span><strong>LONG</strong></div>
                 <div><span>M15 Combo</span><strong>LONG</strong></div>
                 <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>LONG</strong></div>
+                <div><span>H4 Combo</span><strong>NONE</strong></div>
                 <div><span>Spread OK</span><span class="badge good">YES</span></div>
                 <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
                 <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
@@ -615,8 +615,8 @@ th {
             <div class="metrics">
                 <div><span>Model Probability</span><strong>20%</strong></div>
                 <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.86593</strong></div>
-                <div><span>Spread</span><strong>1.40 / 2.00</strong></div>
+                <div><span>Latest Price</span><strong>0.86590</strong></div>
+                <div><span>Spread</span><strong>1.50 / 2.00</strong></div>
             </div>
 
             <div class="conditions">
@@ -649,8 +649,8 @@ th {
         <div class="card pair-card ready-cold">
             <div class="card-header">
                 <div>
-                    <h2>GBP_USD</h2>
-                    <p>2026-05-27 22:45:00+00:00</p>
+                    <h2>EUR_JPY</h2>
+                    <p>2026-05-27 23:00:00+00:00</p>
                 </div>
                 <span class="badge neutral">NO SIGNAL</span>
             </div>
@@ -668,15 +668,15 @@ th {
             <div class="metrics">
                 <div><span>Model Probability</span><strong>10%</strong></div>
                 <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>1.34281</strong></div>
-                <div><span>Spread</span><strong>2.50 / 2.00</strong></div>
+                <div><span>Latest Price</span><strong>185.47850</strong></div>
+                <div><span>Spread</span><strong>3.10 / 2.00</strong></div>
             </div>
 
             <div class="conditions">
-                <div><span>Fisher M15</span><strong>SHORT</strong></div>
-                <div><span>ZL MACD M15</span><strong>SHORT</strong></div>
+                <div><span>Fisher M15</span><strong>LONG</strong></div>
+                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
                 <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>SHORT</strong></div>
+                <div><span>M15 Combo</span><strong>NONE</strong></div>
                 <div><span>H1 Combo</span><strong>NONE</strong></div>
                 <div><span>H4 Combo</span><strong>NONE</strong></div>
                 <div><span>Spread OK</span><span class="badge bad">NO</span></div>
@@ -721,7 +721,7 @@ th {
             <div class="metrics">
                 <div><span>Model Probability</span><strong>10%</strong></div>
                 <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.59000</strong></div>
+                <div><span>Latest Price</span><strong>0.59002</strong></div>
                 <div><span>Spread</span><strong>2.60 / 2.00</strong></div>
             </div>
 
@@ -774,7 +774,7 @@ th {
             <div class="metrics">
                 <div><span>Model Probability</span><strong>10%</strong></div>
                 <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>214.19550</strong></div>
+                <div><span>Latest Price</span><strong>214.20500</strong></div>
                 <div><span>Spread</span><strong>3.80 / 2.00</strong></div>
             </div>
 
@@ -783,112 +783,6 @@ th {
                 <div><span>ZL MACD M15</span><strong>LONG</strong></div>
                 <div><span>McGinley M15</span><strong>LONG</strong></div>
                 <div><span>M15 Combo</span><strong>LONG</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0.0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>EUR_JPY</h2>
-                    <p>2026-05-27 23:00:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>185.47600</strong></div>
-                <div><span>Spread</span><strong>3.00 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0.0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>EUR_AUD</h2>
-                    <p>2026-05-27 23:00:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>1.62783</strong></div>
-                <div><span>Spread</span><strong>3.50 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>SHORT</strong></div>
-                <div><span>ZL MACD M15</span><strong>SHORT</strong></div>
-                <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>SHORT</strong></div>
                 <div><span>H1 Combo</span><strong>NONE</strong></div>
                 <div><span>H4 Combo</span><strong>NONE</strong></div>
                 <div><span>Spread OK</span><span class="badge bad">NO</span></div>
@@ -933,8 +827,8 @@ th {
             <div class="metrics">
                 <div><span>Model Probability</span><strong>10%</strong></div>
                 <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>94.10000</strong></div>
-                <div><span>Spread</span><strong>4.00 / 2.00</strong></div>
+                <div><span>Latest Price</span><strong>94.10900</strong></div>
+                <div><span>Spread</span><strong>3.80 / 2.00</strong></div>
             </div>
 
             <div class="conditions">
@@ -943,6 +837,112 @@ th {
                 <div><span>McGinley M15</span><strong>LONG</strong></div>
                 <div><span>M15 Combo</span><strong>LONG</strong></div>
                 <div><span>H1 Combo</span><strong>NONE</strong></div>
+                <div><span>H4 Combo</span><strong>NONE</strong></div>
+                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
+                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
+                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
+            </div>
+
+            <div class="avgdown-box">
+                <strong>Basket / Risk-Based Average Down</strong><br>
+                Risk Target: —% basket risk<br>
+                Base Units: —<br>
+                Max Units: —<br>
+                Entries: 0.0 / 5<br>
+                Avg Entry: —<br>
+                Basket Pips: —<br>
+                Next Add: —
+                at — ATR
+            </div>
+
+            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
+        </div>
+        
+        <div class="card pair-card ready-cold">
+            <div class="card-header">
+                <div>
+                    <h2>EUR_AUD</h2>
+                    <p>2026-05-27 23:00:00+00:00</p>
+                </div>
+                <span class="badge neutral">NO SIGNAL</span>
+            </div>
+
+            <div class="readiness-block">
+                <div class="readiness-top">
+                    <span>Signal Readiness</span>
+                    <strong>10%</strong>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
+                </div>
+            </div>
+
+            <div class="metrics">
+                <div><span>Model Probability</span><strong>10%</strong></div>
+                <div><span>Confidence</span><strong>LOW</strong></div>
+                <div><span>Latest Price</span><strong>1.62772</strong></div>
+                <div><span>Spread</span><strong>3.60 / 2.00</strong></div>
+            </div>
+
+            <div class="conditions">
+                <div><span>Fisher M15</span><strong>SHORT</strong></div>
+                <div><span>ZL MACD M15</span><strong>SHORT</strong></div>
+                <div><span>McGinley M15</span><strong>SHORT</strong></div>
+                <div><span>M15 Combo</span><strong>SHORT</strong></div>
+                <div><span>H1 Combo</span><strong>NONE</strong></div>
+                <div><span>H4 Combo</span><strong>NONE</strong></div>
+                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
+                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
+                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
+            </div>
+
+            <div class="avgdown-box">
+                <strong>Basket / Risk-Based Average Down</strong><br>
+                Risk Target: —% basket risk<br>
+                Base Units: —<br>
+                Max Units: —<br>
+                Entries: 0.0 / 5<br>
+                Avg Entry: —<br>
+                Basket Pips: —<br>
+                Next Add: —
+                at — ATR
+            </div>
+
+            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
+        </div>
+        
+        <div class="card pair-card ready-cold">
+            <div class="card-header">
+                <div>
+                    <h2>EUR_NZD</h2>
+                    <p>2026-05-27 23:00:00+00:00</p>
+                </div>
+                <span class="badge neutral">NO SIGNAL</span>
+            </div>
+
+            <div class="readiness-block">
+                <div class="readiness-top">
+                    <span>Signal Readiness</span>
+                    <strong>10%</strong>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
+                </div>
+            </div>
+
+            <div class="metrics">
+                <div><span>Model Probability</span><strong>10%</strong></div>
+                <div><span>Confidence</span><strong>LOW</strong></div>
+                <div><span>Latest Price</span><strong>1.97080</strong></div>
+                <div><span>Spread</span><strong>7.80 / 2.00</strong></div>
+            </div>
+
+            <div class="conditions">
+                <div><span>Fisher M15</span><strong>LONG</strong></div>
+                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
+                <div><span>McGinley M15</span><strong>SHORT</strong></div>
+                <div><span>M15 Combo</span><strong>NONE</strong></div>
+                <div><span>H1 Combo</span><strong>SHORT</strong></div>
                 <div><span>H4 Combo</span><strong>NONE</strong></div>
                 <div><span>Spread OK</span><span class="badge bad">NO</span></div>
                 <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
@@ -986,7 +986,7 @@ th {
             <div class="metrics">
                 <div><span>Model Probability</span><strong>10%</strong></div>
                 <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>1.21067</strong></div>
+                <div><span>Latest Price</span><strong>1.21071</strong></div>
                 <div><span>Spread</span><strong>3.60 / 2.00</strong></div>
             </div>
 
@@ -1039,7 +1039,7 @@ th {
             <div class="metrics">
                 <div><span>Model Probability</span><strong>10%</strong></div>
                 <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.98839</strong></div>
+                <div><span>Latest Price</span><strong>0.98849</strong></div>
                 <div><span>Spread</span><strong>3.50 / 2.00</strong></div>
             </div>
 
@@ -1050,6 +1050,59 @@ th {
                 <div><span>M15 Combo</span><strong>LONG</strong></div>
                 <div><span>H1 Combo</span><strong>NONE</strong></div>
                 <div><span>H4 Combo</span><strong>LONG</strong></div>
+                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
+                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
+                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
+            </div>
+
+            <div class="avgdown-box">
+                <strong>Basket / Risk-Based Average Down</strong><br>
+                Risk Target: —% basket risk<br>
+                Base Units: —<br>
+                Max Units: —<br>
+                Entries: 0.0 / 5<br>
+                Avg Entry: —<br>
+                Basket Pips: —<br>
+                Next Add: —
+                at — ATR
+            </div>
+
+            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
+        </div>
+        
+        <div class="card pair-card ready-cold">
+            <div class="card-header">
+                <div>
+                    <h2>EUR_CAD</h2>
+                    <p>2026-05-27 23:00:00+00:00</p>
+                </div>
+                <span class="badge neutral">NO SIGNAL</span>
+            </div>
+
+            <div class="readiness-block">
+                <div class="readiness-top">
+                    <span>Signal Readiness</span>
+                    <strong>10%</strong>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
+                </div>
+            </div>
+
+            <div class="metrics">
+                <div><span>Model Probability</span><strong>10%</strong></div>
+                <div><span>Confidence</span><strong>LOW</strong></div>
+                <div><span>Latest Price</span><strong>1.60898</strong></div>
+                <div><span>Spread</span><strong>4.10 / 2.00</strong></div>
+            </div>
+
+            <div class="conditions">
+                <div><span>Fisher M15</span><strong>LONG</strong></div>
+                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
+                <div><span>McGinley M15</span><strong>SHORT</strong></div>
+                <div><span>M15 Combo</span><strong>NONE</strong></div>
+                <div><span>H1 Combo</span><strong>NONE</strong></div>
+                <div><span>H4 Combo</span><strong>NONE</strong></div>
                 <div><span>Spread OK</span><span class="badge bad">NO</span></div>
                 <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
                 <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
@@ -1092,8 +1145,8 @@ th {
             <div class="metrics">
                 <div><span>Model Probability</span><strong>10%</strong></div>
                 <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.81634</strong></div>
-                <div><span>Spread</span><strong>5.20 / 2.00</strong></div>
+                <div><span>Latest Price</span><strong>0.81639</strong></div>
+                <div><span>Spread</span><strong>5.30 / 2.00</strong></div>
             </div>
 
             <div class="conditions">
@@ -1102,59 +1155,6 @@ th {
                 <div><span>McGinley M15</span><strong>LONG</strong></div>
                 <div><span>M15 Combo</span><strong>NONE</strong></div>
                 <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0.0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>EUR_NZD</h2>
-                    <p>2026-05-27 23:00:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>1.97094</strong></div>
-                <div><span>Spread</span><strong>7.90 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>SHORT</strong></div>
                 <div><span>H4 Combo</span><strong>NONE</strong></div>
                 <div><span>Spread OK</span><span class="badge bad">NO</span></div>
                 <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
@@ -1251,7 +1251,7 @@ th {
             <div class="metrics">
                 <div><span>Model Probability</span><strong>10%</strong></div>
                 <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.56879</strong></div>
+                <div><span>Latest Price</span><strong>0.56876</strong></div>
                 <div><span>Spread</span><strong>2.90 / 2.00</strong></div>
             </div>
 
@@ -1304,8 +1304,8 @@ th {
             <div class="metrics">
                 <div><span>Model Probability</span><strong>10%</strong></div>
                 <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.91514</strong></div>
-                <div><span>Spread</span><strong>2.50 / 2.00</strong></div>
+                <div><span>Latest Price</span><strong>0.91512</strong></div>
+                <div><span>Spread</span><strong>2.30 / 2.00</strong></div>
             </div>
 
             <div class="conditions">
@@ -1338,7 +1338,7 @@ th {
         <div class="card pair-card ready-cold">
             <div class="card-header">
                 <div>
-                    <h2>EUR_CAD</h2>
+                    <h2>AUD_CHF</h2>
                     <p>2026-05-27 23:00:00+00:00</p>
                 </div>
                 <span class="badge neutral">NO SIGNAL</span>
@@ -1357,17 +1357,17 @@ th {
             <div class="metrics">
                 <div><span>Model Probability</span><strong>10%</strong></div>
                 <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>1.60894</strong></div>
-                <div><span>Spread</span><strong>4.40 / 2.00</strong></div>
+                <div><span>Latest Price</span><strong>0.56224</strong></div>
+                <div><span>Spread</span><strong>2.10 / 2.00</strong></div>
             </div>
 
             <div class="conditions">
                 <div><span>Fisher M15</span><strong>LONG</strong></div>
                 <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
+                <div><span>McGinley M15</span><strong>LONG</strong></div>
+                <div><span>M15 Combo</span><strong>LONG</strong></div>
                 <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
+                <div><span>H4 Combo</span><strong>LONG</strong></div>
                 <div><span>Spread OK</span><span class="badge bad">NO</span></div>
                 <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
                 <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
@@ -1606,7 +1606,7 @@ th {
 <div class="section">
     <h2>Signal Proximity Ranking</h2>
     <div class="chart-panel">
-        <div>                            <div id="078bda19-5ec5-4c2b-ae1f-a5869978f869" class="plotly-graph-div" style="height:644px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("078bda19-5ec5-4c2b-ae1f-a5869978f869")) {                    Plotly.newPlot(                        "078bda19-5ec5-4c2b-ae1f-a5869978f869",                        [{"name":"Readiness","orientation":"h","text":["0%","0%","0%","0%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","20%","20%","20%","20%","20%"],"textposition":"auto","x":{"dtype":"i1","bdata":"AAAAAAoKCgoKCgoKCgoKCgoKFBQUFBQ="},"y":["GBP_CAD","CHF_JPY","GBP_CHF","USD_CHF","NZD_JPY","EUR_NZD","GBP_USD","GBP_JPY","AUD_NZD","AUD_CAD","NZD_CAD","EUR_AUD","EUR_CHF","EUR_CAD","EUR_JPY","NZD_USD","CAD_CHF","NZD_CHF","EUR_USD","USD_JPY","EUR_GBP","AUD_USD","AUD_CHF"],"type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#f2f5fa"},"error_y":{"color":"#f2f5fa"},"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"baxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"line":{"color":"#283442"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"marker":{"line":{"color":"#283442"}},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#506784"},"line":{"color":"rgb(17,17,17)"}},"header":{"fill":{"color":"#2a3f5f"},"line":{"color":"rgb(17,17,17)"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#f2f5fa","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#f2f5fa"},"geo":{"bgcolor":"rgb(17,17,17)","lakecolor":"rgb(17,17,17)","landcolor":"rgb(17,17,17)","showlakes":true,"showland":true,"subunitcolor":"#506784"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"dark"},"paper_bgcolor":"rgb(17,17,17)","plot_bgcolor":"rgb(17,17,17)","polar":{"angularaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","radialaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"yaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"zaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"}},"shapedefaults":{"line":{"color":"#f2f5fa"}},"sliderdefaults":{"bgcolor":"#C8D4E3","bordercolor":"rgb(17,17,17)","borderwidth":1,"tickwidth":0},"ternary":{"aaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"baxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","caxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"title":{"x":0.05},"updatemenudefaults":{"bgcolor":"#506784","borderwidth":0},"xaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2}}},"margin":{"l":90,"r":30,"t":45,"b":35},"xaxis":{"range":[0,100],"title":{"text":"Readiness %"}},"height":644,"paper_bgcolor":"#0b111d","plot_bgcolor":"#0b111d","title":{"text":"Signal Proximity Ranking \u2014 Closest Pairs to Trigger"},"yaxis":{"title":{"text":""}}},                        {"responsive": true}                    )                };            </script>        </div>
+        <div>                            <div id="b2a80c39-1aa1-40c4-a458-cfc4634247bb" class="plotly-graph-div" style="height:644px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("b2a80c39-1aa1-40c4-a458-cfc4634247bb")) {                    Plotly.newPlot(                        "b2a80c39-1aa1-40c4-a458-cfc4634247bb",                        [{"name":"Readiness","orientation":"h","text":["0%","0%","0%","0%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","20%","20%","20%","20%","20%"],"textposition":"auto","x":{"dtype":"i1","bdata":"AAAAAAoKCgoKCgoKCgoKCgoKFBQUFBQ="},"y":["GBP_CAD","CHF_JPY","GBP_CHF","USD_CHF","EUR_AUD","EUR_NZD","NZD_JPY","GBP_JPY","AUD_NZD","AUD_CAD","NZD_CAD","AUD_CHF","EUR_CHF","EUR_CAD","EUR_JPY","NZD_USD","NZD_CHF","CAD_CHF","EUR_GBP","EUR_USD","AUD_USD","USD_JPY","GBP_USD"],"type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#f2f5fa"},"error_y":{"color":"#f2f5fa"},"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"baxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"line":{"color":"#283442"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"marker":{"line":{"color":"#283442"}},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#506784"},"line":{"color":"rgb(17,17,17)"}},"header":{"fill":{"color":"#2a3f5f"},"line":{"color":"rgb(17,17,17)"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#f2f5fa","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#f2f5fa"},"geo":{"bgcolor":"rgb(17,17,17)","lakecolor":"rgb(17,17,17)","landcolor":"rgb(17,17,17)","showlakes":true,"showland":true,"subunitcolor":"#506784"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"dark"},"paper_bgcolor":"rgb(17,17,17)","plot_bgcolor":"rgb(17,17,17)","polar":{"angularaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","radialaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"yaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"zaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"}},"shapedefaults":{"line":{"color":"#f2f5fa"}},"sliderdefaults":{"bgcolor":"#C8D4E3","bordercolor":"rgb(17,17,17)","borderwidth":1,"tickwidth":0},"ternary":{"aaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"baxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","caxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"title":{"x":0.05},"updatemenudefaults":{"bgcolor":"#506784","borderwidth":0},"xaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2}}},"margin":{"l":90,"r":30,"t":45,"b":35},"xaxis":{"range":[0,100],"title":{"text":"Readiness %"}},"height":644,"paper_bgcolor":"#0b111d","plot_bgcolor":"#0b111d","title":{"text":"Signal Proximity Ranking \u2014 Closest Pairs to Trigger"},"yaxis":{"title":{"text":""}}},                        {"responsive": true}                    )                };            </script>        </div>
     </div>
 </div>
 
@@ -1617,7 +1617,33 @@ th {
             <div class="trade-card">
                 <div class="trade-top">
                     <h3>GBP_CHF</h3>
-                    <span class="negative">$-29.70</span>
+                    <span class="negative">$-27.23</span>
+                </div>
+                <div class="trade-grid">
+                    <div><span>Units</span><strong>48,214</strong></div>
+                    <div><span>Entry</span><strong>1.05708</strong></div>
+                    <div><span>Opened</span><strong>2026-05-27T23:15:44.313888365Z</strong></div>
+                    <div><span>Trade ID</span><strong>69</strong></div>
+                </div>
+            </div>
+            
+            <div class="trade-card">
+                <div class="trade-top">
+                    <h3>USD_CHF</h3>
+                    <span class="negative">$-22.61</span>
+                </div>
+                <div class="trade-grid">
+                    <div><span>Units</span><strong>73,393</strong></div>
+                    <div><span>Entry</span><strong>0.78714</strong></div>
+                    <div><span>Opened</span><strong>2026-05-27T23:15:40.448882069Z</strong></div>
+                    <div><span>Trade ID</span><strong>67</strong></div>
+                </div>
+            </div>
+            
+            <div class="trade-card">
+                <div class="trade-top">
+                    <h3>GBP_CHF</h3>
+                    <span class="negative">$-25.99</span>
                 </div>
                 <div class="trade-grid">
                     <div><span>Units</span><strong>48,214</strong></div>
@@ -1630,7 +1656,7 @@ th {
             <div class="trade-card">
                 <div class="trade-top">
                     <h3>USD_CHF</h3>
-                    <span class="negative">$-22.60</span>
+                    <span class="negative">$-25.43</span>
                 </div>
                 <div class="trade-grid">
                     <div><span>Units</span><strong>73,393</strong></div>
@@ -1643,7 +1669,7 @@ th {
             <div class="trade-card">
                 <div class="trade-top">
                     <h3>GBP_CAD</h3>
-                    <span class="negative">$-13.05</span>
+                    <span class="negative">$-9.79</span>
                 </div>
                 <div class="trade-grid">
                     <div><span>Units</span><strong>27,946</strong></div>
@@ -1656,7 +1682,7 @@ th {
             <div class="trade-card">
                 <div class="trade-top">
                     <h3>CHF_JPY</h3>
-                    <span class="negative">$-0.11</span>
+                    <span class="negative">$-0.10</span>
                 </div>
                 <div class="trade-grid">
                     <div><span>Units</span><strong>-282</strong></div>
@@ -1669,7 +1695,7 @@ th {
             <div class="trade-card">
                 <div class="trade-top">
                     <h3>GBP_CAD</h3>
-                    <span class="negative">$-13.67</span>
+                    <span class="negative">$-10.40</span>
                 </div>
                 <div class="trade-grid">
                     <div><span>Units</span><strong>27,946</strong></div>
@@ -1682,7 +1708,7 @@ th {
             <div class="trade-card">
                 <div class="trade-top">
                     <h3>GBP_CAD</h3>
-                    <span class="negative">$-15.09</span>
+                    <span class="negative">$-11.83</span>
                 </div>
                 <div class="trade-grid">
                     <div><span>Units</span><strong>27,946</strong></div>
@@ -1695,7 +1721,7 @@ th {
             <div class="trade-card">
                 <div class="trade-top">
                     <h3>CHF_JPY</h3>
-                    <span class="negative">$-0.07</span>
+                    <span class="negative">$-0.06</span>
                 </div>
                 <div class="trade-grid">
                     <div><span>Units</span><strong>-282</strong></div>
@@ -1708,7 +1734,7 @@ th {
             <div class="trade-card">
                 <div class="trade-top">
                     <h3>GBP_CAD</h3>
-                    <span class="negative">$-30.39</span>
+                    <span class="negative">$-27.13</span>
                 </div>
                 <div class="trade-grid">
                     <div><span>Units</span><strong>27,946</strong></div>
@@ -1721,7 +1747,7 @@ th {
             <div class="trade-card">
                 <div class="trade-top">
                     <h3>CHF_JPY</h3>
-                    <span class="negative">$-0.16</span>
+                    <span class="negative">$-0.15</span>
                 </div>
                 <div class="trade-grid">
                     <div><span>Units</span><strong>-282</strong></div>
@@ -1734,7 +1760,7 @@ th {
             <div class="trade-card">
                 <div class="trade-top">
                     <h3>GBP_CAD</h3>
-                    <span class="negative">$-27.74</span>
+                    <span class="negative">$-24.48</span>
                 </div>
                 <div class="trade-grid">
                     <div><span>Units</span><strong>27,946</strong></div>
@@ -1747,7 +1773,7 @@ th {
             <div class="trade-card">
                 <div class="trade-top">
                     <h3>CHF_JPY</h3>
-                    <span class="negative">$-0.19</span>
+                    <span class="negative">$-0.18</span>
                 </div>
                 <div class="trade-grid">
                     <div><span>Units</span><strong>-282</strong></div>
@@ -1764,7 +1790,7 @@ th {
     <h2>Live Equity Curve</h2>
     <div class="chart-panel">
         <div>                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.5.0.min.js" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" crossorigin="anonymous"></script>                <div id="a8bee895-9349-4da6-8135-0b486e6523b3" class="plotly-graph-div" style="height:380px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("a8bee895-9349-4da6-8135-0b486e6523b3")) {                    Plotly.newPlot(                        "a8bee895-9349-4da6-8135-0b486e6523b3",                        [{"mode":"lines+markers","name":"Equity","x":["2026-05-07T08:45:15.218836759"],"y":{"dtype":"f8","bdata":"XynLEEeikUA="},"type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#f2f5fa"},"error_y":{"color":"#f2f5fa"},"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"baxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"line":{"color":"#283442"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"marker":{"line":{"color":"#283442"}},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#506784"},"line":{"color":"rgb(17,17,17)"}},"header":{"fill":{"color":"#2a3f5f"},"line":{"color":"rgb(17,17,17)"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#f2f5fa","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#f2f5fa"},"geo":{"bgcolor":"rgb(17,17,17)","lakecolor":"rgb(17,17,17)","landcolor":"rgb(17,17,17)","showlakes":true,"showland":true,"subunitcolor":"#506784"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"dark"},"paper_bgcolor":"rgb(17,17,17)","plot_bgcolor":"rgb(17,17,17)","polar":{"angularaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","radialaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"yaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"zaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"}},"shapedefaults":{"line":{"color":"#f2f5fa"}},"sliderdefaults":{"bgcolor":"#C8D4E3","bordercolor":"rgb(17,17,17)","borderwidth":1,"tickwidth":0},"ternary":{"aaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"baxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","caxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"title":{"x":0.05},"updatemenudefaults":{"bgcolor":"#506784","borderwidth":0},"xaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2}}},"margin":{"l":30,"r":20,"t":45,"b":30},"height":380,"paper_bgcolor":"#0b111d","plot_bgcolor":"#0b111d","title":{"text":"Live Equity Curve \u2014 Current System Only"}},                        {"responsive": true}                    )                };            </script>        </div>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.5.0.min.js" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" crossorigin="anonymous"></script>                <div id="f106a5a1-eb2b-4e6a-9148-b180115ec922" class="plotly-graph-div" style="height:380px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("f106a5a1-eb2b-4e6a-9148-b180115ec922")) {                    Plotly.newPlot(                        "f106a5a1-eb2b-4e6a-9148-b180115ec922",                        [{"mode":"lines+markers","name":"Equity","x":["2026-05-07T08:45:15.218836759"],"y":{"dtype":"f8","bdata":"XynLEEeikUA="},"type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#f2f5fa"},"error_y":{"color":"#f2f5fa"},"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"baxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"line":{"color":"#283442"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"marker":{"line":{"color":"#283442"}},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#506784"},"line":{"color":"rgb(17,17,17)"}},"header":{"fill":{"color":"#2a3f5f"},"line":{"color":"rgb(17,17,17)"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#f2f5fa","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#f2f5fa"},"geo":{"bgcolor":"rgb(17,17,17)","lakecolor":"rgb(17,17,17)","landcolor":"rgb(17,17,17)","showlakes":true,"showland":true,"subunitcolor":"#506784"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"dark"},"paper_bgcolor":"rgb(17,17,17)","plot_bgcolor":"rgb(17,17,17)","polar":{"angularaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","radialaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"yaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"zaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"}},"shapedefaults":{"line":{"color":"#f2f5fa"}},"sliderdefaults":{"bgcolor":"#C8D4E3","bordercolor":"rgb(17,17,17)","borderwidth":1,"tickwidth":0},"ternary":{"aaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"baxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","caxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"title":{"x":0.05},"updatemenudefaults":{"bgcolor":"#506784","borderwidth":0},"xaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2}}},"margin":{"l":30,"r":20,"t":45,"b":30},"height":380,"paper_bgcolor":"#0b111d","plot_bgcolor":"#0b111d","title":{"text":"Live Equity Curve \u2014 Current System Only"}},                        {"responsive": true}                    )                };            </script>        </div>
     </div>
 </div>
 
