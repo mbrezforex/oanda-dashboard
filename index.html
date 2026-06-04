@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="refresh" content="20">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OANDA ML Prop-Style Dashboard</title>
+<title>OANDA Basket Dashboard</title>
 
 <style>
 body {
@@ -39,18 +39,6 @@ h1, h2, h3 {
     color: #8fa1bd;
 }
 
-.cutoff {
-    color: #38bdf8;
-    font-weight: 800;
-    margin-top: 6px;
-}
-
-.top-status {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-}
-
 .latency {
     color: #38bdf8;
     font-weight: 800;
@@ -77,7 +65,7 @@ h1, h2, h3 {
     margin: 20px 0;
 }
 
-.stat, .card, .table-wrap, .trade-card, .risk-panel, .empty-card, .chart-panel {
+.stat, .card, .trade-card, .empty-card, .chart-panel, .calendar-card, .ad-card, .table-wrap {
     background: linear-gradient(180deg, #111a2b, #0b111d);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 18px;
@@ -95,16 +83,16 @@ h1, h2, h3 {
     font-size: 22px;
 }
 
-.grid {
+.signal-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 14px;
 }
 
-.trade-grid-wrap {
+.basket-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
 }
 
 .card-header, .trade-top {
@@ -117,12 +105,12 @@ h1, h2, h3 {
     margin: 0;
 }
 
-.card p {
+.card p, .trade-card p {
     color: #8fa1bd;
     font-size: 12px;
 }
 
-.badge, .pill {
+.badge {
     display: inline-block;
     border-radius: 999px;
     padding: 5px 9px;
@@ -130,35 +118,35 @@ h1, h2, h3 {
     font-weight: 800;
 }
 
-.long, .good, .positive {
+.long, .positive {
     color: #21c55d;
 }
 
-.short, .bad, .negative {
+.short, .negative {
     color: #ef4444;
 }
 
-.watch {
-    background: rgba(56,189,248,0.16);
-    color: #38bdf8;
-}
-
-.badge.long, .pill.good {
+.badge.long {
     background: rgba(34,197,94,0.18);
 }
 
-.badge.short, .pill.bad {
+.badge.short {
     background: rgba(239,68,68,0.18);
 }
 
-.blocked {
+.badge.blocked {
     background: rgba(245,158,11,0.18);
     color: #f59e0b;
 }
 
-.neutral {
+.badge.neutral {
     background: rgba(148,163,184,0.14);
     color: #cbd5e1;
+}
+
+.badge.bad {
+    background: rgba(239,68,68,0.18);
+    color: #ef4444;
 }
 
 .readiness-block {
@@ -215,73 +203,137 @@ h1, h2, h3 {
     background: linear-gradient(90deg, #64748b, #94a3b8);
 }
 
-.pair-card.ready-hot {
-    border-color: rgba(34,197,94,0.38);
-}
-
-.pair-card.ready-close {
-    border-color: rgba(56,189,248,0.38);
-}
-
-.pair-card.ready-watch {
-    border-color: rgba(245,158,11,0.32);
-}
-
-.metrics, .trade-grid {
+.mini-metrics, .trade-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     margin: 12px 0;
 }
 
-.metrics div, .trade-grid div {
+.mini-metrics div, .trade-grid div {
     background: rgba(255,255,255,0.04);
     border-radius: 12px;
     padding: 8px;
 }
 
-.metrics span, .trade-grid span {
+.mini-metrics span, .trade-grid span {
     display: block;
     color: #8fa1bd;
     font-size: 11px;
 }
 
-.conditions div {
+.ladder {
+    margin-top: 14px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.ladder-row {
     display: flex;
     justify-content: space-between;
+    padding: 7px 10px;
     border-bottom: 1px solid rgba(255,255,255,0.05);
-    padding: 5px 0;
-    color: #8fa1bd;
+    font-size: 13px;
 }
 
-.reason-box {
-    margin-top: 10px;
-    color: #cbd5e1;
-    background: rgba(255,255,255,0.04);
-    border-radius: 12px;
-    padding: 10px;
-    font-size: 12px;
+.ladder-row:last-child {
+    border-bottom: none;
 }
 
-.avgdown-box {
-    margin-top: 10px;
-    color: #cbd5e1;
-    background: rgba(245,158,11,0.08);
-    border: 1px solid rgba(245,158,11,0.18);
-    border-radius: 12px;
-    padding: 10px;
-    font-size: 12px;
-    line-height: 1.55;
+.ladder-row.tp {
+    background: rgba(34,197,94,0.13);
 }
 
-.risk-row {
+.ladder-row.sl {
+    background: rgba(239,68,68,0.13);
+}
+
+.ladder-row.price {
+    background: rgba(56,189,248,0.18);
+}
+
+.ladder-row.avg {
+    background: rgba(245,158,11,0.13);
+}
+
+.ladder-row.add {
+    background: rgba(148,163,184,0.08);
+}
+
+.calendar-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
 }
 
-.risk-panel strong {
-    font-size: 24px;
+.calendar-header div {
+    text-align: center;
+    color: #8fa1bd;
+    font-weight: 800;
+}
+
+.calendar-day {
+    min-height: 82px;
+    border-radius: 12px;
+    padding: 8px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.calendar-day strong {
+    display: block;
+    margin-top: 8px;
+    font-size: 16px;
+}
+
+.calendar-day small {
+    display: block;
+    color: #8fa1bd;
+    margin-top: 3px;
+}
+
+.day-num {
+    color: #8fa1bd;
+    font-size: 12px;
+}
+
+.positive-day {
+    border-color: rgba(34,197,94,0.35);
+}
+
+.negative-day {
+    border-color: rgba(239,68,68,0.35);
+}
+
+.muted-day {
+    opacity: 0.25;
+}
+
+.ad-row {
+    display: grid;
+    grid-template-columns: 45px 1fr 35px;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.ad-bar-track {
+    height: 10px;
+    background: rgba(148,163,184,0.18);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.ad-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8, #67e8f9);
+}
+
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
 }
 
 .table-wrap {
@@ -305,9 +357,13 @@ th {
     color: #8fa1bd;
 }
 
-@media (max-width: 1100px) {
-    .grid {
+@media (max-width: 1200px) {
+    .signal-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .basket-grid, .two-col {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -320,20 +376,12 @@ th {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .grid, .trade-grid-wrap, .risk-row {
+    .signal-grid {
         grid-template-columns: 1fr;
     }
 
-    .metrics, .trade-grid {
+    .trade-grid {
         grid-template-columns: 1fr;
-    }
-
-    h1 {
-        font-size: 22px;
-    }
-
-    table {
-        font-size: 11px;
     }
 }
 </style>
@@ -344,1289 +392,299 @@ th {
 
 <div class="topbar">
     <div>
-        <h1>OANDA ML Prop-Style Dashboard</h1>
-        <div class="muted">Live OANDA connection | 23-pair readiness monitor | Basket strategy dashboard | Last scan: 2026-06-04 14:02:09 UTC</div>
-        <div class="cutoff">Current-system stats only: trades opened after 2026-04-28 14:27:00 UTC</div>
+        <h1>OANDA Basket Dashboard</h1>
+        <div class="muted">Basket control center | ML AD5 policy | Last scan: 06/04/2026 10:16:20 AM EDT</div>
     </div>
 
-    <div class="top-status">
-        <div class="latency">Build Latency: 47.904s</div>
-        <div class="mode">LIVE OANDA + GITHUB PAGES</div>
+    <div>
+        <div class="latency">Build Latency: 1.482s</div>
+        <div class="mode">NEW YORK MARKET TIME</div>
     </div>
 </div>
 
 <div class="section">
-    <h2>Prop-Firm Account Snapshot</h2>
+    <h2>Account Snapshot</h2>
     <div class="stats">
         <div class="stat"><span>Balance</span><strong>$96,210.86</strong></div>
         <div class="stat"><span>NAV / Equity</span><strong>$96,210.86</strong></div>
         <div class="stat"><span>Open P/L</span><strong class="positive">$0.00</strong></div>
         <div class="stat"><span>Realized P/L</span><strong class="negative">$-3,779.33</strong></div>
-        <div class="stat"><span>Open Trades</span><strong>0</strong></div>
-        <div class="stat"><span>Active Signals</span><strong>0</strong></div>
+        <div class="stat"><span>Today P/L</span><strong class="negative">$-242.74</strong></div>
+        <div class="stat"><span>Today Trades</span><strong>12</strong></div>
     </div>
 </div>
 
 <div class="section">
-    <h2>Evaluation Risk Monitor</h2>
-    <div class="risk-row">
-        <div class="risk-panel"><span>Daily P/L</span><br><strong class="negative">$-242.74</strong></div>
-        <div class="risk-panel"><span>Daily Loss Remaining</span><br><strong>$-192.74</strong></div>
-        <div class="risk-panel"><span>Max Loss Remaining</span><br><strong>$-3,679.33</strong></div>
-        <div class="risk-panel"><span>Status</span><br><strong>BREACH</strong></div>
+    <h2>Open Basket Control Center</h2>
+    <div class="stats">
+        <div class="stat"><span>Open Baskets</span><strong>0</strong></div>
+        <div class="stat"><span>Open OANDA Trades</span><strong>0</strong></div>
+        <div class="stat"><span>Margin Used</span><strong>$0.00</strong></div>
+        <div class="stat"><span>Currency</span><strong>USD</strong></div>
+    </div>
+
+    <div class="basket-grid">
+        <div class='empty-card'>No active baskets</div>
+    </div>
+</div>
+
+<div class="section two-col">
+    <div>
+        
+    <div class="ad-card">
+        <h3>Open Basket AD Distribution</h3>
+        
+        <div class="ad-row">
+            <span>AD0</span>
+            <div class="ad-bar-track">
+                <div class="ad-bar-fill" style="width:0%"></div>
+            </div>
+            <strong>0</strong>
+        </div>
+        
+        <div class="ad-row">
+            <span>AD1</span>
+            <div class="ad-bar-track">
+                <div class="ad-bar-fill" style="width:0%"></div>
+            </div>
+            <strong>0</strong>
+        </div>
+        
+        <div class="ad-row">
+            <span>AD2</span>
+            <div class="ad-bar-track">
+                <div class="ad-bar-fill" style="width:0%"></div>
+            </div>
+            <strong>0</strong>
+        </div>
+        
+        <div class="ad-row">
+            <span>AD3</span>
+            <div class="ad-bar-track">
+                <div class="ad-bar-fill" style="width:0%"></div>
+            </div>
+            <strong>0</strong>
+        </div>
+        
+        <div class="ad-row">
+            <span>AD4</span>
+            <div class="ad-bar-track">
+                <div class="ad-bar-fill" style="width:0%"></div>
+            </div>
+            <strong>0</strong>
+        </div>
+        
+    </div>
+    
+    </div>
+    <div>
+        
+    <div class="calendar-card">
+        <h3>Daily Profit Calendar — June 2026</h3>
+        <div class="calendar-grid calendar-header">
+            <div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div><div>Sun</div>
+        </div>
+        <div class="calendar-grid">
+    
+        <div class="calendar-day negative-day">
+            <span class="day-num">1</span>
+            <strong>$-422.00</strong>
+            <small>45 trades</small>
+            <small>19W / 26L</small>
+        </div>
+        
+        <div class="calendar-day negative-day">
+            <span class="day-num">2</span>
+            <strong>$-422.46</strong>
+            <small>35 trades</small>
+            <small>13W / 19L</small>
+        </div>
+        
+            <div class="calendar-day">
+                <span class="day-num">3</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+        <div class="calendar-day negative-day">
+            <span class="day-num">4</span>
+            <strong>$-242.74</strong>
+            <small>12 trades</small>
+            <small>3W / 9L</small>
+        </div>
+        
+            <div class="calendar-day">
+                <span class="day-num">5</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">6</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">7</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">8</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">9</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">10</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">11</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">12</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">13</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">14</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">15</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">16</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">17</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">18</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">19</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">20</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">21</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">22</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">23</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">24</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">25</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">26</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">27</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">28</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">29</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            
+            <div class="calendar-day">
+                <span class="day-num">30</span>
+                <div class="day-empty">—</div>
+                <small>0 trades</small>
+            </div>
+            <div class='calendar-day muted-day'></div><div class='calendar-day muted-day'></div><div class='calendar-day muted-day'></div><div class='calendar-day muted-day'></div><div class='calendar-day muted-day'></div>
+        </div>
+    </div>
+    
     </div>
 </div>
 
 <div class="section">
-    <h2>Pair Signal Readiness Cards</h2>
-    <div class="grid">
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>EUR_USD</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>20%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:20.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>20%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>1.16391</strong></div>
-                <div><span>Spread</span><strong>1.50 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>SHORT</strong></div>
-                <div><span>ZL MACD M15</span><strong>SHORT</strong></div>
-                <div><span>McGinley M15</span><strong>LONG</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>LONG</strong></div>
-                <div><span>Spread OK</span><span class="badge good">YES</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>GBP_USD</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>20%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:20.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>20%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>1.34539</strong></div>
-                <div><span>Spread</span><strong>2.00 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>SHORT</strong></div>
-                <div><span>ZL MACD M15</span><strong>SHORT</strong></div>
-                <div><span>McGinley M15</span><strong>LONG</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>LONG</strong></div>
-                <div><span>Spread OK</span><span class="badge good">YES</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>USD_JPY</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>20%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:20.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>20%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>159.89150</strong></div>
-                <div><span>Spread</span><strong>1.30 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>LONG</strong></div>
-                <div><span>M15 Combo</span><strong>LONG</strong></div>
-                <div><span>H1 Combo</span><strong>LONG</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge good">YES</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>AUD_USD</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>20%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:20.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>20%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.71449</strong></div>
-                <div><span>Spread</span><strong>1.50 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>SHORT</strong></div>
-                <div><span>ZL MACD M15</span><strong>SHORT</strong></div>
-                <div><span>McGinley M15</span><strong>LONG</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge good">YES</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>EUR_GBP</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>20%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:20.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>20%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.86518</strong></div>
-                <div><span>Spread</span><strong>1.30 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>SHORT</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>LONG</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>LONG</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge good">YES</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>USD_CHF</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>20%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:20.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>20%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.78790</strong></div>
-                <div><span>Spread</span><strong>1.50 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>SHORT</strong></div>
-                <div><span>Spread OK</span><span class="badge good">YES</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>AUD_CHF</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>20%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:20.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>20%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.56285</strong></div>
-                <div><span>Spread</span><strong>1.70 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>SHORT</strong></div>
-                <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>SHORT</strong></div>
-                <div><span>Spread OK</span><span class="badge good">YES</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>NZD_USD</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.58871</strong></div>
-                <div><span>Spread</span><strong>2.40 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>LONG</strong></div>
-                <div><span>M15 Combo</span><strong>LONG</strong></div>
-                <div><span>H1 Combo</span><strong>LONG</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>EUR_JPY</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>186.10400</strong></div>
-                <div><span>Spread</span><strong>2.60 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>SHORT</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>LONG</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>LONG</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>GBP_JPY</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>215.10100</strong></div>
-                <div><span>Spread</span><strong>3.90 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>LONG</strong></div>
-                <div><span>M15 Combo</span><strong>LONG</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>LONG</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>NZD_JPY</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>94.12700</strong></div>
-                <div><span>Spread</span><strong>3.40 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>SHORT</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>LONG</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>LONG</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>CHF_JPY</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>202.94400</strong></div>
-                <div><span>Spread</span><strong>3.80 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>SHORT</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>LONG</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>LONG</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>EUR_AUD</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>1.62916</strong></div>
-                <div><span>Spread</span><strong>3.30 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>EUR_NZD</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>1.97710</strong></div>
-                <div><span>Spread</span><strong>6.30 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>SHORT</strong></div>
-                <div><span>ZL MACD M15</span><strong>SHORT</strong></div>
-                <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>SHORT</strong></div>
-                <div><span>H1 Combo</span><strong>SHORT</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>GBP_CAD</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>1.86786</strong></div>
-                <div><span>Spread</span><strong>5.00 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>AUD_CAD</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.99201</strong></div>
-                <div><span>Spread</span><strong>2.50 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>AUD_NZD</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>1.21361</strong></div>
-                <div><span>Spread</span><strong>3.60 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>SHORT</strong></div>
-                <div><span>ZL MACD M15</span><strong>SHORT</strong></div>
-                <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>SHORT</strong></div>
-                <div><span>H1 Combo</span><strong>SHORT</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>NZD_CAD</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.81744</strong></div>
-                <div><span>Spread</span><strong>4.40 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>LONG</strong></div>
-                <div><span>M15 Combo</span><strong>LONG</strong></div>
-                <div><span>H1 Combo</span><strong>LONG</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>EUR_CAD</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>1.61610</strong></div>
-                <div><span>Spread</span><strong>3.50 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>EUR_CHF</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.91698</strong></div>
-                <div><span>Spread</span><strong>2.10 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>GBP_CHF</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>1.05985</strong></div>
-                <div><span>Spread</span><strong>3.90 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>SHORT</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>SHORT</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>CAD_CHF</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.56741</strong></div>
-                <div><span>Spread</span><strong>2.20 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>SHORT</strong></div>
-                <div><span>McGinley M15</span><strong>LONG</strong></div>
-                <div><span>M15 Combo</span><strong>NONE</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>NONE</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-        <div class="card pair-card ready-cold">
-            <div class="card-header">
-                <div>
-                    <h2>NZD_CHF</h2>
-                    <p>2026-06-04 13:45:00+00:00</p>
-                </div>
-                <span class="badge neutral">NO SIGNAL</span>
-            </div>
-
-            <div class="readiness-block">
-                <div class="readiness-top">
-                    <span>Signal Readiness</span>
-                    <strong>10%</strong>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill ready-cold" style="width:10.0%;"></div>
-                </div>
-            </div>
-
-            <div class="metrics">
-                <div><span>Model Probability</span><strong>10%</strong></div>
-                <div><span>Confidence</span><strong>LOW</strong></div>
-                <div><span>Latest Price</span><strong>0.46380</strong></div>
-                <div><span>Spread</span><strong>3.60 / 2.00</strong></div>
-            </div>
-
-            <div class="conditions">
-                <div><span>Fisher M15</span><strong>LONG</strong></div>
-                <div><span>ZL MACD M15</span><strong>LONG</strong></div>
-                <div><span>McGinley M15</span><strong>LONG</strong></div>
-                <div><span>M15 Combo</span><strong>LONG</strong></div>
-                <div><span>H1 Combo</span><strong>NONE</strong></div>
-                <div><span>H4 Combo</span><strong>SHORT</strong></div>
-                <div><span>Spread OK</span><span class="badge bad">NO</span></div>
-                <div><span>Cooldown OK</span><span class="badge good">YES</span></div>
-                <div><span>Entry Approved</span><span class="badge bad">NO</span></div>
-            </div>
-
-            <div class="avgdown-box">
-                <strong>Basket / Risk-Based Average Down</strong><br>
-                Risk Target: —% basket risk<br>
-                Base Units: —<br>
-                Max Units: —<br>
-                Entries: 0 / 5<br>
-                Avg Entry: —<br>
-                Basket Pips: —<br>
-                Next Add: —
-                at — ATR
-            </div>
-
-            <div class="reason-box">Waiting for Fisher, ZL MACD, McGinley, M15, H1, and H4 alignment.</div>
-        </div>
-        
-    </div>
-</div>
-
-<div class="section">
-    <h2>Signal Proximity Ranking</h2>
-    <div class="chart-panel">
-        <div>                            <div id="34b0d272-8858-4bf0-98c5-d1cce454d35e" class="plotly-graph-div" style="height:644px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("34b0d272-8858-4bf0-98c5-d1cce454d35e")) {                    Plotly.newPlot(                        "34b0d272-8858-4bf0-98c5-d1cce454d35e",                        [{"name":"Readiness","orientation":"h","text":["10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","10%","20%","20%","20%","20%","20%","20%","20%"],"textposition":"auto","x":{"dtype":"i1","bdata":"CgoKCgoKCgoKCgoKCgoKChQUFBQUFBQ="},"y":["NZD_JPY","GBP_JPY","EUR_JPY","NZD_USD","GBP_CAD","EUR_NZD","EUR_AUD","CHF_JPY","AUD_NZD","AUD_CAD","NZD_CAD","NZD_CHF","CAD_CHF","GBP_CHF","EUR_CHF","EUR_CAD","EUR_GBP","USD_JPY","GBP_USD","EUR_USD","AUD_USD","USD_CHF","AUD_CHF"],"type":"bar"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#f2f5fa"},"error_y":{"color":"#f2f5fa"},"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"baxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"line":{"color":"#283442"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"marker":{"line":{"color":"#283442"}},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#506784"},"line":{"color":"rgb(17,17,17)"}},"header":{"fill":{"color":"#2a3f5f"},"line":{"color":"rgb(17,17,17)"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#f2f5fa","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#f2f5fa"},"geo":{"bgcolor":"rgb(17,17,17)","lakecolor":"rgb(17,17,17)","landcolor":"rgb(17,17,17)","showlakes":true,"showland":true,"subunitcolor":"#506784"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"dark"},"paper_bgcolor":"rgb(17,17,17)","plot_bgcolor":"rgb(17,17,17)","polar":{"angularaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","radialaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"yaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"zaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"}},"shapedefaults":{"line":{"color":"#f2f5fa"}},"sliderdefaults":{"bgcolor":"#C8D4E3","bordercolor":"rgb(17,17,17)","borderwidth":1,"tickwidth":0},"ternary":{"aaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"baxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","caxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"title":{"x":0.05},"updatemenudefaults":{"bgcolor":"#506784","borderwidth":0},"xaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2}}},"margin":{"l":90,"r":30,"t":45,"b":35},"xaxis":{"range":[0,100],"title":{"text":"Readiness %"}},"height":644,"paper_bgcolor":"#0b111d","plot_bgcolor":"#0b111d","title":{"text":"Signal Proximity Ranking \u2014 Closest Pairs to Trigger"},"yaxis":{"title":{"text":""}}},                        {"responsive": true}                    )                };            </script>        </div>
-    </div>
-</div>
-
-<div class="section">
-    <h2>Open Trade Cards</h2>
-    <div class="trade-grid-wrap">
-        <div class='empty-card'>No active trades</div>
-    </div>
-</div>
-
-<div class="section">
-    <h2>Live Equity Curve</h2>
+    <h2>Performance</h2>
     <div class="chart-panel">
         <div>                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
-        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.5.0.min.js" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" crossorigin="anonymous"></script>                <div id="b02ff4bf-2edd-4355-b433-226d1262ec61" class="plotly-graph-div" style="height:380px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("b02ff4bf-2edd-4355-b433-226d1262ec61")) {                    Plotly.newPlot(                        "b02ff4bf-2edd-4355-b433-226d1262ec61",                        [{"mode":"lines+markers","name":"Equity","x":["2026-05-07T08:45:15.218836759","2026-05-28T00:11:39.216620756","2026-05-28T00:11:39.216620756","2026-05-28T00:11:42.771057177","2026-05-28T00:11:42.771057177","2026-05-28T00:11:42.771057177","2026-05-28T00:11:42.771057177","2026-05-28T00:11:42.771057177","2026-05-28T00:11:46.372836178","2026-05-28T00:11:46.372836178","2026-05-28T00:11:49.771366179","2026-05-28T00:11:53.245800789","2026-05-28T00:11:53.245800789","2026-05-28T00:11:53.245800789","2026-05-28T00:11:53.245800789","2026-05-28T01:45:14.575605718","2026-05-28T01:45:14.575605718","2026-05-28T01:45:16.396709909","2026-05-28T03:23:02.428341355","2026-05-28T03:23:10.385316872","2026-05-28T03:32:04.158848583","2026-05-28T05:30:33.310661083","2026-05-28T05:30:33.310661083","2026-05-28T05:30:33.310661083","2026-05-28T05:30:33.310661083","2026-05-28T05:30:47.095640278","2026-05-28T05:30:47.095640278","2026-05-28T05:30:47.095640278","2026-05-28T05:30:47.095640278","2026-05-28T05:30:47.095640278","2026-05-28T05:40:11.613425853","2026-05-28T05:40:11.613425853","2026-05-28T05:40:11.613425853","2026-05-28T05:40:11.613425853","2026-05-28T05:40:11.613425853","2026-05-28T08:01:45.657708306","2026-05-28T08:01:45.657708306","2026-05-28T08:01:45.657708306","2026-05-28T08:01:45.657708306","2026-05-28T10:58:30.066223500","2026-05-28T10:58:30.066223500","2026-05-28T10:58:30.066223500","2026-05-28T10:58:30.066223500","2026-05-28T10:58:39.568584288","2026-05-28T12:27:29.421129995","2026-05-28T12:27:29.421129995","2026-05-28T12:27:29.421129995","2026-05-28T12:27:29.421129995","2026-05-28T13:01:59.908025163","2026-05-28T13:02:03.265252081","2026-05-28T13:33:02.039450809","2026-05-28T13:38:42.821943293","2026-05-28T13:38:46.942344113","2026-05-28T13:38:46.942344113","2026-05-28T13:38:49.946903262","2026-05-28T13:38:53.396127144","2026-05-28T13:38:53.396127144","2026-05-28T13:38:56.216440757","2026-05-28T13:39:00.020266038","2026-05-28T13:39:00.020266038","2026-05-28T13:39:02.986546690","2026-05-28T13:39:02.986546690","2026-05-28T13:39:06.625936806","2026-05-28T13:39:09.740026414","2026-05-28T14:11:44.128372459","2026-05-28T14:11:44.128372459","2026-05-28T14:11:47.015259320","2026-05-28T14:11:50.162153039","2026-05-28T14:11:50.162153039","2026-05-28T14:54:02.021518393","2026-05-28T14:54:24.588268522","2026-05-28T14:54:24.588268522","2026-05-28T14:54:24.588268522","2026-05-28T14:54:24.588268522","2026-05-28T14:54:24.588268522","2026-05-28T15:55:52.923524101","2026-05-28T15:55:52.923524101","2026-05-28T15:55:52.923524101","2026-05-28T15:55:52.923524101","2026-05-28T15:59:13.662671373","2026-05-28T16:24:31.866698774","2026-05-28T16:24:32.487175142","2026-05-28T16:24:32.487175142","2026-05-28T17:29:02.468054478","2026-05-28T17:29:02.468054478","2026-05-28T17:29:02.468054478","2026-05-28T17:29:05.783480795","2026-05-28T17:29:09.414981450","2026-05-28T17:29:09.414981450","2026-05-28T21:04:55.037683020","2026-05-28T21:45:55.987650967","2026-05-28T21:46:05.118571117","2026-05-28T22:00:25.159585887","2026-05-29T05:57:21.996938785","2026-05-29T05:57:21.996938785","2026-05-29T05:57:21.996938785","2026-05-29T06:57:00.120270563","2026-05-29T07:14:57.184578845","2026-05-29T07:14:57.184578845","2026-05-29T07:17:42.757043827","2026-05-29T07:17:42.757043827","2026-05-29T09:00:09.371266659","2026-05-29T09:00:09.371266659","2026-05-29T10:10:17.046578067","2026-05-29T10:10:17.046578067","2026-05-29T10:10:17.046578067","2026-05-29T10:10:17.046578067","2026-05-29T10:10:17.046578067","2026-05-29T11:01:48.407134134","2026-05-29T11:01:48.407134134","2026-05-29T11:01:48.407134134","2026-05-29T11:01:48.407134134","2026-05-29T11:01:48.407134134","2026-05-29T12:45:00.317488886","2026-05-29T12:45:00.317488886","2026-05-29T12:45:00.317488886","2026-05-29T12:45:00.317488886","2026-05-29T12:45:00.317488886","2026-05-29T12:56:25.563657666","2026-05-29T12:57:00.902807771","2026-05-29T12:57:08.285749301","2026-05-29T12:59:33.918635730","2026-05-29T13:00:41.333491543","2026-05-29T13:38:28.058699319","2026-05-29T13:48:27.352310329","2026-05-29T13:59:02.221437046","2026-05-29T13:59:02.221437046","2026-05-29T13:59:02.221437046","2026-05-29T13:59:02.221437046","2026-05-29T13:59:02.221437046","2026-05-29T14:00:34.436596640","2026-05-29T14:00:34.436596640","2026-05-29T14:00:34.436596640","2026-05-29T14:00:34.436596640","2026-05-29T14:00:34.436596640","2026-05-29T14:16:00.791288013","2026-05-29T14:16:00.791288013","2026-05-29T14:16:00.791288013","2026-05-29T14:16:00.791288013","2026-05-29T14:19:31.444531938","2026-05-29T14:20:29.570495876","2026-05-29T14:20:29.570495876","2026-05-29T14:20:29.570495876","2026-05-29T14:20:29.570495876","2026-05-29T14:20:29.570495876","2026-05-29T14:43:44.952244855","2026-05-29T14:43:44.952244855","2026-05-29T14:43:44.952244855","2026-05-29T14:43:44.952244855","2026-05-29T14:43:44.952244855","2026-05-29T14:50:09.086513799","2026-05-29T14:50:09.086513799","2026-05-29T14:50:09.086513799","2026-05-29T14:56:00.305286604","2026-05-29T14:56:00.305286604","2026-05-29T14:56:00.305286604","2026-05-29T14:56:00.305286604","2026-05-29T14:56:00.305286604","2026-05-29T19:33:13.624009932","2026-05-29T19:33:16.022848799","2026-05-29T19:33:18.127925677","2026-05-29T19:33:20.629543570","2026-05-29T19:33:26.839112679","2026-05-29T19:33:29.820067909","2026-05-31T21:04:55.085521156","2026-05-31T21:04:55.085521156","2026-06-01T00:01:58.340644501","2026-06-01T00:01:58.340644501","2026-06-01T00:01:58.340644501","2026-06-01T01:33:23.944376386","2026-06-01T01:40:03.411859618","2026-06-01T02:07:47.669268340","2026-06-01T02:07:47.669268340","2026-06-01T02:07:47.669268340","2026-06-01T02:07:47.669268340","2026-06-01T02:16:19.063876729","2026-06-01T02:55:09.237019564","2026-06-01T03:19:47.379854644","2026-06-01T03:19:47.379854644","2026-06-01T03:19:47.379854644","2026-06-01T03:19:47.379854644","2026-06-01T03:20:08.286204002","2026-06-01T05:50:43.297037568","2026-06-01T06:11:31.252266343","2026-06-01T06:11:52.787967306","2026-06-01T06:12:15.945863080","2026-06-01T06:22:54.935237991","2026-06-01T06:22:54.935237991","2026-06-01T06:22:54.935237991","2026-06-01T06:36:47.962883509","2026-06-01T06:36:47.962883509","2026-06-01T06:36:47.962883509","2026-06-01T06:36:47.962883509","2026-06-01T06:36:47.962883509","2026-06-01T09:57:45.407688370","2026-06-01T12:45:34.030699951","2026-06-01T12:45:34.030699951","2026-06-01T12:45:34.030699951","2026-06-01T12:45:34.030699951","2026-06-01T13:04:52.726301606","2026-06-01T13:04:52.726301606","2026-06-01T13:07:05.547835229","2026-06-01T13:16:12.204917764","2026-06-01T15:25:53.663163521","2026-06-01T15:25:53.663163521","2026-06-01T15:30:26.647613550","2026-06-01T15:30:26.647613550","2026-06-01T15:30:26.647613550","2026-06-01T15:30:26.647613550","2026-06-01T15:30:26.647613550","2026-06-01T17:44:16.730231790","2026-06-01T23:40:31.261075591","2026-06-01T23:40:31.261075591","2026-06-02T01:11:04.225647242","2026-06-02T02:17:39.140728291","2026-06-02T02:17:39.140728291","2026-06-02T02:17:39.140728291","2026-06-02T02:20:30.109952954","2026-06-02T02:20:30.109952954","2026-06-02T02:20:30.109952954","2026-06-02T02:20:30.109952954","2026-06-02T02:20:30.109952954","2026-06-02T02:25:39.266437653","2026-06-02T02:25:39.266437653","2026-06-02T02:25:39.266437653","2026-06-02T02:25:39.266437653","2026-06-02T02:25:39.266437653","2026-06-02T04:16:36.817532836","2026-06-02T04:16:36.817532836","2026-06-02T04:26:32.643906200","2026-06-02T04:49:14.432660416","2026-06-02T04:49:14.432660416","2026-06-02T06:25:33.551958562","2026-06-02T07:07:20.562818510","2026-06-02T07:07:20.562818510","2026-06-02T07:07:20.562818510","2026-06-02T07:08:45.658730422","2026-06-02T08:25:19.723565834","2026-06-02T11:23:41.111103519","2026-06-02T11:23:41.111103519","2026-06-02T11:23:41.111103519","2026-06-02T13:13:29.570616669","2026-06-02T13:13:29.570616669","2026-06-02T13:13:40.208554003","2026-06-02T13:13:40.208554003","2026-06-02T13:13:40.232516686","2026-06-02T13:22:23.515348383","2026-06-02T13:29:42.053383894","2026-06-02T13:29:42.053383894","2026-06-02T13:36:18.654640955","2026-06-02T13:48:49.742975120","2026-06-02T13:48:49.742975120","2026-06-02T13:48:49.742975120","2026-06-02T13:48:49.742975120","2026-06-02T13:48:49.742975120","2026-06-02T13:51:30.888550057","2026-06-02T13:51:30.888550057","2026-06-02T13:51:30.888550057","2026-06-02T13:51:30.888550057","2026-06-02T13:51:30.888550057","2026-06-02T17:48:39.779031716","2026-06-02T18:17:06.296037834","2026-06-04T04:34:16.328145763","2026-06-04T11:25:39.077040617","2026-06-04T11:26:32.271115003","2026-06-04T12:30:00.750026022","2026-06-04T12:30:00.750026022","2026-06-04T12:30:00.750026022","2026-06-04T12:30:00.750026022","2026-06-04T12:30:00.750026022","2026-06-04T13:11:14.405210029","2026-06-04T13:11:14.405210029","2026-06-04T13:11:14.405210029","2026-06-04T13:33:44.112282725"],"y":{"dtype":"f8","bdata":"XynLEEeikUBmiGNdHJ2SQPjCZKrgjJNAQs9m1acAk0BVMCqpk7GSQDnWxW00aJJAINJvX0chkkBX7C+7p5+RQIzbaACvcJFAaQBvgcQ8kUBhw9MrpReRQOxRuB6FGJFA4JwRpT0ZkUAOT6+UpRmRQIY41sUtGpFApHA9CpcakUCCc0aU9hqRQNc07zhFZ5FA30+Nl64QkkCYbhKDgBGSQOzAOSPKtpJAZMxdS0gjkkDQRNjwdLSRQJSHhVrTXZFAr5RliGMfkUAc6+I2Gh6RQGuad5wiHZFAYVRSJ2AckUDtnjws1BuRQOxRuB6FG5FARPrt64BSkECdgCbCBnaPQFg5tMj2jI5ATtGRXP7jjUAg0m9fB36NQFXBqKROrIxAqMZLNwmCi0B+jLlriQiKQKrx0k3iB4hABMWPMXfhhkAehetRuAOGQKrP1VZsVoVACKwcWuTihECcM6K0N5qEQEJg5dAixINAcoqO5PKjgkAtsp3vpzmBQAYSFD\u002fGhn5Ax9y1hHzSfkCNSuoENAF\u002fQHDwhclUAH9ANl66SQz\u002ffkAusp3vp2Z+QHbgnBGlPH1A2KNwPQrEfEDSkVz+Q6N8QBhIUPwY8HtAFvvL7skze0CYTBWMSsV6QEI+6Nms0nlAGsBbIEHoeEDu68A5I\u002f54QI51cRsNp3hAjnVxGw2neEAYc9cS8qt3QFpkO99PMXdA+ORhodYwd0AIX5hMFUF2QLJyaJHt13VAyLq4jQYjeEDiehSuRzR3QOSlm8Qg4XVAwqikTkBbdUCsYFRSJ6hzQBzAWyBBZnFAlFz+Q\u002fodbkDYEvJBz2JoQJCg+DHmPGVAWA4tsp2vWUC4N\u002fjCZKZVQNBm1edqu1xAFNBE2PA8YUA8AU2EDYNiQEgDeAskemBAeIqO5PLTWkCATx4WalVYQMAV+8vuXVhAeHh6pSyDWEDYqs\u002fVVsxaQIDUmuYdpy5A4Fxtxf6yRMBwDU+vlFFXwDAs1JrmsWHAEHPXEvLlZ8B44seYu5JswAQbnl4pCnDAULG\u002f7J6IbMCQPCzUmqppwODSTWIQVGjAwG9fB87xZsAIJlMFowhkwBCwcmiRwWLAAGPuWkLqX8BYImx4eoNhwOgGX5hMH2TAEP32deC8Z8Dw5owo7WdswDDfT42XU3HAvHa+nxolc8AA4C2QoHp1wHRIv30dnXjAhA96NqvjecBAhA1Pr6l6wODJw0KteHvAoPpcbcXUfcBQj8L1KKV+wKzRAN4C+3\u002fAYKpgVNLogMCYI7n8h\u002f5\u002fwKTYX3ZPVX7AeCbChqeHfMAszTtO0bl6wKS2Yn\u002fZ73jA2DYawFsgd8CUq63YX1Z1wLiopE5AE3bA9CH99nU4ecDIK2UZ4pF7wNy3rwPn3nzA0AIJih+yfsBMhjjWxf9\u002fwMj3U+Ml7YDATp+rrdgggsCSd5yio7iDwMb3U+MlJITAMLTIdj4LhcCaI7n8B5mGwHCcoiO5P4fAsNEA3gJriMDEEMe6uMmIwN4\u002fpN++tYnAZsX+svtHi8CSKhiV1HSMwDik374OFo3AcqUsQxx9jcBmEoPASuaNwARPr5Tlko7AJCEf9OyCj8CE9NvXwY2QwPwh\u002ffZ1JZHAEGHD0yt7kMAaY+5aQuOPwCTLEMe6M4\u002fAKLKd76eXj8BmImx4Oh2QwBSMSuqE5JDArgPnjGh6kcAk5IOeDe6RwHIkl\u002f\u002fQ6ZHAbqyL22jckcAa6+I2GhSSwD7xY8ydeJLA2gIJit+qksCMwvUoHLuSwKbx0k1i15PAiGzn+ynClMASHcnl\u002fzSVwMQpOpKL+ZXAauf7qTGKlsBiO99PzYWWwNIJaCKsbpbA7qfGSzfilsBuXwfOWTKXwL7KoUW2w5fALN0kBkGJmMB+JsKG51SYwPxD+u2rH5jAKvaX3dN1mMCmNc07zkCZwJLUCWgi2pnAHv32deBRmsBqEoPAinCawLZJDAJrX5rAON9PjZc0msBMHhZqzQ+awIoG8BbI\u002f5nA\u002fP\u002f\u002f\u002f3+WmsDWG3xhcg+bwOKuJeRD2pvA9KBns6qgnMC8yqFFdvacwITS3uBLKp3AopvEIHDAncAUldQJaDaewOYmMQgsMJ7ALgisHFoTnsDWX3ZPXsWdwH6VQ4ssV53AQBzr4nbKnMCKl24SA3ecwPBsVn1uU5zAMhrAW+AKnMCIl24SA9abwJrNqs+VnZvAZJHtfL+Xm8CGH2PuGgqcwGYr9pcdO5zAHmx4eiXOnMAejnVxGx2dwEKU9gbf453AonnHKfrSncAwgLdAgrSawGysi9uorZrAYIhjXRyAmsB0pSxDHPeawDa9UpYhv5vArAxxrAtXnMD6TIQND4mcwLS4jQawHJ3ANk7RkRzencDijCjtzVGewH6ezaqPpZ7AbrUV+wtzn8B+L0ymyqefwJJuEoOA\u002fZ\u002fA\u002fyqHFnlJoMCftDf4QoSgwJ+0N\u002fhChKDAuLiNBjBtoMACxY8x12mgwDLvOEVncqDAHIXrUZhioMCAUUmdoEegwAwtsp0Pq6DAdL6fGm\u002f1oMAiBoGVoy+hwNPFbTRAV6HAbPCFyZRQocB6rrZiX4qhwIjbaADP7KHAuJaQD3o2osC4lpAPejaiwE64HoXLHqLAER3J5f8GosARHcnl\u002fwaiwEtAE2Gj7aHA6nw\u002fNT7SocCSsgxxLLuhwCeHFtmOvKHAvhcmU8W4ocBoCfmgJwOiwC0IrByaHKLAVRe30SB\u002fosAvMzMzM7miwMQHPZv14qLAyhlR2pv6osCPGARWTiKjwNTw9EoZaqPA3QuTqWLKo8Bi9+RhIQKkwLZJDAIL6qPAzm9fBy7Ro8B8t0CCIrijwOmePCzUoaPAXeXQIluIo8Cjm8Qg0J6jwAI0ETZcx6PAR3uDL0wppMCLBvAW6HKkwAHnjCjNqaTASFmGOBbypMC00QDeYiulwJ34MeaOjqXALLsnD6u2pcA="},"type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#f2f5fa"},"error_y":{"color":"#f2f5fa"},"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"baxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"line":{"color":"#283442"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"marker":{"line":{"color":"#283442"}},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#506784"},"line":{"color":"rgb(17,17,17)"}},"header":{"fill":{"color":"#2a3f5f"},"line":{"color":"rgb(17,17,17)"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#f2f5fa","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#f2f5fa"},"geo":{"bgcolor":"rgb(17,17,17)","lakecolor":"rgb(17,17,17)","landcolor":"rgb(17,17,17)","showlakes":true,"showland":true,"subunitcolor":"#506784"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"dark"},"paper_bgcolor":"rgb(17,17,17)","plot_bgcolor":"rgb(17,17,17)","polar":{"angularaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","radialaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"yaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"zaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"}},"shapedefaults":{"line":{"color":"#f2f5fa"}},"sliderdefaults":{"bgcolor":"#C8D4E3","bordercolor":"rgb(17,17,17)","borderwidth":1,"tickwidth":0},"ternary":{"aaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"baxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","caxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"title":{"x":0.05},"updatemenudefaults":{"bgcolor":"#506784","borderwidth":0},"xaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2}}},"margin":{"l":30,"r":20,"t":45,"b":30},"height":380,"paper_bgcolor":"#0b111d","plot_bgcolor":"#0b111d","title":{"text":"Live Equity Curve \u2014 Current System Only"}},                        {"responsive": true}                    )                };            </script>        </div>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.5.0.min.js" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" crossorigin="anonymous"></script>                <div id="a2427185-21f1-40cd-a1ba-a9209352917c" class="plotly-graph-div" style="height:360px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("a2427185-21f1-40cd-a1ba-a9209352917c")) {                    Plotly.newPlot(                        "a2427185-21f1-40cd-a1ba-a9209352917c",                        [{"mode":"lines+markers","name":"Cumulative P\u002fL","x":["2026-05-07T08:45:15.218836759","2026-05-28T00:11:39.216620756","2026-05-28T00:11:39.216620756","2026-05-28T00:11:42.771057177","2026-05-28T00:11:42.771057177","2026-05-28T00:11:42.771057177","2026-05-28T00:11:42.771057177","2026-05-28T00:11:42.771057177","2026-05-28T00:11:46.372836178","2026-05-28T00:11:46.372836178","2026-05-28T00:11:49.771366179","2026-05-28T00:11:53.245800789","2026-05-28T00:11:53.245800789","2026-05-28T00:11:53.245800789","2026-05-28T00:11:53.245800789","2026-05-28T01:45:14.575605718","2026-05-28T01:45:14.575605718","2026-05-28T01:45:16.396709909","2026-05-28T03:23:02.428341355","2026-05-28T03:23:10.385316872","2026-05-28T03:32:04.158848583","2026-05-28T05:30:33.310661083","2026-05-28T05:30:33.310661083","2026-05-28T05:30:33.310661083","2026-05-28T05:30:33.310661083","2026-05-28T05:30:47.095640278","2026-05-28T05:30:47.095640278","2026-05-28T05:30:47.095640278","2026-05-28T05:30:47.095640278","2026-05-28T05:30:47.095640278","2026-05-28T05:40:11.613425853","2026-05-28T05:40:11.613425853","2026-05-28T05:40:11.613425853","2026-05-28T05:40:11.613425853","2026-05-28T05:40:11.613425853","2026-05-28T08:01:45.657708306","2026-05-28T08:01:45.657708306","2026-05-28T08:01:45.657708306","2026-05-28T08:01:45.657708306","2026-05-28T10:58:30.066223500","2026-05-28T10:58:30.066223500","2026-05-28T10:58:30.066223500","2026-05-28T10:58:30.066223500","2026-05-28T10:58:39.568584288","2026-05-28T12:27:29.421129995","2026-05-28T12:27:29.421129995","2026-05-28T12:27:29.421129995","2026-05-28T12:27:29.421129995","2026-05-28T13:01:59.908025163","2026-05-28T13:02:03.265252081","2026-05-28T13:33:02.039450809","2026-05-28T13:38:42.821943293","2026-05-28T13:38:46.942344113","2026-05-28T13:38:46.942344113","2026-05-28T13:38:49.946903262","2026-05-28T13:38:53.396127144","2026-05-28T13:38:53.396127144","2026-05-28T13:38:56.216440757","2026-05-28T13:39:00.020266038","2026-05-28T13:39:00.020266038","2026-05-28T13:39:02.986546690","2026-05-28T13:39:02.986546690","2026-05-28T13:39:06.625936806","2026-05-28T13:39:09.740026414","2026-05-28T14:11:44.128372459","2026-05-28T14:11:44.128372459","2026-05-28T14:11:47.015259320","2026-05-28T14:11:50.162153039","2026-05-28T14:11:50.162153039","2026-05-28T14:54:02.021518393","2026-05-28T14:54:24.588268522","2026-05-28T14:54:24.588268522","2026-05-28T14:54:24.588268522","2026-05-28T14:54:24.588268522","2026-05-28T14:54:24.588268522","2026-05-28T15:55:52.923524101","2026-05-28T15:55:52.923524101","2026-05-28T15:55:52.923524101","2026-05-28T15:55:52.923524101","2026-05-28T15:59:13.662671373","2026-05-28T16:24:31.866698774","2026-05-28T16:24:32.487175142","2026-05-28T16:24:32.487175142","2026-05-28T17:29:02.468054478","2026-05-28T17:29:02.468054478","2026-05-28T17:29:02.468054478","2026-05-28T17:29:05.783480795","2026-05-28T17:29:09.414981450","2026-05-28T17:29:09.414981450","2026-05-28T21:04:55.037683020","2026-05-28T21:45:55.987650967","2026-05-28T21:46:05.118571117","2026-05-28T22:00:25.159585887","2026-05-29T05:57:21.996938785","2026-05-29T05:57:21.996938785","2026-05-29T05:57:21.996938785","2026-05-29T06:57:00.120270563","2026-05-29T07:14:57.184578845","2026-05-29T07:14:57.184578845","2026-05-29T07:17:42.757043827","2026-05-29T07:17:42.757043827","2026-05-29T09:00:09.371266659","2026-05-29T09:00:09.371266659","2026-05-29T10:10:17.046578067","2026-05-29T10:10:17.046578067","2026-05-29T10:10:17.046578067","2026-05-29T10:10:17.046578067","2026-05-29T10:10:17.046578067","2026-05-29T11:01:48.407134134","2026-05-29T11:01:48.407134134","2026-05-29T11:01:48.407134134","2026-05-29T11:01:48.407134134","2026-05-29T11:01:48.407134134","2026-05-29T12:45:00.317488886","2026-05-29T12:45:00.317488886","2026-05-29T12:45:00.317488886","2026-05-29T12:45:00.317488886","2026-05-29T12:45:00.317488886","2026-05-29T12:56:25.563657666","2026-05-29T12:57:00.902807771","2026-05-29T12:57:08.285749301","2026-05-29T12:59:33.918635730","2026-05-29T13:00:41.333491543","2026-05-29T13:38:28.058699319","2026-05-29T13:48:27.352310329","2026-05-29T13:59:02.221437046","2026-05-29T13:59:02.221437046","2026-05-29T13:59:02.221437046","2026-05-29T13:59:02.221437046","2026-05-29T13:59:02.221437046","2026-05-29T14:00:34.436596640","2026-05-29T14:00:34.436596640","2026-05-29T14:00:34.436596640","2026-05-29T14:00:34.436596640","2026-05-29T14:00:34.436596640","2026-05-29T14:16:00.791288013","2026-05-29T14:16:00.791288013","2026-05-29T14:16:00.791288013","2026-05-29T14:16:00.791288013","2026-05-29T14:19:31.444531938","2026-05-29T14:20:29.570495876","2026-05-29T14:20:29.570495876","2026-05-29T14:20:29.570495876","2026-05-29T14:20:29.570495876","2026-05-29T14:20:29.570495876","2026-05-29T14:43:44.952244855","2026-05-29T14:43:44.952244855","2026-05-29T14:43:44.952244855","2026-05-29T14:43:44.952244855","2026-05-29T14:43:44.952244855","2026-05-29T14:50:09.086513799","2026-05-29T14:50:09.086513799","2026-05-29T14:50:09.086513799","2026-05-29T14:56:00.305286604","2026-05-29T14:56:00.305286604","2026-05-29T14:56:00.305286604","2026-05-29T14:56:00.305286604","2026-05-29T14:56:00.305286604","2026-05-29T19:33:13.624009932","2026-05-29T19:33:16.022848799","2026-05-29T19:33:18.127925677","2026-05-29T19:33:20.629543570","2026-05-29T19:33:26.839112679","2026-05-29T19:33:29.820067909","2026-05-31T21:04:55.085521156","2026-05-31T21:04:55.085521156","2026-06-01T00:01:58.340644501","2026-06-01T00:01:58.340644501","2026-06-01T00:01:58.340644501","2026-06-01T01:33:23.944376386","2026-06-01T01:40:03.411859618","2026-06-01T02:07:47.669268340","2026-06-01T02:07:47.669268340","2026-06-01T02:07:47.669268340","2026-06-01T02:07:47.669268340","2026-06-01T02:16:19.063876729","2026-06-01T02:55:09.237019564","2026-06-01T03:19:47.379854644","2026-06-01T03:19:47.379854644","2026-06-01T03:19:47.379854644","2026-06-01T03:19:47.379854644","2026-06-01T03:20:08.286204002","2026-06-01T05:50:43.297037568","2026-06-01T06:11:31.252266343","2026-06-01T06:11:52.787967306","2026-06-01T06:12:15.945863080","2026-06-01T06:22:54.935237991","2026-06-01T06:22:54.935237991","2026-06-01T06:22:54.935237991","2026-06-01T06:36:47.962883509","2026-06-01T06:36:47.962883509","2026-06-01T06:36:47.962883509","2026-06-01T06:36:47.962883509","2026-06-01T06:36:47.962883509","2026-06-01T09:57:45.407688370","2026-06-01T12:45:34.030699951","2026-06-01T12:45:34.030699951","2026-06-01T12:45:34.030699951","2026-06-01T12:45:34.030699951","2026-06-01T13:04:52.726301606","2026-06-01T13:04:52.726301606","2026-06-01T13:07:05.547835229","2026-06-01T13:16:12.204917764","2026-06-01T15:25:53.663163521","2026-06-01T15:25:53.663163521","2026-06-01T15:30:26.647613550","2026-06-01T15:30:26.647613550","2026-06-01T15:30:26.647613550","2026-06-01T15:30:26.647613550","2026-06-01T15:30:26.647613550","2026-06-01T17:44:16.730231790","2026-06-01T23:40:31.261075591","2026-06-01T23:40:31.261075591","2026-06-02T01:11:04.225647242","2026-06-02T02:17:39.140728291","2026-06-02T02:17:39.140728291","2026-06-02T02:17:39.140728291","2026-06-02T02:20:30.109952954","2026-06-02T02:20:30.109952954","2026-06-02T02:20:30.109952954","2026-06-02T02:20:30.109952954","2026-06-02T02:20:30.109952954","2026-06-02T02:25:39.266437653","2026-06-02T02:25:39.266437653","2026-06-02T02:25:39.266437653","2026-06-02T02:25:39.266437653","2026-06-02T02:25:39.266437653","2026-06-02T04:16:36.817532836","2026-06-02T04:16:36.817532836","2026-06-02T04:26:32.643906200","2026-06-02T04:49:14.432660416","2026-06-02T04:49:14.432660416","2026-06-02T06:25:33.551958562","2026-06-02T07:07:20.562818510","2026-06-02T07:07:20.562818510","2026-06-02T07:07:20.562818510","2026-06-02T07:08:45.658730422","2026-06-02T08:25:19.723565834","2026-06-02T11:23:41.111103519","2026-06-02T11:23:41.111103519","2026-06-02T11:23:41.111103519","2026-06-02T13:13:29.570616669","2026-06-02T13:13:29.570616669","2026-06-02T13:13:40.208554003","2026-06-02T13:13:40.208554003","2026-06-02T13:13:40.232516686","2026-06-02T13:22:23.515348383","2026-06-02T13:29:42.053383894","2026-06-02T13:29:42.053383894","2026-06-02T13:36:18.654640955","2026-06-02T13:48:49.742975120","2026-06-02T13:48:49.742975120","2026-06-02T13:48:49.742975120","2026-06-02T13:48:49.742975120","2026-06-02T13:48:49.742975120","2026-06-02T13:51:30.888550057","2026-06-02T13:51:30.888550057","2026-06-02T13:51:30.888550057","2026-06-02T13:51:30.888550057","2026-06-02T13:51:30.888550057","2026-06-02T17:48:39.779031716","2026-06-02T18:17:06.296037834","2026-06-04T04:34:16.328145763","2026-06-04T11:25:39.077040617","2026-06-04T11:26:32.271115003","2026-06-04T12:30:00.750026022","2026-06-04T12:30:00.750026022","2026-06-04T12:30:00.750026022","2026-06-04T12:30:00.750026022","2026-06-04T12:30:00.750026022","2026-06-04T13:11:14.405210029","2026-06-04T13:11:14.405210029","2026-06-04T13:11:14.405210029","2026-06-04T13:33:44.112282725"],"y":{"dtype":"f8","bdata":"9UpZhjgSYEAtQxzr4uhnQMIXJlMFZ29AEHo2qz4Fa0CqglFJnYxoQMWxLm6jQWZAAJF++zoKZEBuxf6ye\u002fpfQLu4jQbwCl1AjgbwFkjMWUASNjy9UnpXQLkehetRiFdACM4ZUdqTV0DZ8PRKWZpXQGaIY13coldAPgrXo3CpV0AeOGdEaa9XQGpN845TdFxA+n5qvHSFY0C9dJMYBIxjQGAHzhlRtmhAIGPuWkIaZECBJsKGp6NgQD55WKg13VtA9UpZhjj2V0DEsS5uo+FXQLWmeccp0ldAC0YldQLGV0DM7snDQr1XQLgehetRuFdAf0i\u002ffR1QRkCgTkATYQMbQP\u002fUeOkmYTbAHeviNhrARcAC3gIJih9MwFr1udqKnVTAwcqhRbbvXcAIzhlR2t1kwFg5tMh24GzA93XgnBG9cMDD9Shcj3hywKtgVFIn03PA8KfGSze6dMDImLuWkEt1wH0\u002fNV6693bAHOviNho4ecCmm8QgsAx8wPrt68A5+X\u002fAOSNKe4Otf8BztRX7y35\u002fwJAPejarf3\u002fAyqFFtvOAf8DpJjEIrAyAwMWPMXetoYDAFK5H4frdgMAXt9EAXu6AwPTb14HzR4HAdQKaCBumgcC0WfW5Wt2BwN\u002fgC5OpVoLA8x\u002fSb9\u002fLgsAJih9j7sCCwDlFR3J57ILAOUVHcnnsgsB0RpT2BmqDwNNNYhBYp4PAhA1Pr5Sng8B80LNZdR+EwKfGSzcJVITAnKIjuXwug8CPwvUo3KWDwA4tsp1vT4TAn6ut2F+ShMCqz9VW7GuFwPIf0m\u002ffjIbA22gAb4G4h8BKe4MvTCeJwNzXgXPG8InANV66SQwKjMAJ+aBnM4uMwCZTBaOSqIvA+8vuycPwisCxv+yePJ+KwC7\u002fIf12IYvAsS5uo4Hli8AQNjy9UjWMwEidgCZCNIzA8bBQa5ovjMClCkYldeaLwK6UZYhjxY7A52or9pdFkMDX8PRKGRWRwIaFWtM81pHAYu5aQr6cksBP\u002fBhzVzKTwMGGp1eKopPAKvaX3RMxk8CSh4VaU9WSwFy6SQyCqpLA+O3rwDl+ksDBZKpgFCGSwAJWDi0y+JHAMOauJaSekcBLhA1Pb9CRwN3gC5PpI5LAot++DpyXksDenBGl\u002fSyTwMz3U+Pl9JPAr53vp0ZplMAAeAskqP6UwB3Sb19Hx5XA4YOezeoYlsAQYcPTa0qWwHjysFArfpbAqD5XWzEVl8DUo3A9SkmXwGs0gLfAnpfAMFUwKmkUmMDmSC7\u002foZ+XwCn2l91TNZfAnomw4enBlsBL845TdE6WwKmt2F\u002f225XAto0G8BZolcDlaiv2l\u002fWUwC4qqRPQJJXAfUi\u002ffR3ulcDySlmGeISWwPft68C515bAtECC4odMl8CTIY518Z+XwOT7qfGSFpjAp8\u002fVVmywmMDJO07RUXyZwOP7qfESspnAGFpkO58lmsDNkVz+g+yawDhO0ZHcP5vA2GgAb4HVm8BiiGNd3AScwO8f0m\u002ffepzAs2J\u002f2f1DncBJFYxKatqdwBzSb18HK57AuVKWIY5ensAziUFgJZOewIKnV8py6Z7AkpAPenZhn8BC+u3r4BagwP6Qfvu6YqDAiLDh6ZUNoMCNMXctoZGfwJJliGPdOZ\u002fAFNnO99Nrn8BmImx4Or2fwApGJXVCQqDA14FzRjSNoMAS8kHPBsegwDmSy3\u002foxKDAN9bFbTS+oMCNdXEbDdqgwJ\u002f4MeZODKHAbYEExW8locBG4XoUji2hwNN46Saxu6HARLbz\u002fRQxosCJjuTyf2qiwOIUHcnFzKLAtfP91BgVo8Cxne+n5hKjwOkENBFWB6PA91PjpRtBo8C3rwPnLGmjwF\u002fl0CLbsaPAlm4Sg6AUpMA\u002fE2HDc\u002fqjwP4h\u002ffbV36PAFfvL7ukKpMDTmuYdZ3CkwEnqBDQRvaTAj377OvD4pMA1iUFgRQilwNskBoG1\u002f6TAnO+nxkvqpMAmDwu15tekwEUDeAvkz6TA\u002fv\u002f\u002f\u002fz8bpcDrDb4wuVelwHHXEvIhvaXAetCzWVUgpsBe5dAiO0umwEJpb\u002fAlZabA0U1iEDiwpsCKSuoENOumwHOTGAQW6KbAFwRWDq3ZpsDrL7snr7KmwL\u002fKoUWWe6bAII51cTs1psDFSzeJgQumwHg2qz63+aXAGQ3gLXDVpcDESzeJAbulwM1m1efKnqXAssh2vt+bpcDDjzF3DdWlwLMV+8uO7aXADzY8vRI3psAPx7q4jV6mwCFKe4PvwabA0bzjFH25psAYwFsgQSqlwDbWxW3UJqXAMMSxLg4QpcC6UpYhjkulwJteKcuQr6XAVoY41oX7pcB9JsKGhxSmwFrcRgNYXqbAG6foSA6\u002fpsBxRpT25vimwD\u002fPZtXHIqfAt9qK\u002fYWJp8C\u002fFyZT5aOnwEk3iUHAzqfA\u002fyqHFnkZqMCftDf4QlSowJ+0N\u002fhCVKjAuLiNBjA9qMACxY8x1zmowDLvOEVnQqjAHIXrUZgyqMCAUUmdoBeowAwtsp0Pe6jAdL6fGm\u002fFqMAiBoGVo\u002f+owNPFbTRAJ6nAbPCFyZQgqcB6rrZiX1qpwIjbaADPvKnAuJaQD3oGqsC4lpAPegaqwE64HoXL7qnAER3J5f\u002fWqcARHcnl\u002f9apwEtAE2GjvanA6nw\u002fNT6iqcCSsgxxLIupwCeHFtmOjKnAvhcmU8WIqcBoCfmgJ9OpwC0IrBya7KnAVRe30SBPqsAvMzMzM4mqwMQHPZv1sqrAyhlR2pvKqsCPGARWTvKqwNTw9EoZOqvA3QuTqWKaq8Bi9+RhIdKrwLZJDAILuqvAzm9fBy6hq8B8t0CCIoirwOmePCzUcavAXeXQIltYq8Cjm8Qg0G6rwAI0ETZcl6vAR3uDL0z5q8CLBvAW6EKswAHnjCjNeazASFmGOBbCrMC00QDeYvuswJ34MeaOXq3ALLsnD6uGrcA="},"type":"scatter"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#f2f5fa"},"error_y":{"color":"#f2f5fa"},"marker":{"line":{"color":"rgb(17,17,17)","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"baxis":{"endlinecolor":"#A2B1C6","gridcolor":"#506784","linecolor":"#506784","minorgridcolor":"#506784","startlinecolor":"#A2B1C6"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"line":{"color":"#283442"}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"marker":{"line":{"color":"#283442"}},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#506784"},"line":{"color":"rgb(17,17,17)"}},"header":{"fill":{"color":"#2a3f5f"},"line":{"color":"rgb(17,17,17)"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#f2f5fa","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#f2f5fa"},"geo":{"bgcolor":"rgb(17,17,17)","lakecolor":"rgb(17,17,17)","landcolor":"rgb(17,17,17)","showlakes":true,"showland":true,"subunitcolor":"#506784"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"dark"},"paper_bgcolor":"rgb(17,17,17)","plot_bgcolor":"rgb(17,17,17)","polar":{"angularaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","radialaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"yaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"},"zaxis":{"backgroundcolor":"rgb(17,17,17)","gridcolor":"#506784","gridwidth":2,"linecolor":"#506784","showbackground":true,"ticks":"","zerolinecolor":"#C8D4E3"}},"shapedefaults":{"line":{"color":"#f2f5fa"}},"sliderdefaults":{"bgcolor":"#C8D4E3","bordercolor":"rgb(17,17,17)","borderwidth":1,"tickwidth":0},"ternary":{"aaxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"baxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""},"bgcolor":"rgb(17,17,17)","caxis":{"gridcolor":"#506784","linecolor":"#506784","ticks":""}},"title":{"x":0.05},"updatemenudefaults":{"bgcolor":"#506784","borderwidth":0},"xaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#283442","linecolor":"#506784","ticks":"","title":{"standoff":15},"zerolinecolor":"#283442","zerolinewidth":2}}},"margin":{"l":30,"r":20,"t":45,"b":30},"height":360,"paper_bgcolor":"#0b111d","plot_bgcolor":"#0b111d","title":{"text":"Cumulative Realized P\u002fL"}},                        {"responsive": true}                    )                };            </script>        </div>
     </div>
 </div>
 
 <div class="table-wrap">
-<h2>Closed OANDA Trades — Current System Only</h2>
+<h2>Trade Journal</h2>
 <table>
 <thead>
 <tr>
@@ -1635,1112 +693,1013 @@ th {
 <th>Open Time</th>
 <th>Close Time</th>
 <th>Units</th>
-<th>Entry Price</th>
 <th>Close Price</th>
-<th>Realized PL</th>
+<th>Realized P/L</th>
 </tr>
 </thead>
 <tbody>
-            <tr>
-                <td>3071</td>
-                <td>GBP_CAD</td>
-                <td>2026-06-04 13:00:29.106200415+00:00</td>
-                <td>2026-06-04 13:33:44.112282725+00:00</td>
-                <td>30,310</td>
-                <td>1.86902</td>
-                <td>1.86811</td>
-                <td class="negative">-20.05</td>
-            </tr>
-            
-            <tr>
-                <td>3059</td>
-                <td>AUD_CAD</td>
-                <td>2026-06-04 12:29:08.650409639+00:00</td>
-                <td>2026-06-04 12:30:00.750026022+00:00</td>
-                <td>42,902</td>
-                <td>0.99192</td>
-                <td>0.99156</td>
-                <td class="negative">-11.23</td>
-            </tr>
-            
-            <tr>
-                <td>3053</td>
-                <td>GBP_CAD</td>
-                <td>2026-06-04 12:22:24.938017310+00:00</td>
-                <td>2026-06-04 13:11:14.405210029+00:00</td>
-                <td>30,310</td>
-                <td>1.86939</td>
-                <td>1.86809</td>
-                <td class="negative">-28.65</td>
-            </tr>
-            
-            <tr>
-                <td>3044</td>
-                <td>AUD_CAD</td>
-                <td>2026-06-04 12:11:29.917500682+00:00</td>
-                <td>2026-06-04 12:30:00.750026022+00:00</td>
-                <td>42,902</td>
-                <td>0.99221</td>
-                <td>0.99156</td>
-                <td class="negative">-20.27</td>
-            </tr>
-            
-            <tr>
-                <td>3043</td>
-                <td>GBP_CAD</td>
-                <td>2026-06-04 12:11:27.765392345+00:00</td>
-                <td>2026-06-04 13:11:14.405210029+00:00</td>
-                <td>30,310</td>
-                <td>1.86973</td>
-                <td>1.86809</td>
-                <td class="negative">-36.14</td>
-            </tr>
-            
-            <tr>
-                <td>3038</td>
-                <td>AUD_CAD</td>
-                <td>2026-06-04 12:11:04.370739851+00:00</td>
-                <td>2026-06-04 12:30:00.750026022+00:00</td>
-                <td>42,902</td>
-                <td>0.99244</td>
-                <td>0.99156</td>
-                <td class="negative">-27.45</td>
-            </tr>
-            
-            <tr>
-                <td>3033</td>
-                <td>AUD_CAD</td>
-                <td>2026-06-04 12:01:55.263971402+00:00</td>
-                <td>2026-06-04 12:30:00.750026022+00:00</td>
-                <td>42,902</td>
-                <td>0.99274</td>
-                <td>0.99156</td>
-                <td class="negative">-36.80</td>
-            </tr>
-            
-            <tr>
-                <td>3027</td>
-                <td>AUD_CAD</td>
-                <td>2026-06-04 12:00:44.481662213+00:00</td>
-                <td>2026-06-04 12:30:00.750026022+00:00</td>
-                <td>42,902</td>
-                <td>0.99313</td>
-                <td>0.99156</td>
-                <td class="negative">-48.97</td>
-            </tr>
-            
-            <tr>
-                <td>3020</td>
-                <td>GBP_CAD</td>
-                <td>2026-06-04 12:00:37.678965594+00:00</td>
-                <td>2026-06-04 13:11:14.405210029+00:00</td>
-                <td>30,310</td>
-                <td>1.87034</td>
-                <td>1.86809</td>
-                <td class="negative">-49.59</td>
-            </tr>
-            
-            <tr>
-                <td>2993</td>
-                <td>CAD_CHF</td>
-                <td>2026-06-04 11:16:04.946315070+00:00</td>
-                <td>2026-06-04 11:25:39.077040617+00:00</td>
-                <td>-38,564</td>
-                <td>0.56712</td>
-                <td>0.56689</td>
-                <td class="positive">11.15</td>
-            </tr>
-            
-            <tr>
-                <td>2986</td>
-                <td>AUD_CHF</td>
-                <td>2026-06-04 11:15:58.189951026+00:00</td>
-                <td>2026-06-04 11:26:32.271115003+00:00</td>
-                <td>-37,513</td>
-                <td>0.56267</td>
-                <td>0.56240</td>
-                <td class="positive">12.74</td>
-            </tr>
-            
-            <tr>
-                <td>2969</td>
-                <td>EUR_CAD</td>
-                <td>2026-06-04 02:00:50.722658268+00:00</td>
-                <td>2026-06-04 04:34:16.328145763+00:00</td>
-                <td>46,267</td>
-                <td>1.61325</td>
-                <td>1.61363</td>
-                <td class="positive">12.52</td>
-            </tr>
-            
-            <tr>
-                <td>2939</td>
-                <td>CAD_CHF</td>
-                <td>2026-06-02 17:01:21.869679840+00:00</td>
-                <td>2026-06-02 18:17:06.296037834+00:00</td>
-                <td>35,345</td>
-                <td>0.56914</td>
-                <td>0.56942</td>
-                <td class="positive">12.43</td>
-            </tr>
-            
-            <tr>
-                <td>2931</td>
-                <td>EUR_USD</td>
-                <td>2026-06-02 17:00:08.759982308+00:00</td>
-                <td>2026-06-02 17:48:39.779031716+00:00</td>
-                <td>-27,372</td>
-                <td>1.16270</td>
-                <td>1.16226</td>
-                <td class="positive">12.04</td>
-            </tr>
-            
-            <tr>
-                <td>2911</td>
-                <td>EUR_USD</td>
-                <td>2026-06-02 13:48:29.852260054+00:00</td>
-                <td>2026-06-02 13:51:30.888550057+00:00</td>
-                <td>42,231</td>
-                <td>1.16428</td>
-                <td>1.16400</td>
-                <td class="negative">-11.82</td>
-            </tr>
-            
-            <tr>
-                <td>2906</td>
-                <td>EUR_JPY</td>
-                <td>2026-06-02 13:48:00.160585237+00:00</td>
-                <td>2026-06-02 13:48:49.742975120+00:00</td>
-                <td>51,620</td>
-                <td>186.06000</td>
-                <td>186.02100</td>
-                <td class="negative">-12.72</td>
-            </tr>
-            
-            <tr>
-                <td>2901</td>
-                <td>EUR_USD</td>
-                <td>2026-06-02 13:45:28.106434260+00:00</td>
-                <td>2026-06-02 13:51:30.888550057+00:00</td>
-                <td>42,231</td>
-                <td>1.16447</td>
-                <td>1.16400</td>
-                <td class="negative">-19.85</td>
-            </tr>
-            
-            <tr>
-                <td>2896</td>
-                <td>EUR_JPY</td>
-                <td>2026-06-02 13:44:42.238018631+00:00</td>
-                <td>2026-06-02 13:48:49.742975120+00:00</td>
-                <td>51,620</td>
-                <td>186.08500</td>
-                <td>186.02100</td>
-                <td class="negative">-20.88</td>
-            </tr>
-            
-            <tr>
-                <td>2869</td>
-                <td>EUR_USD</td>
-                <td>2026-06-02 13:29:28.956014814+00:00</td>
-                <td>2026-06-02 13:51:30.888550057+00:00</td>
-                <td>42,231</td>
-                <td>1.16466</td>
-                <td>1.16400</td>
-                <td class="negative">-27.87</td>
-            </tr>
-            
-            <tr>
-                <td>2868</td>
-                <td>EUR_JPY</td>
-                <td>2026-06-02 13:29:19.301386165+00:00</td>
-                <td>2026-06-02 13:48:49.742975120+00:00</td>
-                <td>51,620</td>
-                <td>186.11000</td>
-                <td>186.02100</td>
-                <td class="negative">-29.04</td>
-            </tr>
-            
-            <tr>
-                <td>2821</td>
-                <td>USD_JPY</td>
-                <td>2026-06-02 13:12:05.872670751+00:00</td>
-                <td>2026-06-02 13:29:42.053383894+00:00</td>
-                <td>109,520</td>
-                <td>159.77400</td>
-                <td>159.79100</td>
-                <td class="positive">11.53</td>
-            </tr>
-            
-            <tr>
-                <td>2812</td>
-                <td>EUR_USD</td>
-                <td>2026-06-02 13:08:58.611130219+00:00</td>
-                <td>2026-06-02 13:51:30.888550057+00:00</td>
-                <td>42,231</td>
-                <td>1.16485</td>
-                <td>1.16400</td>
-                <td class="negative">-35.90</td>
-            </tr>
-            
-            <tr>
-                <td>2811</td>
-                <td>EUR_JPY</td>
-                <td>2026-06-02 13:08:55.086502650+00:00</td>
-                <td>2026-06-02 13:48:49.742975120+00:00</td>
-                <td>51,620</td>
-                <td>186.13500</td>
-                <td>186.02100</td>
-                <td class="negative">-37.19</td>
-            </tr>
-            
-            <tr>
-                <td>2806</td>
-                <td>EUR_NZD</td>
-                <td>2026-06-02 13:08:09.845082221+00:00</td>
-                <td>2026-06-02 13:13:40.208554003+00:00</td>
-                <td>29,822</td>
-                <td>1.96449</td>
-                <td>1.96517</td>
-                <td class="positive">11.90</td>
-            </tr>
-            
-            <tr>
-                <td>2801</td>
-                <td>NZD_USD</td>
-                <td>2026-06-02 13:07:42.949697694+00:00</td>
-                <td>2026-06-02 13:13:29.570616669+00:00</td>
-                <td>-51,482</td>
-                <td>0.59306</td>
-                <td>0.59283</td>
-                <td class="positive">11.84</td>
-            </tr>
-            
-            <tr>
-                <td>2794</td>
-                <td>EUR_CHF</td>
-                <td>2026-06-02 13:01:32.411359721+00:00</td>
-                <td>2026-06-02 13:36:18.654640955+00:00</td>
-                <td>37,587</td>
-                <td>0.91528</td>
-                <td>0.91532</td>
-                <td class="positive">1.89</td>
-            </tr>
-            
-            <tr>
-                <td>2786</td>
-                <td>USD_CHF</td>
-                <td>2026-06-02 13:01:24.993008060+00:00</td>
-                <td>2026-06-02 13:22:23.515348383+00:00</td>
-                <td>33,983</td>
-                <td>0.78558</td>
-                <td>0.78590</td>
-                <td class="positive">13.70</td>
-            </tr>
-            
-            <tr>
-                <td>2778</td>
-                <td>NZD_CAD</td>
-                <td>2026-06-02 13:01:14.809952257+00:00</td>
-                <td>2026-06-02 13:13:40.232516686+00:00</td>
-                <td>-53,689</td>
-                <td>0.82022</td>
-                <td>0.81989</td>
-                <td class="positive">12.68</td>
-            </tr>
-            
-            <tr>
-                <td>2770</td>
-                <td>EUR_NZD</td>
-                <td>2026-06-02 13:00:57.831442046+00:00</td>
-                <td>2026-06-02 13:13:40.208554003+00:00</td>
-                <td>29,822</td>
-                <td>1.96517</td>
-                <td>1.96517</td>
-                <td class="positive">0.00</td>
-            </tr>
-            
-            <tr>
-                <td>2762</td>
-                <td>NZD_USD</td>
-                <td>2026-06-02 13:00:33.908107560+00:00</td>
-                <td>2026-06-02 13:13:29.570616669+00:00</td>
-                <td>-51,482</td>
-                <td>0.59283</td>
-                <td>0.59283</td>
-                <td class="positive">0.00</td>
-            </tr>
-            
-            <tr>
-                <td>2754</td>
-                <td>USD_JPY</td>
-                <td>2026-06-02 13:00:24.513303848+00:00</td>
-                <td>2026-06-02 13:29:42.053383894+00:00</td>
-                <td>109,520</td>
-                <td>159.79200</td>
-                <td>159.79100</td>
-                <td class="negative">-0.69</td>
-            </tr>
-            
-            <tr>
-                <td>2746</td>
-                <td>EUR_USD</td>
-                <td>2026-06-02 13:00:14.865646317+00:00</td>
-                <td>2026-06-02 13:51:30.888550057+00:00</td>
-                <td>42,231</td>
-                <td>1.16514</td>
-                <td>1.16400</td>
-                <td class="negative">-48.14</td>
-            </tr>
-            
-            <tr>
-                <td>2732</td>
-                <td>EUR_JPY</td>
-                <td>2026-06-02 12:25:31.528702268+00:00</td>
-                <td>2026-06-02 13:48:49.742975120+00:00</td>
-                <td>51,620</td>
-                <td>186.17200</td>
-                <td>186.02100</td>
-                <td class="negative">-49.26</td>
-            </tr>
-            
-            <tr>
-                <td>2719</td>
-                <td>GBP_CHF</td>
-                <td>2026-06-02 10:57:08.529789317+00:00</td>
-                <td>2026-06-02 11:23:41.111103519+00:00</td>
-                <td>24,684</td>
-                <td>1.05810</td>
-                <td>1.05719</td>
-                <td class="negative">-28.90</td>
-            </tr>
-            
-            <tr>
-                <td>2714</td>
-                <td>GBP_CHF</td>
-                <td>2026-06-02 10:37:04.860745878+00:00</td>
-                <td>2026-06-02 11:23:41.111103519+00:00</td>
-                <td>24,684</td>
-                <td>1.05835</td>
-                <td>1.05719</td>
-                <td class="negative">-36.83</td>
-            </tr>
-            
-            <tr>
-                <td>2707</td>
-                <td>GBP_CHF</td>
-                <td>2026-06-02 10:00:55.563557642+00:00</td>
-                <td>2026-06-02 11:23:41.111103519+00:00</td>
-                <td>24,684</td>
-                <td>1.05874</td>
-                <td>1.05719</td>
-                <td class="negative">-49.22</td>
-            </tr>
-            
-            <tr>
-                <td>2691</td>
-                <td>AUD_CHF</td>
-                <td>2026-06-02 08:01:06.113420206+00:00</td>
-                <td>2026-06-02 08:25:19.723565834+00:00</td>
-                <td>44,089</td>
-                <td>0.56388</td>
-                <td>0.56394</td>
-                <td class="positive">3.33</td>
-            </tr>
-            
-            <tr>
-                <td>2673</td>
-                <td>GBP_CAD</td>
-                <td>2026-06-02 07:07:20.661460912+00:00</td>
-                <td>2026-06-02 07:08:45.658730422+00:00</td>
-                <td>55,379</td>
-                <td>1.86457</td>
-                <td>1.86408</td>
-                <td class="negative">-19.81</td>
-            </tr>
-            
-            <tr>
-                <td>2667</td>
-                <td>GBP_CAD</td>
-                <td>2026-06-02 06:53:39.012453409+00:00</td>
-                <td>2026-06-02 07:07:20.562818510+00:00</td>
-                <td>55,379</td>
-                <td>1.86478</td>
-                <td>1.86406</td>
-                <td class="negative">-29.10</td>
-            </tr>
-            
-            <tr>
-                <td>2662</td>
-                <td>GBP_CAD</td>
-                <td>2026-06-02 06:43:32.287955712+00:00</td>
-                <td>2026-06-02 07:07:20.562818510+00:00</td>
-                <td>55,379</td>
-                <td>1.86498</td>
-                <td>1.86406</td>
-                <td class="negative">-37.19</td>
-            </tr>
-            
-            <tr>
-                <td>2644</td>
-                <td>GBP_CAD</td>
-                <td>2026-06-02 06:15:44.316495733+00:00</td>
-                <td>2026-06-02 07:07:20.562818510+00:00</td>
-                <td>55,379</td>
-                <td>1.86529</td>
-                <td>1.86406</td>
-                <td class="negative">-49.72</td>
-            </tr>
-            
-            <tr>
-                <td>2636</td>
-                <td>GBP_JPY</td>
-                <td>2026-06-02 06:15:22.738693936+00:00</td>
-                <td>2026-06-02 06:25:33.551958562+00:00</td>
-                <td>48,337</td>
-                <td>215.22900</td>
-                <td>215.27400</td>
-                <td class="positive">13.48</td>
-            </tr>
-            
-            <tr>
-                <td>2547</td>
-                <td>NZD_JPY</td>
-                <td>2026-06-02 02:23:45.886070713+00:00</td>
-                <td>2026-06-02 02:25:39.266437653+00:00</td>
-                <td>-43,436</td>
-                <td>94.65000</td>
-                <td>94.69800</td>
-                <td class="negative">-13.19</td>
-            </tr>
-            
-            <tr>
-                <td>2527</td>
-                <td>EUR_NZD</td>
-                <td>2026-06-02 02:17:40.078703190+00:00</td>
-                <td>2026-06-02 02:20:30.109952954+00:00</td>
-                <td>25,162</td>
-                <td>1.96288</td>
-                <td>1.96205</td>
-                <td class="negative">-12.50</td>
-            </tr>
-            
-            <tr>
-                <td>2521</td>
-                <td>NZD_JPY</td>
-                <td>2026-06-02 02:16:37.613683734+00:00</td>
-                <td>2026-06-02 02:25:39.266437653+00:00</td>
-                <td>-43,436</td>
-                <td>94.62000</td>
-                <td>94.69800</td>
-                <td class="negative">-21.43</td>
-            </tr>
-            
-            <tr>
-                <td>2500</td>
-                <td>EUR_CAD</td>
-                <td>2026-06-02 01:46:49.360494339+00:00</td>
-                <td>2026-06-02 04:16:36.817532836+00:00</td>
-                <td>57,623</td>
-                <td>1.61055</td>
-                <td>1.61083</td>
-                <td class="positive">11.54</td>
-            </tr>
-            
-            <tr>
-                <td>2487</td>
-                <td>NZD_CHF</td>
-                <td>2026-06-02 01:43:38.418852715+00:00</td>
-                <td>2026-06-02 02:17:39.140728291+00:00</td>
-                <td>-49,302</td>
-                <td>0.46601</td>
-                <td>0.46648</td>
-                <td class="negative">-29.75</td>
-            </tr>
-            
-            <tr>
-                <td>2482</td>
-                <td>EUR_NZD</td>
-                <td>2026-06-02 01:36:42.964815880+00:00</td>
-                <td>2026-06-02 02:20:30.109952954+00:00</td>
-                <td>25,162</td>
-                <td>1.96344</td>
-                <td>1.96205</td>
-                <td class="negative">-20.94</td>
-            </tr>
-            
-            <tr>
-                <td>2477</td>
-                <td>NZD_JPY</td>
-                <td>2026-06-02 01:34:58.077877663+00:00</td>
-                <td>2026-06-02 02:25:39.266437653+00:00</td>
-                <td>-43,436</td>
-                <td>94.59100</td>
-                <td>94.69800</td>
-                <td class="negative">-29.39</td>
-            </tr>
-            
-            <tr>
-                <td>2472</td>
-                <td>EUR_NZD</td>
-                <td>2026-06-02 01:31:32.662203387+00:00</td>
-                <td>2026-06-02 02:20:30.109952954+00:00</td>
-                <td>25,162</td>
-                <td>1.96397</td>
-                <td>1.96205</td>
-                <td class="negative">-28.92</td>
-            </tr>
-            
-            <tr>
-                <td>2467</td>
-                <td>NZD_CHF</td>
-                <td>2026-06-02 01:30:53.225104229+00:00</td>
-                <td>2026-06-02 02:17:39.140728291+00:00</td>
-                <td>-49,302</td>
-                <td>0.46588</td>
-                <td>0.46648</td>
-                <td class="negative">-37.98</td>
-            </tr>
-            
-            <tr>
-                <td>2454</td>
-                <td>NZD_JPY</td>
-                <td>2026-06-02 01:19:22.387186679+00:00</td>
-                <td>2026-06-02 02:25:39.266437653+00:00</td>
-                <td>-43,436</td>
-                <td>94.56200</td>
-                <td>94.69800</td>
-                <td class="negative">-37.36</td>
-            </tr>
-            
-            <tr>
-                <td>2449</td>
-                <td>EUR_NZD</td>
-                <td>2026-06-02 01:18:55.609984611+00:00</td>
-                <td>2026-06-02 02:20:30.109952954+00:00</td>
-                <td>25,162</td>
-                <td>1.96450</td>
-                <td>1.96205</td>
-                <td class="negative">-36.91</td>
-            </tr>
-            
-            <tr>
-                <td>2442</td>
-                <td>EUR_CAD</td>
-                <td>2026-06-02 01:16:10.048094265+00:00</td>
-                <td>2026-06-02 04:16:36.817532836+00:00</td>
-                <td>57,623</td>
-                <td>1.61083</td>
-                <td>1.61083</td>
-                <td class="positive">0.00</td>
-            </tr>
-            
-            <tr>
-                <td>2415</td>
-                <td>NZD_CHF</td>
-                <td>2026-06-02 01:01:29.777503092+00:00</td>
-                <td>2026-06-02 02:17:39.140728291+00:00</td>
-                <td>-49,302</td>
-                <td>0.46569</td>
-                <td>0.46648</td>
-                <td class="negative">-50.01</td>
-            </tr>
-            
-            <tr>
-                <td>2407</td>
-                <td>AUD_NZD</td>
-                <td>2026-06-02 01:01:02.496185640+00:00</td>
-                <td>2026-06-02 01:11:04.225647242+00:00</td>
-                <td>53,967</td>
-                <td>1.20964</td>
-                <td>1.21000</td>
-                <td class="positive">11.39</td>
-            </tr>
-            
-            <tr>
-                <td>2399</td>
-                <td>EUR_NZD</td>
-                <td>2026-06-02 01:00:48.817674936+00:00</td>
-                <td>2026-06-02 02:20:30.109952954+00:00</td>
-                <td>25,162</td>
-                <td>1.96526</td>
-                <td>1.96205</td>
-                <td class="negative">-48.36</td>
-            </tr>
-            
-            <tr>
-                <td>2391</td>
-                <td>NZD_JPY</td>
-                <td>2026-06-02 01:00:34.719248994+00:00</td>
-                <td>2026-06-02 02:25:39.266437653+00:00</td>
-                <td>-43,436</td>
-                <td>94.51100</td>
-                <td>94.69800</td>
-                <td class="negative">-51.37</td>
-            </tr>
-            
-            <tr>
-                <td>2282</td>
-                <td>GBP_USD</td>
-                <td>2026-06-01 18:59:58.846158626+00:00</td>
-                <td>2026-06-02 04:49:14.432660416+00:00</td>
-                <td>16,467</td>
-                <td>1.34583</td>
-                <td>1.34631</td>
-                <td class="positive">7.90</td>
-            </tr>
-            
-            <tr>
-                <td>2275</td>
-                <td>GBP_CAD</td>
-                <td>2026-06-01 18:00:49.840494933+00:00</td>
-                <td>2026-06-01 23:40:31.261075591+00:00</td>
-                <td>21,764</td>
-                <td>1.86257</td>
-                <td>1.86268</td>
-                <td class="positive">1.71</td>
-            </tr>
-            
-            <tr>
-                <td>2267</td>
-                <td>GBP_JPY</td>
-                <td>2026-06-01 18:00:29.424337909+00:00</td>
-                <td>2026-06-02 04:26:32.643906200+00:00</td>
-                <td>20,770</td>
-                <td>214.96300</td>
-                <td>214.97600</td>
-                <td class="positive">1.67</td>
-            </tr>
-            
-            <tr>
-                <td>2259</td>
-                <td>GBP_USD</td>
-                <td>2026-06-01 18:00:09.723392490+00:00</td>
-                <td>2026-06-02 04:49:14.432660416+00:00</td>
-                <td>16,467</td>
-                <td>1.34657</td>
-                <td>1.34631</td>
-                <td class="negative">-4.28</td>
-            </tr>
-            
-            <tr>
-                <td>2241</td>
-                <td>AUD_CHF</td>
-                <td>2026-06-01 17:01:00.224085698+00:00</td>
-                <td>2026-06-01 17:44:16.730231790+00:00</td>
-                <td>33,527</td>
-                <td>0.56323</td>
-                <td>0.56333</td>
-                <td class="positive">4.22</td>
-            </tr>
-            
-            <tr>
-                <td>2221</td>
-                <td>USD_JPY</td>
-                <td>2026-06-01 15:19:38.853339475+00:00</td>
-                <td>2026-06-01 15:30:26.647613550+00:00</td>
-                <td>53,792</td>
-                <td>159.65900</td>
-                <td>159.62300</td>
-                <td class="negative">-12.25</td>
-            </tr>
-            
-            <tr>
-                <td>2215</td>
-                <td>EUR_GBP</td>
-                <td>2026-06-01 15:02:33.855690591+00:00</td>
-                <td>2026-06-01 15:25:53.663163521+00:00</td>
-                <td>-36,555</td>
-                <td>0.86476</td>
-                <td>0.86447</td>
-                <td class="positive">14.11</td>
-            </tr>
-            
-            <tr>
-                <td>2207</td>
-                <td>EUR_GBP</td>
-                <td>2026-06-01 15:00:32.699501065+00:00</td>
-                <td>2026-06-01 15:25:53.663163521+00:00</td>
-                <td>-36,555</td>
-                <td>0.86450</td>
-                <td>0.86447</td>
-                <td class="positive">1.46</td>
-            </tr>
-            
-            <tr>
-                <td>2201</td>
-                <td>USD_JPY</td>
-                <td>2026-06-01 14:16:42.754469322+00:00</td>
-                <td>2026-06-01 15:30:26.647613550+00:00</td>
-                <td>53,792</td>
-                <td>159.68100</td>
-                <td>159.62300</td>
-                <td class="negative">-19.74</td>
-            </tr>
-            
-            <tr>
-                <td>2196</td>
-                <td>USD_JPY</td>
-                <td>2026-06-01 14:09:11.766655717+00:00</td>
-                <td>2026-06-01 15:30:26.647613550+00:00</td>
-                <td>53,792</td>
-                <td>159.70700</td>
-                <td>159.62300</td>
-                <td class="negative">-28.59</td>
-            </tr>
-            
-            <tr>
-                <td>2190</td>
-                <td>USD_JPY</td>
-                <td>2026-06-01 14:03:41.865459123+00:00</td>
-                <td>2026-06-01 15:30:26.647613550+00:00</td>
-                <td>53,792</td>
-                <td>159.73100</td>
-                <td>159.62300</td>
-                <td class="negative">-36.76</td>
-            </tr>
-            
-            <tr>
-                <td>2182</td>
-                <td>USD_JPY</td>
-                <td>2026-06-01 14:00:13.296133903+00:00</td>
-                <td>2026-06-01 15:30:26.647613550+00:00</td>
-                <td>53,792</td>
-                <td>159.76900</td>
-                <td>159.62300</td>
-                <td class="negative">-49.69</td>
-            </tr>
-            
-            <tr>
-                <td>2134</td>
-                <td>CHF_JPY</td>
-                <td>2026-06-01 13:02:20.328807746+00:00</td>
-                <td>2026-06-01 13:04:52.726301606+00:00</td>
-                <td>-26,060</td>
-                <td>203.15400</td>
-                <td>203.02500</td>
-                <td class="positive">20.86</td>
-            </tr>
-            
-            <tr>
-                <td>2126</td>
-                <td>CAD_CHF</td>
-                <td>2026-06-01 13:01:12.663558102+00:00</td>
-                <td>2026-06-01 13:16:12.204917764+00:00</td>
-                <td>36,211</td>
-                <td>0.56792</td>
-                <td>0.56821</td>
-                <td class="positive">13.22</td>
-            </tr>
-            
-            <tr>
-                <td>2117</td>
-                <td>USD_CHF</td>
-                <td>2026-06-01 13:00:55.640492060+00:00</td>
-                <td>2026-06-01 13:07:05.547835229+00:00</td>
-                <td>31,996</td>
-                <td>0.78532</td>
-                <td>0.78577</td>
-                <td class="positive">18.14</td>
-            </tr>
-            
-            <tr>
-                <td>2108</td>
-                <td>CHF_JPY</td>
-                <td>2026-06-01 13:00:28.057105090+00:00</td>
-                <td>2026-06-01 13:04:52.726301606+00:00</td>
-                <td>-26,060</td>
-                <td>203.08000</td>
-                <td>203.02500</td>
-                <td class="positive">8.90</td>
-            </tr>
-            
-            <tr>
-                <td>2094</td>
-                <td>EUR_CHF</td>
-                <td>2026-06-01 11:04:42.843839356+00:00</td>
-                <td>2026-06-01 12:45:34.030699951+00:00</td>
-                <td>33,587</td>
-                <td>0.91295</td>
-                <td>0.91378</td>
-                <td class="positive">35.18</td>
-            </tr>
-            
-            <tr>
-                <td>2089</td>
-                <td>EUR_CHF</td>
-                <td>2026-06-01 10:58:20.167831261+00:00</td>
-                <td>2026-06-01 12:45:34.030699951+00:00</td>
-                <td>33,587</td>
-                <td>0.91313</td>
-                <td>0.91378</td>
-                <td class="positive">27.55</td>
-            </tr>
-            
-            <tr>
-                <td>2083</td>
-                <td>EUR_CHF</td>
-                <td>2026-06-01 10:47:27.773702234+00:00</td>
-                <td>2026-06-01 12:45:34.030699951+00:00</td>
-                <td>33,587</td>
-                <td>0.91332</td>
-                <td>0.91378</td>
-                <td class="positive">19.50</td>
-            </tr>
-            
-            <tr>
-                <td>2075</td>
-                <td>EUR_CHF</td>
-                <td>2026-06-01 10:00:59.729236047+00:00</td>
-                <td>2026-06-01 12:45:34.030699951+00:00</td>
-                <td>33,587</td>
-                <td>0.91361</td>
-                <td>0.91378</td>
-                <td class="positive">7.21</td>
-            </tr>
-            
-            <tr>
-                <td>2057</td>
-                <td>GBP_CHF</td>
-                <td>2026-06-01 09:01:05.425121943+00:00</td>
-                <td>2026-06-01 09:57:45.407688370+00:00</td>
-                <td>24,690</td>
-                <td>1.05519</td>
-                <td>1.05524</td>
-                <td class="positive">1.56</td>
-            </tr>
-            
-            <tr>
-                <td>2044</td>
-                <td>AUD_USD</td>
-                <td>2026-06-01 06:35:30.450564341+00:00</td>
-                <td>2026-06-01 06:36:47.962883509+00:00</td>
-                <td>44,685</td>
-                <td>0.71804</td>
-                <td>0.71775</td>
-                <td class="negative">-12.96</td>
-            </tr>
-            
-            <tr>
-                <td>2039</td>
-                <td>AUD_USD</td>
-                <td>2026-06-01 06:25:06.237463462+00:00</td>
-                <td>2026-06-01 06:36:47.962883509+00:00</td>
-                <td>44,685</td>
-                <td>0.71823</td>
-                <td>0.71775</td>
-                <td class="negative">-21.45</td>
-            </tr>
-            
-            <tr>
-                <td>2027</td>
-                <td>AUD_USD</td>
-                <td>2026-06-01 06:23:09.264729542+00:00</td>
-                <td>2026-06-01 06:36:47.962883509+00:00</td>
-                <td>44,685</td>
-                <td>0.71841</td>
-                <td>0.71775</td>
-                <td class="negative">-29.49</td>
-            </tr>
-            
-            <tr>
-                <td>2024</td>
-                <td>GBP_CAD</td>
-                <td>2026-06-01 06:23:04.471015182+00:00</td>
-                <td>2026-06-01 23:40:31.261075591+00:00</td>
-                <td>63,574</td>
-                <td>1.85829</td>
-                <td>1.86268</td>
-                <td class="positive">199.62</td>
-            </tr>
-            
-            <tr>
-                <td>2015</td>
-                <td>GBP_CAD</td>
-                <td>2026-06-01 06:19:56.480171427+00:00</td>
-                <td>2026-06-01 06:22:54.935237991+00:00</td>
-                <td>63,574</td>
-                <td>1.85848</td>
-                <td>1.85783</td>
-                <td class="negative">-30.24</td>
-            </tr>
-            
-            <tr>
-                <td>2009</td>
-                <td>GBP_CAD</td>
-                <td>2026-06-01 06:18:02.317101879+00:00</td>
-                <td>2026-06-01 06:22:54.935237991+00:00</td>
-                <td>63,574</td>
-                <td>1.85864</td>
-                <td>1.85783</td>
-                <td class="negative">-37.68</td>
-            </tr>
-            
-            <tr>
-                <td>2003</td>
-                <td>AUD_USD</td>
-                <td>2026-06-01 06:15:45.331907561+00:00</td>
-                <td>2026-06-01 06:36:47.962883509+00:00</td>
-                <td>44,685</td>
-                <td>0.71859</td>
-                <td>0.71775</td>
-                <td class="negative">-37.54</td>
-            </tr>
-            
-            <tr>
-                <td>1958</td>
-                <td>GBP_JPY</td>
-                <td>2026-06-01 06:00:45.831272440+00:00</td>
-                <td>2026-06-01 06:11:31.252266343+00:00</td>
-                <td>48,576</td>
-                <td>214.71400</td>
-                <td>214.75000</td>
-                <td class="positive">10.71</td>
-            </tr>
-            
-            <tr>
-                <td>1949</td>
-                <td>EUR_JPY</td>
-                <td>2026-06-01 06:00:36.885701786+00:00</td>
-                <td>2026-06-01 06:12:15.945863080+00:00</td>
-                <td>64,516</td>
-                <td>185.82000</td>
-                <td>185.83000</td>
-                <td class="positive">4.01</td>
-            </tr>
-            
-            <tr>
-                <td>1940</td>
-                <td>AUD_USD</td>
-                <td>2026-06-01 06:00:25.877353550+00:00</td>
-                <td>2026-06-01 06:36:47.962883509+00:00</td>
-                <td>44,685</td>
-                <td>0.71886</td>
-                <td>0.71775</td>
-                <td class="negative">-49.60</td>
-            </tr>
-            
-            <tr>
-                <td>1931</td>
-                <td>GBP_USD</td>
-                <td>2026-06-01 06:00:14.456079627+00:00</td>
-                <td>2026-06-01 06:11:52.787967306+00:00</td>
-                <td>41,807</td>
-                <td>1.34649</td>
-                <td>1.34671</td>
-                <td class="positive">9.20</td>
-            </tr>
-            
-            <tr>
-                <td>1913</td>
-                <td>GBP_CAD</td>
-                <td>2026-06-01 05:15:43.628276664+00:00</td>
-                <td>2026-06-01 06:22:54.935237991+00:00</td>
-                <td>63,574</td>
-                <td>1.85892</td>
-                <td>1.85783</td>
-                <td class="negative">-50.70</td>
-            </tr>
-            
-            <tr>
-                <td>1904</td>
-                <td>EUR_CAD</td>
-                <td>2026-06-01 05:00:58.055200854+00:00</td>
-                <td>2026-06-01 05:50:43.297037568+00:00</td>
-                <td>74,642</td>
-                <td>1.60868</td>
-                <td>1.60876</td>
-                <td class="positive">4.28</td>
-            </tr>
-            
-            <tr>
-                <td>1889</td>
-                <td>AUD_CAD</td>
-                <td>2026-06-01 03:19:46.440858217+00:00</td>
-                <td>2026-06-01 03:20:08.286204002+00:00</td>
-                <td>49,922</td>
-                <td>0.99136</td>
-                <td>0.99115</td>
-                <td class="negative">-7.67</td>
-            </tr>
-            
-            <tr>
-                <td>1884</td>
-                <td>AUD_CAD</td>
-                <td>2026-06-01 03:18:21.020030813+00:00</td>
-                <td>2026-06-01 03:19:47.379854644+00:00</td>
-                <td>49,922</td>
-                <td>0.99158</td>
-                <td>0.99099</td>
-                <td class="negative">-21.54</td>
-            </tr>
-            
-            <tr>
-                <td>1879</td>
-                <td>AUD_CAD</td>
-                <td>2026-06-01 03:14:57.564198989+00:00</td>
-                <td>2026-06-01 03:19:47.379854644+00:00</td>
-                <td>49,922</td>
-                <td>0.99181</td>
-                <td>0.99099</td>
-                <td class="negative">-29.94</td>
-            </tr>
-            
-            <tr>
-                <td>1873</td>
-                <td>AUD_CAD</td>
-                <td>2026-06-01 03:12:51.459100891+00:00</td>
-                <td>2026-06-01 03:19:47.379854644+00:00</td>
-                <td>49,922</td>
-                <td>0.99204</td>
-                <td>0.99099</td>
-                <td class="negative">-38.33</td>
-            </tr>
-            
-            <tr>
-                <td>1838</td>
-                <td>AUD_CAD</td>
-                <td>2026-06-01 02:00:52.932838929+00:00</td>
-                <td>2026-06-01 03:19:47.379854644+00:00</td>
-                <td>49,922</td>
-                <td>0.99238</td>
-                <td>0.99099</td>
-                <td class="negative">-50.74</td>
-            </tr>
-            
-            <tr>
-                <td>1803</td>
-                <td>AUD_CHF</td>
-                <td>2026-06-01 01:01:23.534492641+00:00</td>
-                <td>2026-06-01 02:16:19.063876729+00:00</td>
-                <td>36,322</td>
-                <td>0.56235</td>
-                <td>0.56264</td>
-                <td class="positive">13.09</td>
-            </tr>
-            
-            <tr>
-                <td>1793</td>
-                <td>EUR_AUD</td>
-                <td>2026-06-01 01:00:49.845048718+00:00</td>
-                <td>2026-06-01 01:40:03.411859618+00:00</td>
-                <td>-29,036</td>
-                <td>1.62112</td>
-                <td>1.62084</td>
-                <td class="positive">5.78</td>
-            </tr>
-            
-            <tr>
-                <td>1784</td>
-                <td>EUR_GBP</td>
-                <td>2026-06-01 01:00:40.762862964+00:00</td>
-                <td>2026-06-01 02:55:09.237019564+00:00</td>
-                <td>-54,008</td>
-                <td>0.86581</td>
-                <td>0.86562</td>
-                <td class="positive">13.31</td>
-            </tr>
-            </tbody>
+
+        <tr>
+            <td>3071</td>
+            <td>GBP_CAD</td>
+            <td>06/04/2026 09:00 AM</td>
+            <td>06/04/2026 09:33 AM</td>
+            <td>30,310</td>
+            <td>1.86811</td>
+            <td class="negative">$-20.05</td>
+        </tr>
+        
+        <tr>
+            <td>3053</td>
+            <td>GBP_CAD</td>
+            <td>06/04/2026 08:22 AM</td>
+            <td>06/04/2026 09:11 AM</td>
+            <td>30,310</td>
+            <td>1.86809</td>
+            <td class="negative">$-28.65</td>
+        </tr>
+        
+        <tr>
+            <td>3020</td>
+            <td>GBP_CAD</td>
+            <td>06/04/2026 08:00 AM</td>
+            <td>06/04/2026 09:11 AM</td>
+            <td>30,310</td>
+            <td>1.86809</td>
+            <td class="negative">$-49.59</td>
+        </tr>
+        
+        <tr>
+            <td>3043</td>
+            <td>GBP_CAD</td>
+            <td>06/04/2026 08:11 AM</td>
+            <td>06/04/2026 09:11 AM</td>
+            <td>30,310</td>
+            <td>1.86809</td>
+            <td class="negative">$-36.14</td>
+        </tr>
+        
+        <tr>
+            <td>3033</td>
+            <td>AUD_CAD</td>
+            <td>06/04/2026 08:01 AM</td>
+            <td>06/04/2026 08:30 AM</td>
+            <td>42,902</td>
+            <td>0.99156</td>
+            <td class="negative">$-36.80</td>
+        </tr>
+        
+        <tr>
+            <td>3027</td>
+            <td>AUD_CAD</td>
+            <td>06/04/2026 08:00 AM</td>
+            <td>06/04/2026 08:30 AM</td>
+            <td>42,902</td>
+            <td>0.99156</td>
+            <td class="negative">$-48.97</td>
+        </tr>
+        
+        <tr>
+            <td>3059</td>
+            <td>AUD_CAD</td>
+            <td>06/04/2026 08:29 AM</td>
+            <td>06/04/2026 08:30 AM</td>
+            <td>42,902</td>
+            <td>0.99156</td>
+            <td class="negative">$-11.23</td>
+        </tr>
+        
+        <tr>
+            <td>3038</td>
+            <td>AUD_CAD</td>
+            <td>06/04/2026 08:11 AM</td>
+            <td>06/04/2026 08:30 AM</td>
+            <td>42,902</td>
+            <td>0.99156</td>
+            <td class="negative">$-27.45</td>
+        </tr>
+        
+        <tr>
+            <td>3044</td>
+            <td>AUD_CAD</td>
+            <td>06/04/2026 08:11 AM</td>
+            <td>06/04/2026 08:30 AM</td>
+            <td>42,902</td>
+            <td>0.99156</td>
+            <td class="negative">$-20.27</td>
+        </tr>
+        
+        <tr>
+            <td>2986</td>
+            <td>AUD_CHF</td>
+            <td>06/04/2026 07:15 AM</td>
+            <td>06/04/2026 07:26 AM</td>
+            <td>-37,513</td>
+            <td>0.56240</td>
+            <td class="positive">$12.74</td>
+        </tr>
+        
+        <tr>
+            <td>2993</td>
+            <td>CAD_CHF</td>
+            <td>06/04/2026 07:16 AM</td>
+            <td>06/04/2026 07:25 AM</td>
+            <td>-38,564</td>
+            <td>0.56689</td>
+            <td class="positive">$11.15</td>
+        </tr>
+        
+        <tr>
+            <td>2969</td>
+            <td>EUR_CAD</td>
+            <td>06/03/2026 10:00 PM</td>
+            <td>06/04/2026 12:34 AM</td>
+            <td>46,267</td>
+            <td>1.61363</td>
+            <td class="positive">$12.52</td>
+        </tr>
+        
+        <tr>
+            <td>2939</td>
+            <td>CAD_CHF</td>
+            <td>06/02/2026 01:01 PM</td>
+            <td>06/02/2026 02:17 PM</td>
+            <td>35,345</td>
+            <td>0.56942</td>
+            <td class="positive">$12.43</td>
+        </tr>
+        
+        <tr>
+            <td>2931</td>
+            <td>EUR_USD</td>
+            <td>06/02/2026 01:00 PM</td>
+            <td>06/02/2026 01:48 PM</td>
+            <td>-27,372</td>
+            <td>1.16226</td>
+            <td class="positive">$12.04</td>
+        </tr>
+        
+        <tr>
+            <td>2812</td>
+            <td>EUR_USD</td>
+            <td>06/02/2026 09:08 AM</td>
+            <td>06/02/2026 09:51 AM</td>
+            <td>42,231</td>
+            <td>1.16400</td>
+            <td class="negative">$-35.90</td>
+        </tr>
+        
+        <tr>
+            <td>2911</td>
+            <td>EUR_USD</td>
+            <td>06/02/2026 09:48 AM</td>
+            <td>06/02/2026 09:51 AM</td>
+            <td>42,231</td>
+            <td>1.16400</td>
+            <td class="negative">$-11.82</td>
+        </tr>
+        
+        <tr>
+            <td>2901</td>
+            <td>EUR_USD</td>
+            <td>06/02/2026 09:45 AM</td>
+            <td>06/02/2026 09:51 AM</td>
+            <td>42,231</td>
+            <td>1.16400</td>
+            <td class="negative">$-19.85</td>
+        </tr>
+        
+        <tr>
+            <td>2746</td>
+            <td>EUR_USD</td>
+            <td>06/02/2026 09:00 AM</td>
+            <td>06/02/2026 09:51 AM</td>
+            <td>42,231</td>
+            <td>1.16400</td>
+            <td class="negative">$-48.14</td>
+        </tr>
+        
+        <tr>
+            <td>2869</td>
+            <td>EUR_USD</td>
+            <td>06/02/2026 09:29 AM</td>
+            <td>06/02/2026 09:51 AM</td>
+            <td>42,231</td>
+            <td>1.16400</td>
+            <td class="negative">$-27.87</td>
+        </tr>
+        
+        <tr>
+            <td>2732</td>
+            <td>EUR_JPY</td>
+            <td>06/02/2026 08:25 AM</td>
+            <td>06/02/2026 09:48 AM</td>
+            <td>51,620</td>
+            <td>186.02100</td>
+            <td class="negative">$-49.26</td>
+        </tr>
+        
+        <tr>
+            <td>2811</td>
+            <td>EUR_JPY</td>
+            <td>06/02/2026 09:08 AM</td>
+            <td>06/02/2026 09:48 AM</td>
+            <td>51,620</td>
+            <td>186.02100</td>
+            <td class="negative">$-37.19</td>
+        </tr>
+        
+        <tr>
+            <td>2896</td>
+            <td>EUR_JPY</td>
+            <td>06/02/2026 09:44 AM</td>
+            <td>06/02/2026 09:48 AM</td>
+            <td>51,620</td>
+            <td>186.02100</td>
+            <td class="negative">$-20.88</td>
+        </tr>
+        
+        <tr>
+            <td>2868</td>
+            <td>EUR_JPY</td>
+            <td>06/02/2026 09:29 AM</td>
+            <td>06/02/2026 09:48 AM</td>
+            <td>51,620</td>
+            <td>186.02100</td>
+            <td class="negative">$-29.04</td>
+        </tr>
+        
+        <tr>
+            <td>2906</td>
+            <td>EUR_JPY</td>
+            <td>06/02/2026 09:48 AM</td>
+            <td>06/02/2026 09:48 AM</td>
+            <td>51,620</td>
+            <td>186.02100</td>
+            <td class="negative">$-12.72</td>
+        </tr>
+        
+        <tr>
+            <td>2794</td>
+            <td>EUR_CHF</td>
+            <td>06/02/2026 09:01 AM</td>
+            <td>06/02/2026 09:36 AM</td>
+            <td>37,587</td>
+            <td>0.91532</td>
+            <td class="positive">$1.89</td>
+        </tr>
+        
+        <tr>
+            <td>2754</td>
+            <td>USD_JPY</td>
+            <td>06/02/2026 09:00 AM</td>
+            <td>06/02/2026 09:29 AM</td>
+            <td>109,520</td>
+            <td>159.79100</td>
+            <td class="negative">$-0.69</td>
+        </tr>
+        
+        <tr>
+            <td>2821</td>
+            <td>USD_JPY</td>
+            <td>06/02/2026 09:12 AM</td>
+            <td>06/02/2026 09:29 AM</td>
+            <td>109,520</td>
+            <td>159.79100</td>
+            <td class="positive">$11.53</td>
+        </tr>
+        
+        <tr>
+            <td>2786</td>
+            <td>USD_CHF</td>
+            <td>06/02/2026 09:01 AM</td>
+            <td>06/02/2026 09:22 AM</td>
+            <td>33,983</td>
+            <td>0.78590</td>
+            <td class="positive">$13.70</td>
+        </tr>
+        
+        <tr>
+            <td>2778</td>
+            <td>NZD_CAD</td>
+            <td>06/02/2026 09:01 AM</td>
+            <td>06/02/2026 09:13 AM</td>
+            <td>-53,689</td>
+            <td>0.81989</td>
+            <td class="positive">$12.68</td>
+        </tr>
+        
+        <tr>
+            <td>2806</td>
+            <td>EUR_NZD</td>
+            <td>06/02/2026 09:08 AM</td>
+            <td>06/02/2026 09:13 AM</td>
+            <td>29,822</td>
+            <td>1.96517</td>
+            <td class="positive">$11.90</td>
+        </tr>
+        
+        <tr>
+            <td>2770</td>
+            <td>EUR_NZD</td>
+            <td>06/02/2026 09:00 AM</td>
+            <td>06/02/2026 09:13 AM</td>
+            <td>29,822</td>
+            <td>1.96517</td>
+            <td class="positive">$0.00</td>
+        </tr>
+        
+        <tr>
+            <td>2801</td>
+            <td>NZD_USD</td>
+            <td>06/02/2026 09:07 AM</td>
+            <td>06/02/2026 09:13 AM</td>
+            <td>-51,482</td>
+            <td>0.59283</td>
+            <td class="positive">$11.84</td>
+        </tr>
+        
+        <tr>
+            <td>2762</td>
+            <td>NZD_USD</td>
+            <td>06/02/2026 09:00 AM</td>
+            <td>06/02/2026 09:13 AM</td>
+            <td>-51,482</td>
+            <td>0.59283</td>
+            <td class="positive">$0.00</td>
+        </tr>
+        
+        <tr>
+            <td>2707</td>
+            <td>GBP_CHF</td>
+            <td>06/02/2026 06:00 AM</td>
+            <td>06/02/2026 07:23 AM</td>
+            <td>24,684</td>
+            <td>1.05719</td>
+            <td class="negative">$-49.22</td>
+        </tr>
+        
+        <tr>
+            <td>2719</td>
+            <td>GBP_CHF</td>
+            <td>06/02/2026 06:57 AM</td>
+            <td>06/02/2026 07:23 AM</td>
+            <td>24,684</td>
+            <td>1.05719</td>
+            <td class="negative">$-28.90</td>
+        </tr>
+        
+        <tr>
+            <td>2714</td>
+            <td>GBP_CHF</td>
+            <td>06/02/2026 06:37 AM</td>
+            <td>06/02/2026 07:23 AM</td>
+            <td>24,684</td>
+            <td>1.05719</td>
+            <td class="negative">$-36.83</td>
+        </tr>
+        
+        <tr>
+            <td>2691</td>
+            <td>AUD_CHF</td>
+            <td>06/02/2026 04:01 AM</td>
+            <td>06/02/2026 04:25 AM</td>
+            <td>44,089</td>
+            <td>0.56394</td>
+            <td class="positive">$3.33</td>
+        </tr>
+        
+        <tr>
+            <td>2673</td>
+            <td>GBP_CAD</td>
+            <td>06/02/2026 03:07 AM</td>
+            <td>06/02/2026 03:08 AM</td>
+            <td>55,379</td>
+            <td>1.86408</td>
+            <td class="negative">$-19.81</td>
+        </tr>
+        
+        <tr>
+            <td>2667</td>
+            <td>GBP_CAD</td>
+            <td>06/02/2026 02:53 AM</td>
+            <td>06/02/2026 03:07 AM</td>
+            <td>55,379</td>
+            <td>1.86406</td>
+            <td class="negative">$-29.10</td>
+        </tr>
+        
+        <tr>
+            <td>2662</td>
+            <td>GBP_CAD</td>
+            <td>06/02/2026 02:43 AM</td>
+            <td>06/02/2026 03:07 AM</td>
+            <td>55,379</td>
+            <td>1.86406</td>
+            <td class="negative">$-37.19</td>
+        </tr>
+        
+        <tr>
+            <td>2644</td>
+            <td>GBP_CAD</td>
+            <td>06/02/2026 02:15 AM</td>
+            <td>06/02/2026 03:07 AM</td>
+            <td>55,379</td>
+            <td>1.86406</td>
+            <td class="negative">$-49.72</td>
+        </tr>
+        
+        <tr>
+            <td>2636</td>
+            <td>GBP_JPY</td>
+            <td>06/02/2026 02:15 AM</td>
+            <td>06/02/2026 02:25 AM</td>
+            <td>48,337</td>
+            <td>215.27400</td>
+            <td class="positive">$13.48</td>
+        </tr>
+        
+        <tr>
+            <td>2259</td>
+            <td>GBP_USD</td>
+            <td>06/01/2026 02:00 PM</td>
+            <td>06/02/2026 12:49 AM</td>
+            <td>16,467</td>
+            <td>1.34631</td>
+            <td class="negative">$-4.28</td>
+        </tr>
+        
+        <tr>
+            <td>2282</td>
+            <td>GBP_USD</td>
+            <td>06/01/2026 02:59 PM</td>
+            <td>06/02/2026 12:49 AM</td>
+            <td>16,467</td>
+            <td>1.34631</td>
+            <td class="positive">$7.90</td>
+        </tr>
+        
+        <tr>
+            <td>2267</td>
+            <td>GBP_JPY</td>
+            <td>06/01/2026 02:00 PM</td>
+            <td>06/02/2026 12:26 AM</td>
+            <td>20,770</td>
+            <td>214.97600</td>
+            <td class="positive">$1.67</td>
+        </tr>
+        
+        <tr>
+            <td>2500</td>
+            <td>EUR_CAD</td>
+            <td>06/01/2026 09:46 PM</td>
+            <td>06/02/2026 12:16 AM</td>
+            <td>57,623</td>
+            <td>1.61083</td>
+            <td class="positive">$11.54</td>
+        </tr>
+        
+        <tr>
+            <td>2442</td>
+            <td>EUR_CAD</td>
+            <td>06/01/2026 09:16 PM</td>
+            <td>06/02/2026 12:16 AM</td>
+            <td>57,623</td>
+            <td>1.61083</td>
+            <td class="positive">$0.00</td>
+        </tr>
+        
+        <tr>
+            <td>2391</td>
+            <td>NZD_JPY</td>
+            <td>06/01/2026 09:00 PM</td>
+            <td>06/01/2026 10:25 PM</td>
+            <td>-43,436</td>
+            <td>94.69800</td>
+            <td class="negative">$-51.37</td>
+        </tr>
+        
+        <tr>
+            <td>2454</td>
+            <td>NZD_JPY</td>
+            <td>06/01/2026 09:19 PM</td>
+            <td>06/01/2026 10:25 PM</td>
+            <td>-43,436</td>
+            <td>94.69800</td>
+            <td class="negative">$-37.36</td>
+        </tr>
+        
+        <tr>
+            <td>2521</td>
+            <td>NZD_JPY</td>
+            <td>06/01/2026 10:16 PM</td>
+            <td>06/01/2026 10:25 PM</td>
+            <td>-43,436</td>
+            <td>94.69800</td>
+            <td class="negative">$-21.43</td>
+        </tr>
+        
+        <tr>
+            <td>2477</td>
+            <td>NZD_JPY</td>
+            <td>06/01/2026 09:34 PM</td>
+            <td>06/01/2026 10:25 PM</td>
+            <td>-43,436</td>
+            <td>94.69800</td>
+            <td class="negative">$-29.39</td>
+        </tr>
+        
+        <tr>
+            <td>2547</td>
+            <td>NZD_JPY</td>
+            <td>06/01/2026 10:23 PM</td>
+            <td>06/01/2026 10:25 PM</td>
+            <td>-43,436</td>
+            <td>94.69800</td>
+            <td class="negative">$-13.19</td>
+        </tr>
+        
+        <tr>
+            <td>2399</td>
+            <td>EUR_NZD</td>
+            <td>06/01/2026 09:00 PM</td>
+            <td>06/01/2026 10:20 PM</td>
+            <td>25,162</td>
+            <td>1.96205</td>
+            <td class="negative">$-48.36</td>
+        </tr>
+        
+        <tr>
+            <td>2527</td>
+            <td>EUR_NZD</td>
+            <td>06/01/2026 10:17 PM</td>
+            <td>06/01/2026 10:20 PM</td>
+            <td>25,162</td>
+            <td>1.96205</td>
+            <td class="negative">$-12.50</td>
+        </tr>
+        
+        <tr>
+            <td>2472</td>
+            <td>EUR_NZD</td>
+            <td>06/01/2026 09:31 PM</td>
+            <td>06/01/2026 10:20 PM</td>
+            <td>25,162</td>
+            <td>1.96205</td>
+            <td class="negative">$-28.92</td>
+        </tr>
+        
+        <tr>
+            <td>2482</td>
+            <td>EUR_NZD</td>
+            <td>06/01/2026 09:36 PM</td>
+            <td>06/01/2026 10:20 PM</td>
+            <td>25,162</td>
+            <td>1.96205</td>
+            <td class="negative">$-20.94</td>
+        </tr>
+        
+        <tr>
+            <td>2449</td>
+            <td>EUR_NZD</td>
+            <td>06/01/2026 09:18 PM</td>
+            <td>06/01/2026 10:20 PM</td>
+            <td>25,162</td>
+            <td>1.96205</td>
+            <td class="negative">$-36.91</td>
+        </tr>
+        
+        <tr>
+            <td>2415</td>
+            <td>NZD_CHF</td>
+            <td>06/01/2026 09:01 PM</td>
+            <td>06/01/2026 10:17 PM</td>
+            <td>-49,302</td>
+            <td>0.46648</td>
+            <td class="negative">$-50.01</td>
+        </tr>
+        
+        <tr>
+            <td>2487</td>
+            <td>NZD_CHF</td>
+            <td>06/01/2026 09:43 PM</td>
+            <td>06/01/2026 10:17 PM</td>
+            <td>-49,302</td>
+            <td>0.46648</td>
+            <td class="negative">$-29.75</td>
+        </tr>
+        
+        <tr>
+            <td>2467</td>
+            <td>NZD_CHF</td>
+            <td>06/01/2026 09:30 PM</td>
+            <td>06/01/2026 10:17 PM</td>
+            <td>-49,302</td>
+            <td>0.46648</td>
+            <td class="negative">$-37.98</td>
+        </tr>
+        
+        <tr>
+            <td>2407</td>
+            <td>AUD_NZD</td>
+            <td>06/01/2026 09:01 PM</td>
+            <td>06/01/2026 09:11 PM</td>
+            <td>53,967</td>
+            <td>1.21000</td>
+            <td class="positive">$11.39</td>
+        </tr>
+        
+        <tr>
+            <td>2275</td>
+            <td>GBP_CAD</td>
+            <td>06/01/2026 02:00 PM</td>
+            <td>06/01/2026 07:40 PM</td>
+            <td>21,764</td>
+            <td>1.86268</td>
+            <td class="positive">$1.71</td>
+        </tr>
+        
+        <tr>
+            <td>2024</td>
+            <td>GBP_CAD</td>
+            <td>06/01/2026 02:23 AM</td>
+            <td>06/01/2026 07:40 PM</td>
+            <td>63,574</td>
+            <td>1.86268</td>
+            <td class="positive">$199.62</td>
+        </tr>
+        
+        <tr>
+            <td>2241</td>
+            <td>AUD_CHF</td>
+            <td>06/01/2026 01:01 PM</td>
+            <td>06/01/2026 01:44 PM</td>
+            <td>33,527</td>
+            <td>0.56333</td>
+            <td class="positive">$4.22</td>
+        </tr>
+        
+        <tr>
+            <td>2196</td>
+            <td>USD_JPY</td>
+            <td>06/01/2026 10:09 AM</td>
+            <td>06/01/2026 11:30 AM</td>
+            <td>53,792</td>
+            <td>159.62300</td>
+            <td class="negative">$-28.59</td>
+        </tr>
+        
+        <tr>
+            <td>2182</td>
+            <td>USD_JPY</td>
+            <td>06/01/2026 10:00 AM</td>
+            <td>06/01/2026 11:30 AM</td>
+            <td>53,792</td>
+            <td>159.62300</td>
+            <td class="negative">$-49.69</td>
+        </tr>
+        
+        <tr>
+            <td>2190</td>
+            <td>USD_JPY</td>
+            <td>06/01/2026 10:03 AM</td>
+            <td>06/01/2026 11:30 AM</td>
+            <td>53,792</td>
+            <td>159.62300</td>
+            <td class="negative">$-36.76</td>
+        </tr>
+        
+        <tr>
+            <td>2201</td>
+            <td>USD_JPY</td>
+            <td>06/01/2026 10:16 AM</td>
+            <td>06/01/2026 11:30 AM</td>
+            <td>53,792</td>
+            <td>159.62300</td>
+            <td class="negative">$-19.74</td>
+        </tr>
+        
+        <tr>
+            <td>2221</td>
+            <td>USD_JPY</td>
+            <td>06/01/2026 11:19 AM</td>
+            <td>06/01/2026 11:30 AM</td>
+            <td>53,792</td>
+            <td>159.62300</td>
+            <td class="negative">$-12.25</td>
+        </tr>
+        
+        <tr>
+            <td>2215</td>
+            <td>EUR_GBP</td>
+            <td>06/01/2026 11:02 AM</td>
+            <td>06/01/2026 11:25 AM</td>
+            <td>-36,555</td>
+            <td>0.86447</td>
+            <td class="positive">$14.11</td>
+        </tr>
+        
+        <tr>
+            <td>2207</td>
+            <td>EUR_GBP</td>
+            <td>06/01/2026 11:00 AM</td>
+            <td>06/01/2026 11:25 AM</td>
+            <td>-36,555</td>
+            <td>0.86447</td>
+            <td class="positive">$1.46</td>
+        </tr>
+        
+        <tr>
+            <td>2126</td>
+            <td>CAD_CHF</td>
+            <td>06/01/2026 09:01 AM</td>
+            <td>06/01/2026 09:16 AM</td>
+            <td>36,211</td>
+            <td>0.56821</td>
+            <td class="positive">$13.22</td>
+        </tr>
+        
+        <tr>
+            <td>2117</td>
+            <td>USD_CHF</td>
+            <td>06/01/2026 09:00 AM</td>
+            <td>06/01/2026 09:07 AM</td>
+            <td>31,996</td>
+            <td>0.78577</td>
+            <td class="positive">$18.14</td>
+        </tr>
+        
+        <tr>
+            <td>2134</td>
+            <td>CHF_JPY</td>
+            <td>06/01/2026 09:02 AM</td>
+            <td>06/01/2026 09:04 AM</td>
+            <td>-26,060</td>
+            <td>203.02500</td>
+            <td class="positive">$20.86</td>
+        </tr>
+        
+        <tr>
+            <td>2108</td>
+            <td>CHF_JPY</td>
+            <td>06/01/2026 09:00 AM</td>
+            <td>06/01/2026 09:04 AM</td>
+            <td>-26,060</td>
+            <td>203.02500</td>
+            <td class="positive">$8.90</td>
+        </tr>
+        
+        <tr>
+            <td>2094</td>
+            <td>EUR_CHF</td>
+            <td>06/01/2026 07:04 AM</td>
+            <td>06/01/2026 08:45 AM</td>
+            <td>33,587</td>
+            <td>0.91378</td>
+            <td class="positive">$35.18</td>
+        </tr>
+        
+        <tr>
+            <td>2089</td>
+            <td>EUR_CHF</td>
+            <td>06/01/2026 06:58 AM</td>
+            <td>06/01/2026 08:45 AM</td>
+            <td>33,587</td>
+            <td>0.91378</td>
+            <td class="positive">$27.55</td>
+        </tr>
+        
+        <tr>
+            <td>2083</td>
+            <td>EUR_CHF</td>
+            <td>06/01/2026 06:47 AM</td>
+            <td>06/01/2026 08:45 AM</td>
+            <td>33,587</td>
+            <td>0.91378</td>
+            <td class="positive">$19.50</td>
+        </tr>
+        
+        <tr>
+            <td>2075</td>
+            <td>EUR_CHF</td>
+            <td>06/01/2026 06:00 AM</td>
+            <td>06/01/2026 08:45 AM</td>
+            <td>33,587</td>
+            <td>0.91378</td>
+            <td class="positive">$7.21</td>
+        </tr>
+        
+        <tr>
+            <td>2057</td>
+            <td>GBP_CHF</td>
+            <td>06/01/2026 05:01 AM</td>
+            <td>06/01/2026 05:57 AM</td>
+            <td>24,690</td>
+            <td>1.05524</td>
+            <td class="positive">$1.56</td>
+        </tr>
+        
+        <tr>
+            <td>1940</td>
+            <td>AUD_USD</td>
+            <td>06/01/2026 02:00 AM</td>
+            <td>06/01/2026 02:36 AM</td>
+            <td>44,685</td>
+            <td>0.71775</td>
+            <td class="negative">$-49.60</td>
+        </tr>
+        
+        <tr>
+            <td>2003</td>
+            <td>AUD_USD</td>
+            <td>06/01/2026 02:15 AM</td>
+            <td>06/01/2026 02:36 AM</td>
+            <td>44,685</td>
+            <td>0.71775</td>
+            <td class="negative">$-37.54</td>
+        </tr>
+        
+        <tr>
+            <td>2027</td>
+            <td>AUD_USD</td>
+            <td>06/01/2026 02:23 AM</td>
+            <td>06/01/2026 02:36 AM</td>
+            <td>44,685</td>
+            <td>0.71775</td>
+            <td class="negative">$-29.49</td>
+        </tr>
+        
+        <tr>
+            <td>2039</td>
+            <td>AUD_USD</td>
+            <td>06/01/2026 02:25 AM</td>
+            <td>06/01/2026 02:36 AM</td>
+            <td>44,685</td>
+            <td>0.71775</td>
+            <td class="negative">$-21.45</td>
+        </tr>
+        
+        <tr>
+            <td>2044</td>
+            <td>AUD_USD</td>
+            <td>06/01/2026 02:35 AM</td>
+            <td>06/01/2026 02:36 AM</td>
+            <td>44,685</td>
+            <td>0.71775</td>
+            <td class="negative">$-12.96</td>
+        </tr>
+        
+        <tr>
+            <td>2015</td>
+            <td>GBP_CAD</td>
+            <td>06/01/2026 02:19 AM</td>
+            <td>06/01/2026 02:22 AM</td>
+            <td>63,574</td>
+            <td>1.85783</td>
+            <td class="negative">$-30.24</td>
+        </tr>
+        
+        <tr>
+            <td>2009</td>
+            <td>GBP_CAD</td>
+            <td>06/01/2026 02:18 AM</td>
+            <td>06/01/2026 02:22 AM</td>
+            <td>63,574</td>
+            <td>1.85783</td>
+            <td class="negative">$-37.68</td>
+        </tr>
+        
+        <tr>
+            <td>1913</td>
+            <td>GBP_CAD</td>
+            <td>06/01/2026 01:15 AM</td>
+            <td>06/01/2026 02:22 AM</td>
+            <td>63,574</td>
+            <td>1.85783</td>
+            <td class="negative">$-50.70</td>
+        </tr>
+        
+        <tr>
+            <td>1949</td>
+            <td>EUR_JPY</td>
+            <td>06/01/2026 02:00 AM</td>
+            <td>06/01/2026 02:12 AM</td>
+            <td>64,516</td>
+            <td>185.83000</td>
+            <td class="positive">$4.01</td>
+        </tr>
+        
+        <tr>
+            <td>1931</td>
+            <td>GBP_USD</td>
+            <td>06/01/2026 02:00 AM</td>
+            <td>06/01/2026 02:11 AM</td>
+            <td>41,807</td>
+            <td>1.34671</td>
+            <td class="positive">$9.20</td>
+        </tr>
+        
+        <tr>
+            <td>1958</td>
+            <td>GBP_JPY</td>
+            <td>06/01/2026 02:00 AM</td>
+            <td>06/01/2026 02:11 AM</td>
+            <td>48,576</td>
+            <td>214.75000</td>
+            <td class="positive">$10.71</td>
+        </tr>
+        
+        <tr>
+            <td>1904</td>
+            <td>EUR_CAD</td>
+            <td>06/01/2026 01:00 AM</td>
+            <td>06/01/2026 01:50 AM</td>
+            <td>74,642</td>
+            <td>1.60876</td>
+            <td class="positive">$4.28</td>
+        </tr>
+        
+        <tr>
+            <td>1889</td>
+            <td>AUD_CAD</td>
+            <td>05/31/2026 11:19 PM</td>
+            <td>05/31/2026 11:20 PM</td>
+            <td>49,922</td>
+            <td>0.99115</td>
+            <td class="negative">$-7.67</td>
+        </tr>
+        
+        <tr>
+            <td>1873</td>
+            <td>AUD_CAD</td>
+            <td>05/31/2026 11:12 PM</td>
+            <td>05/31/2026 11:19 PM</td>
+            <td>49,922</td>
+            <td>0.99099</td>
+            <td class="negative">$-38.33</td>
+        </tr>
+        
+        <tr>
+            <td>1838</td>
+            <td>AUD_CAD</td>
+            <td>05/31/2026 10:00 PM</td>
+            <td>05/31/2026 11:19 PM</td>
+            <td>49,922</td>
+            <td>0.99099</td>
+            <td class="negative">$-50.74</td>
+        </tr>
+        
+        <tr>
+            <td>1879</td>
+            <td>AUD_CAD</td>
+            <td>05/31/2026 11:14 PM</td>
+            <td>05/31/2026 11:19 PM</td>
+            <td>49,922</td>
+            <td>0.99099</td>
+            <td class="negative">$-29.94</td>
+        </tr>
+        
+        <tr>
+            <td>1884</td>
+            <td>AUD_CAD</td>
+            <td>05/31/2026 11:18 PM</td>
+            <td>05/31/2026 11:19 PM</td>
+            <td>49,922</td>
+            <td>0.99099</td>
+            <td class="negative">$-21.54</td>
+        </tr>
+        
+        <tr>
+            <td>1784</td>
+            <td>EUR_GBP</td>
+            <td>05/31/2026 09:00 PM</td>
+            <td>05/31/2026 10:55 PM</td>
+            <td>-54,008</td>
+            <td>0.86562</td>
+            <td class="positive">$13.31</td>
+        </tr>
+        
+        <tr>
+            <td>1803</td>
+            <td>AUD_CHF</td>
+            <td>05/31/2026 09:01 PM</td>
+            <td>05/31/2026 10:16 PM</td>
+            <td>36,322</td>
+            <td>0.56264</td>
+            <td class="positive">$13.09</td>
+        </tr>
+        
+        <tr>
+            <td>1741</td>
+            <td>EUR_CHF</td>
+            <td>05/31/2026 08:01 PM</td>
+            <td>05/31/2026 10:07 PM</td>
+            <td>-36,126</td>
+            <td>0.91205</td>
+            <td class="negative">$-49.39</td>
+        </tr>
+        
+</tbody>
 </table>
 </div>
 
