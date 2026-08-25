@@ -63,24 +63,370 @@
 @media(max-width:1050px){.signalcols{grid-template-columns:1fr}.signalsummary{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.signalsummary{grid-template-columns:repeat(2,1fr)}.signalhead{display:block}.signalstatus{text-align:left;margin-top:8px}.signalrow{grid-template-columns:20px 70px 1fr}.sigscore{grid-column:3}.sigind{grid-template-columns:48px 58px 1fr}.sigflag{grid-column:3}}
 
+
+/* NEWS_G2_UI_V1 */
+
+.newshero{
+    display:flex;
+    justify-content:space-between;
+    gap:14px;
+    align-items:flex-start;
+    margin:2px 0 14px
+}
+
+.newshero h2{
+    margin:0;
+    font-size:20px
+}
+
+.newshero p{
+    margin:5px 0 0;
+    color:var(--muted);
+    font-size:12px
+}
+
+.newsbadges{
+    display:flex;
+    gap:7px;
+    flex-wrap:wrap;
+    justify-content:flex-end
+}
+
+.newsgrid{
+    display:grid;
+    grid-template-columns:
+        repeat(6,minmax(0,1fr));
+    gap:10px
+}
+
+.newslive{
+    border-color:
+        rgba(52,211,153,.30)
+}
+
+.newstradehead{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    align-items:flex-start;
+    margin-bottom:12px
+}
+
+.newstradepair{
+    font-size:26px;
+    font-weight:950
+}
+
+.newstrademetrics{
+    display:grid;
+    grid-template-columns:
+        repeat(6,minmax(0,1fr));
+    gap:8px
+}
+
+.newseventbox{
+    margin-top:12px;
+    border:1px solid
+        rgba(59,199,255,.15);
+    background:
+        rgba(59,199,255,.045);
+    border-radius:13px;
+    padding:12px
+}
+
+.newseventmeta{
+    display:grid;
+    grid-template-columns:
+        repeat(4,minmax(0,1fr));
+    gap:8px;
+    margin-top:10px
+}
+
+.newsstatus{
+    font-size:10px;
+    font-weight:900;
+    padding:5px 8px;
+    border-radius:999px;
+    display:inline-block
+}
+
+.newsstatus.waiting{
+    color:var(--amber)
+}
+
+.newsstatus.released,
+.newsstatus.open{
+    color:var(--green)
+}
+
+.newsstatus.rejected{
+    color:var(--red)
+}
+
+.newsoffline{
+    border:1px dashed
+        rgba(142,164,191,.22);
+    border-radius:14px;
+    padding:24px;
+    color:var(--muted);
+    text-align:center
+}
+
+.newsfootnote{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:8px
+}
+
+.news-table table{
+    min-width:1120px
+}
+
+.news-trades table{
+    min-width:1320px
+}
+
+@media(max-width:1150px){
+
+    .newsgrid{
+        grid-template-columns:
+            repeat(3,1fr)
+    }
+
+    .newstrademetrics{
+        grid-template-columns:
+            repeat(3,1fr)
+    }
+
+    .newseventmeta{
+        grid-template-columns:
+            repeat(2,1fr)
+    }
+}
+
+@media(max-width:700px){
+
+    .newshero{
+        display:block
+    }
+
+    .newsbadges{
+        justify-content:flex-start;
+        margin-top:10px
+    }
+
+    .newsgrid{
+        grid-template-columns:
+            repeat(2,1fr)
+    }
+
+    .newstrademetrics{
+        grid-template-columns:
+            repeat(2,1fr)
+    }
+
+    .newseventmeta{
+        grid-template-columns:1fr
+    }
+}
+
 </style>
 </head>
 <body>
 <div class="shell">
 <div id="err" class="error"></div>
 <header class="top"><div class="brand"><h1>TEST-C G2 <span style="color:var(--cyan)">Prop Dashboard</span></h1><p id="subtitle">Generation 2 â€¢ OANDA Practice â€¢ read-only monitor</p></div><div class="statusrow"><span id="livepill" class="pill info">LOADING</span><span id="tppill" class="pill">TP CHECK</span><span id="updatedpill" class="pill">â€”</span></div></header>
-<nav class="nav"><button class="active" data-view="overview">Overview</button><button data-view="baskets">Baskets</button><button data-view="analytics">Analytics</button><button data-view="journal">Journal</button><button data-view="system">System</button></nav>
+<nav class="nav"><button class="active" data-view="overview">Overview</button><button data-view="baskets">Baskets</button><button data-view="analytics">Analytics</button><button data-view="news">News G2</button><button data-view="journal">Journal</button><button data-view="system">System</button></nav>
 <section id="overview" class="view active"><div id="stats" class="grid stats"></div><div class="grid riskgrid" id="risks"></div><div class="sectiontitle"><h2>Performance & Health</h2><span>Account + strategy monitor</span></div><div class="grid twocol"><div class="card"><div class="kicker">Equity curve</div><div class="canvaswrap"><canvas id="equityChart"></canvas></div></div><div class="card"><div class="kicker">Bot health</div><div id="health" class="health"></div></div></div>
 <div id="signalmonitor" class="signalmon"></div>
 </section>
 <section id="baskets" class="view"><div class="sectiontitle"><h2>Open Baskets</h2><span id="basketcount"></span></div><div id="basketgrid" class="basketgrid"></div></section>
 <section id="analytics" class="view"><div id="analyticstats" class="grid stats"></div><div class="sectiontitle"><h2>Trading Analytics</h2><span>Closed trade performance</span></div><div class="grid threecol"><div class="card"><div class="kicker">Monthly pips</div><div class="canvaswrap"><canvas id="monthlyChart"></canvas></div></div><div class="card"><div class="kicker">Pair performance</div><div class="canvaswrap"><canvas id="pairChart"></canvas></div></div><div class="card"><div class="kicker">Wins vs losses</div><div class="canvaswrap"><canvas id="wlChart"></canvas></div></div></div><div class="sectiontitle"><h2>Result Calendar</h2><span id="calmonth"></span></div><div class="card"><div id="calendar" class="calendar"></div></div></section>
+
+<section id="news" class="view">
+
+<div
+    id="newsfeederror"
+    class="error">
+</div>
+
+<div class="newshero">
+
+    <div>
+
+        <h2>NewsBot G2</h2>
+
+        <p>
+            High-impact economic releases
+            + OANDA practice execution
+        </p>
+
+    </div>
+
+    <div
+        id="newsbadges"
+        class="newsbadges">
+
+        <span class="pill">
+            NEWSBOT LOADING
+        </span>
+
+    </div>
+
+</div>
+
+
+<div
+    id="newsstats"
+    class="newsgrid">
+</div>
+
+
+<div class="sectiontitle">
+
+    <h2>
+        High-Impact Economic Calendar
+    </h2>
+
+    <span id="newscalendarupdated">
+        Waiting for snapshot
+    </span>
+
+</div>
+
+
+<div class="card tablecard news-table">
+
+<div class="tablewrap">
+
+<table>
+
+<thead>
+
+<tr>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Currency</th>
+    <th>Event</th>
+    <th>Actual</th>
+    <th>Forecast</th>
+    <th>Previous</th>
+    <th>Status</th>
+</tr>
+
+</thead>
+
+<tbody id="newscalendarbody">
+
+<tr>
+<td colspan="8" class="empty">
+Waiting for NewsBot G2 calendar data
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<div class="sectiontitle">
+
+    <h2>
+        Current News Trade
+    </h2>
+
+    <span id="newsactivestatus">
+        No active trade
+    </span>
+
+</div>
+
+
+<div
+    id="newsactivetrade"
+    class="card">
+
+    <div class="empty">
+        Waiting for NewsBot G2 runtime data
+    </div>
+
+</div>
+
+
+<div class="sectiontitle">
+
+    <h2>
+        Completed News Trades
+    </h2>
+
+    <span id="newstradesummary">
+        No completed trades
+    </span>
+
+</div>
+
+
+<div class="card tablecard news-trades">
+
+<div class="tablewrap">
+
+<table>
+
+<thead>
+
+<tr>
+    <th>Closed</th>
+    <th>Event</th>
+    <th>Pair</th>
+    <th>Side</th>
+    <th>Entry</th>
+    <th>Exit</th>
+    <th>Pips</th>
+    <th>P/L</th>
+    <th>MFE</th>
+    <th>MAE</th>
+    <th>Hold</th>
+    <th>Exit</th>
+    <th>Detection</th>
+    <th>Order</th>
+</tr>
+
+</thead>
+
+<tbody id="newstradebody">
+
+<tr>
+<td colspan="14" class="empty">
+No completed NewsBot trades yet
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<div class="newsfootnote">
+Practice/demo execution only.
+This dashboard tab is read-only.
+</div>
+
+</section>
+
 <section id="journal" class="view"><div class="sectiontitle"><h2>Trade Journal</h2><span>OANDA closed trades</span></div><div class="card tablecard"><div class="tools"><input id="search" placeholder="Search pair, ID, directionâ€¦"><select id="limit"><option>25</option><option selected>50</option><option>100</option><option>250</option></select></div><div class="desktopjournal tablewrap"><table><thead><tr><th>ID</th><th>Pair</th><th>Dir</th><th>Open</th><th>Close</th><th>Entry</th><th>Exit</th><th>Pips</th><th>P/L</th><th>Units</th></tr></thead><tbody id="tbody"></tbody></table></div><div id="mobilejournal" class="mobilejournal"></div></div></section>
 <section id="system" class="view"><div class="sectiontitle"><h2>System</h2><span>Frozen G2 configuration</span></div><div class="grid twocol"><div class="card"><div class="kicker">Strategy</div><div id="strategy" class="health"></div></div><div class="card"><div class="kicker">Runtime</div><div id="runtime" class="health"></div></div></div></section>
 <div class="footer">Read-only dashboard. No OANDA credentials are published to GitHub. Test-C Generation 2 practice monitoring.</div>
 </div>
 <script>
-let DATA=null, charts={};const $=s=>document.querySelector(s), fmt=(n,d=2)=>Number(n??0).toLocaleString(undefined,{minimumFractionDigits:d,maximumFractionDigits:d}), money=n=>`${Number(n||0)<0?'-$':'$'}${fmt(Math.abs(Number(n||0)),2)}`, cls=n=>Number(n)>0?'pos':Number(n)<0?'neg':'', esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+let DATA=null, NEWS=null, charts={};const $=s=>document.querySelector(s), fmt=(n,d=2)=>Number(n??0).toLocaleString(undefined,{minimumFractionDigits:d,maximumFractionDigits:d}), money=n=>`${Number(n||0)<0?'-$':'$'}${fmt(Math.abs(Number(n||0)),2)}`, cls=n=>Number(n)>0?'pos':Number(n)<0?'neg':'', esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 function when(s){if(!s)return'â€”';try{return new Date(s).toLocaleString([], {month:'short',day:'2-digit',hour:'2-digit',minute:'2-digit'})}catch{return s}}
 function metric(label,value,sub='',c=''){return `<div class="card metric"><div class="label">${label}</div><div class="value ${c}">${value}</div><div class="sub">${sub}</div></div>`}
 function barCard(title,value,max,sub,color=''){const p=Math.max(0,Math.min(100,max?value/max*100:0));return `<div class="card"><div class="kicker">${title}</div><div class="metric"><div class="value">${money(value)}</div></div><div class="bar ${color}"><i style="width:${p}%"></i></div><div class="riskline"><span>${sub}</span><strong>${p.toFixed(1)}%</strong></div></div>`}
@@ -124,6 +470,712 @@ function renderSignalMonitor(){
     box.innerHTML=`<div class="sectiontitle"><div><h2>Test-C Signal Monitor</h2><span>Read-only diagnostics ? setup score is not a probability</span></div><div class="signalstatus ${health.toLowerCase()}"><strong>${esc(health)}</strong><small>${when(m.generated_at)}</small></div></div><div class="card"><div class="signalsummary"><div><span>Exact signals ? 24h</span><strong>${sigNum(c.eligible)}</strong></div><div><span>Opened</span><strong>${sigNum(c.opened)}</strong></div><div><span>Rejected</span><strong>${sigNum(c.rejected)}</strong></div><div><span>Missed / stale</span><strong class="${sigNum(c.unseen_stale)>0?'neg':'pos'}">${sigNum(c.unseen_stale)}</strong></div><div><span>Pairs evaluated</span><strong>${sigNum(e.pairs_evaluated)} / ${sigNum(e.pair_count,26)}</strong></div><div><span>Snapshot age</span><strong>${Number.isFinite(age)?age.toFixed(1)+'m':'?'}</strong></div></div><div class="signalcols"><div class="signalwatch"><div class="signaltitle"><strong>Pairs Closest to Entry</strong><span>Stage first ? threshold distance second</span></div>${rows||'<div class="empty">No pair diagnostics available</div>'}</div><div class="signaldetails">${detail||'<div class="empty">No setup detail available</div>'}</div></div></div>`
 }
 
+
+
+function newsNum(v,d=0){
+    const n=Number(v);
+    return Number.isFinite(n)?n:d;
+}
+
+function newsMaybe(
+    v,
+    d=2,
+    suffix=''
+){
+    const n=Number(v);
+
+    return Number.isFinite(n)
+        ? fmt(n,d)+suffix
+        : '?';
+}
+
+function newsDuration(sec){
+
+    const n=Math.max(
+        0,
+        Math.floor(
+            newsNum(sec,0)
+        )
+    );
+
+    const m=Math.floor(
+        n/60
+    );
+
+    const s=n%60;
+
+    return (
+        m+'m '
+        +String(s).padStart(2,'0')
+        +'s'
+    );
+}
+
+function renderNews(){
+
+    const n=NEWS||{};
+    const cal=n.calendar||{};
+    const rt=n.runtime||{};
+    const sum=n.summary||{};
+    const rows=cal.high_impact_rows||[];
+    const trades=(n.trades||[]).slice().reverse();
+    const active=n.active_trade||null;
+
+    const runtimeAge=
+        n.bridge_generated_utc
+        ? (
+            Date.now()
+            -new Date(
+                n.bridge_generated_utc
+            ).getTime()
+        )/1000
+        : Infinity;
+
+    const live=
+        runtimeAge<10;
+
+    $('#newsbadges').innerHTML=
+        '<span class="pill '
+        +(live?'good':'bad')
+        +'">'
+        +(live?'NEWS FEED LIVE':'NEWS FEED STALE')
+        +'</span>'
+        +'<span class="pill info">'
+        +(rt.mode||'PRACTICE')
+        +'</span>'
+        +'<span class="pill '
+        +(active?'good':'')
+        +'">'
+        +(active?'TRADE OPEN':'NO OPEN TRADE')
+        +'</span>';
+
+    const units=
+        newsNum(
+            rt.units,
+            0
+        );
+
+    const lots=
+        Number.isFinite(
+            Number(rt.lots)
+        )
+        ? Number(rt.lots)
+        : (
+            units
+            ? units/100000
+            : 0
+        );
+
+    $('#newsstats').innerHTML=
+
+        metric(
+            'Trade Size',
+            lots
+                ? fmt(lots,2)+' lot'
+                : '?',
+            units
+                ? fmt(units,0)+' units'
+                : 'Waiting for runtime'
+        )
+
+        +
+
+        metric(
+            'High Impact',
+            String(rows.length),
+            (sum.released_events||0)
+            +' released / '
+            +(sum.waiting_events||0)
+            +' waiting'
+        )
+
+        +
+
+        metric(
+            'Completed Trades',
+            String(
+                sum.closed_trades||0
+            ),
+            (sum.wins||0)
+            +' wins / '
+            +(sum.losses||0)
+            +' losses'
+        )
+
+        +
+
+        metric(
+            'Win Rate',
+            newsMaybe(
+                sum.win_rate,
+                1,
+                '%'
+            ),
+            'News G2 trades'
+        )
+
+        +
+
+        metric(
+            'Net Pips',
+            newsMaybe(
+                sum.net_pips,
+                1,
+                ' p'
+            ),
+            'PF '
+            +newsMaybe(
+                sum.profit_factor,
+                2
+            ),
+            cls(
+                sum.net_pips
+            )
+        )
+
+        +
+
+        metric(
+            'Avg Detection',
+            newsMaybe(
+                sum.avg_detection_ms,
+                0,
+                ' ms'
+            ),
+            'Schedule to detection'
+        );
+
+
+    $('#newscalendarupdated')
+        .textContent=
+        cal.captured_utc
+        ? 'Snapshot '
+          +when(
+              cal.captured_utc
+          )
+        : 'Waiting for snapshot';
+
+
+    $('#newscalendarbody')
+        .innerHTML=
+        rows.length
+
+        ? rows.map(
+            x=>{
+
+                const actual=
+                    String(
+                        x.actual??''
+                    ).trim();
+
+                const status=
+                    actual
+                    ? 'RELEASED'
+                    : 'WAITING';
+
+                return (
+                    '<tr>'
+
+                    +'<td>'
+                    +esc(
+                        x.date_text
+                        ||x.date
+                        ||'?'
+                    )
+                    +'</td>'
+
+                    +'<td>'
+                    +esc(
+                        x.time_text
+                        ||x.time
+                        ||'?'
+                    )
+                    +'</td>'
+
+                    +'<td><b>'
+                    +esc(
+                        x.currency||''
+                    )
+                    +'</b></td>'
+
+                    +'<td>'
+                    +esc(
+                        x.event_name
+                        ||x.event
+                        ||''
+                    )
+                    +'</td>'
+
+                    +'<td class="'
+                    +(actual?'pos':'')
+                    +'">'
+                    +esc(
+                        actual||'?'
+                    )
+                    +'</td>'
+
+                    +'<td>'
+                    +esc(
+                        x.forecast||'?'
+                    )
+                    +'</td>'
+
+                    +'<td>'
+                    +esc(
+                        x.previous||'?'
+                    )
+                    +'</td>'
+
+                    +'<td><span class="newsstatus '
+                    +(actual
+                        ?'released'
+                        :'waiting')
+                    +'">'
+                    +status
+                    +'</span></td>'
+
+                    +'</tr>'
+                );
+            }
+        ).join('')
+
+        : (
+            '<tr>'
+            +'<td colspan="8" class="empty">'
+            +'No high-impact events '
+            +'in the current snapshot'
+            +'</td>'
+            +'</tr>'
+        );
+
+
+    if(active){
+
+        const md=
+            active.metadata||{};
+
+        const pips=
+            newsNum(
+                active.current_pips,
+                0
+            );
+
+        const pl=
+            active.unrealized_pl;
+
+        const side=
+            String(
+                active.side||''
+            ).toUpperCase();
+
+        $('#newsactivestatus')
+            .textContent=
+            'LIVE PRACTICE TRADE';
+
+        $('#newsactivetrade')
+            .className=
+            'card newslive';
+
+        $('#newsactivetrade')
+            .innerHTML=
+
+            '<div class="newstradehead">'
+
+            +'<div>'
+
+            +'<div class="newstradepair">'
+            +esc(
+                active.instrument||'?'
+            )
+            +' '
+            +esc(side)
+            +'</div>'
+
+            +'<div class="sub">'
+            +esc(
+                md.currency||''
+            )
+            +' ? '
+            +esc(
+                md.event_name||''
+            )
+            +'</div>'
+
+            +'</div>'
+
+            +'<span class="newsstatus open">'
+            +'LIVE PRACTICE'
+            +'</span>'
+
+            +'</div>'
+
+            +'<div class="newstrademetrics">'
+
+            +'<div class="mini">'
+            +'<span>Entry</span><strong>'
+            +newsMaybe(
+                active.entry_price,
+                5
+            )
+            +'</strong></div>'
+
+            +'<div class="mini">'
+            +'<span>Current</span><strong>'
+            +newsMaybe(
+                active.current_price,
+                5
+            )
+            +'</strong></div>'
+
+            +'<div class="mini">'
+            +'<span>Current pips</span>'
+            +'<strong class="'
+            +cls(pips)
+            +'">'
+            +newsMaybe(
+                pips,
+                1,
+                ' p'
+            )
+            +'</strong></div>'
+
+            +'<div class="mini">'
+            +'<span>Open P/L</span>'
+            +'<strong class="'
+            +cls(pl)
+            +'">'
+            +(pl==null
+                ?'?'
+                :money(pl))
+            +'</strong></div>'
+
+            +'<div class="mini">'
+            +'<span>TP</span><strong>'
+            +newsMaybe(
+                active.tp_price,
+                5
+            )
+            +'</strong></div>'
+
+            +'<div class="mini">'
+            +'<span>SL</span><strong>'
+            +newsMaybe(
+                active.sl_price,
+                5
+            )
+            +'</strong></div>'
+
+            +'<div class="mini">'
+            +'<span>MFE</span><strong>'
+            +newsMaybe(
+                active.mfe_pips,
+                1,
+                ' p'
+            )
+            +'</strong></div>'
+
+            +'<div class="mini">'
+            +'<span>MAE</span><strong>'
+            +newsMaybe(
+                active.mae_pips,
+                1,
+                ' p'
+            )
+            +'</strong></div>'
+
+            +'<div class="mini">'
+            +'<span>Time open</span><strong>'
+            +newsDuration(
+                active.elapsed_seconds
+            )
+            +'</strong></div>'
+
+            +'<div class="mini">'
+            +'<span>Spread</span><strong>'
+            +newsMaybe(
+                active.current_spread_pips,
+                2,
+                ' p'
+            )
+            +'</strong></div>'
+
+            +'<div class="mini">'
+            +'<span>Detection</span><strong>'
+            +newsMaybe(
+                md.schedule_to_detection_ms,
+                0,
+                ' ms'
+            )
+            +'</strong></div>'
+
+            +'<div class="mini">'
+            +'<span>Order</span><strong>'
+            +newsMaybe(
+                active.order_request_ms,
+                0,
+                ' ms'
+            )
+            +'</strong></div>'
+
+            +'</div>'
+
+            +'<div class="newseventbox">'
+
+            +'<strong>'
+            +esc(
+                md.event_name
+                ||'Economic release'
+            )
+            +'</strong>'
+
+            +'<div class="newseventmeta">'
+
+            +'<div class="mini">'
+            +'<span>Actual</span><strong>'
+            +esc(
+                md.actual??'?'
+            )
+            +'</strong></div>'
+
+            +'<div class="mini">'
+            +'<span>Forecast</span><strong>'
+            +esc(
+                md.forecast??'?'
+            )
+            +'</strong></div>'
+
+            +'<div class="mini">'
+            +'<span>Previous</span><strong>'
+            +esc(
+                md.previous??'?'
+            )
+            +'</strong></div>'
+
+            +'<div class="mini">'
+            +'<span>Surprise</span><strong>'
+            +newsMaybe(
+                md.surprise,
+                4
+            )
+            +'</strong></div>'
+
+            +'</div>'
+            +'</div>';
+
+    }
+    else{
+
+        $('#newsactivestatus')
+            .textContent=
+            'No active trade';
+
+        $('#newsactivetrade')
+            .className=
+            'card';
+
+        $('#newsactivetrade')
+            .innerHTML=
+            '<div class="newsoffline">'
+            +'<strong>No active NewsBot trade</strong>'
+            +'<div class="sub">'
+            +'Next eligible high-impact release '
+            +'can populate this panel.'
+            +'</div>'
+            +'</div>';
+    }
+
+
+    $('#newstradesummary')
+        .textContent=
+        (sum.closed_trades||0)
+        +' closed ? '
+        +newsMaybe(
+            sum.net_pips,
+            1,
+            ' p'
+        )
+        +' net';
+
+
+    $('#newstradebody')
+        .innerHTML=
+        trades.length
+
+        ? trades.slice(
+            0,
+            100
+        ).map(
+            t=>{
+
+                const md=
+                    t.metadata||{};
+
+                return (
+                    '<tr>'
+
+                    +'<td>'
+                    +when(
+                        t.close_time_utc
+                    )
+                    +'</td>'
+
+                    +'<td>'
+                    +esc(
+                        md.event_name||'?'
+                    )
+                    +'</td>'
+
+                    +'<td><b>'
+                    +esc(
+                        t.instrument||'?'
+                    )
+                    +'</b></td>'
+
+                    +'<td>'
+                    +esc(
+                        t.side||'?'
+                    )
+                    +'</td>'
+
+                    +'<td>'
+                    +newsMaybe(
+                        t.entry_price,
+                        5
+                    )
+                    +'</td>'
+
+                    +'<td>'
+                    +newsMaybe(
+                        t.exit_price,
+                        5
+                    )
+                    +'</td>'
+
+                    +'<td class="'
+                    +cls(
+                        t.result_pips
+                    )
+                    +'">'
+                    +newsMaybe(
+                        t.result_pips,
+                        1
+                    )
+                    +'</td>'
+
+                    +'<td class="'
+                    +cls(
+                        t.realized_pl
+                    )
+                    +'">'
+                    +(t.realized_pl==null
+                        ?'?'
+                        :money(
+                            t.realized_pl
+                        ))
+                    +'</td>'
+
+                    +'<td>'
+                    +newsMaybe(
+                        t.mfe_pips,
+                        1
+                    )
+                    +'</td>'
+
+                    +'<td>'
+                    +newsMaybe(
+                        t.mae_pips,
+                        1
+                    )
+                    +'</td>'
+
+                    +'<td>'
+                    +newsDuration(
+                        t.elapsed_seconds
+                    )
+                    +'</td>'
+
+                    +'<td>'
+                    +esc(
+                        t.exit_reason||'?'
+                    )
+                    +'</td>'
+
+                    +'<td>'
+                    +newsMaybe(
+                        md.schedule_to_detection_ms,
+                        0,
+                        ' ms'
+                    )
+                    +'</td>'
+
+                    +'<td>'
+                    +newsMaybe(
+                        t.order_request_ms,
+                        0,
+                        ' ms'
+                    )
+                    +'</td>'
+
+                    +'</tr>'
+                );
+            }
+        ).join('')
+
+        : (
+            '<tr>'
+            +'<td colspan="14" class="empty">'
+            +'No completed NewsBot trades yet'
+            +'</td>'
+            +'</tr>'
+        );
+}
+
+
+async function loadNews(){
+
+    try{
+
+        const r=await fetch(
+            'data/news_g2.json?t='
+            +Date.now(),
+            {
+                cache:'no-store'
+            }
+        );
+
+        if(!r.ok){
+            throw new Error(
+                'HTTP '+r.status
+            );
+        }
+
+        NEWS=await r.json();
+
+        $('#newsfeederror')
+            .style.display=
+            'none';
+
+        renderNews();
+
+    }
+    catch(e){
+
+        const box=
+            $('#newsfeederror');
+
+        box.style.display=
+            'block';
+
+        box.textContent=
+            'News G2 data could not be loaded: '
+            +e.message
+            +' ? start the News G2 dashboard bridge.';
+
+        renderNews();
+    }
+}
+
+
 function render(){const d=DATA,a=d.account||{},p=d.prop||{},s=d.summary||{},bot=d.bot||{};$('#subtitle').textContent=`${d.challenge_name||'Practice Challenge'} â€¢ OANDA ${String(d.environment||'practice').toUpperCase()} â€¢ ${d.account_mask||'account'}`;$('#livepill').textContent=bot.halted?'BOT HALTED':'BOT RUNNING';$('#livepill').className='pill '+(bot.halted?'bad':'good');$('#tppill').textContent=s.all_tps_protected?'TP PROTECTED':'TP ATTENTION';$('#tppill').className='pill '+(s.all_tps_protected?'good':'bad');$('#updatedpill').textContent='Updated '+when(d.generated_at);
 $('#stats').innerHTML=metric('G2 Balance',money(a.balance),'Tracking since Aug 20, 2026')+metric('G2 NAV / Equity',money(a.nav),'G2 balance + current open P/L')+metric('Today P/L',money(a.today_pl),'Realized today + open P/L',cls(a.today_pl))+metric('Open P/L',money(a.unrealized_pl),`${s.open_trades||0} OANDA trades`,cls(a.unrealized_pl))+metric('Open Baskets',`${s.open_baskets||0} / 5`,`${fmt(s.active_allocation||0,3)} / 5.0x allocation`)+metric('Net Pips',fmt(s.net_pips||0,1),`${s.closed_trades||0} closed trades`,cls(s.net_pips));
 $('#risks').innerHTML=barCard('Profit Target',p.profit_progress_dollars||0,p.profit_target_dollars||1,`${fmt(p.profit_progress_percent||0,1)}% complete`,'green')+barCard('Daily Loss Room',p.daily_loss_room||0,p.daily_loss_limit_dollars||1,`Limit ${money(p.daily_loss_limit_dollars)}`,p.daily_loss_room<0?'red':'')+barCard('Max Loss Room',p.max_loss_room||0,p.max_loss_limit_dollars||1,`Floor ${money(p.max_loss_floor)}`,p.max_loss_room<0?'red':'')+barCard('Drawdown Room',p.drawdown_room||0,p.max_loss_limit_dollars||1,`Current DD ${fmt(p.current_drawdown_percent||0,2)}%`,p.drawdown_room<0?'red':'');
@@ -135,6 +1187,6 @@ function renderCalendar(){const days=DATA.analytics?.calendar||[], label=DATA.an
 function renderJournal(){const q=($('#search')?.value||'').toLowerCase(),lim=Number($('#limit')?.value||50);const tr=(DATA.trades||[]).filter(t=>!q||JSON.stringify(t).toLowerCase().includes(q)).slice(0,lim);$('#tbody').innerHTML=tr.map(t=>`<tr><td>${esc(t.id)}</td><td><b>${esc(t.pair)}</b></td><td>${esc(t.direction)}</td><td>${when(t.open_time)}</td><td>${when(t.close_time)}</td><td>${fmt(t.entry_price,5)}</td><td>${fmt(t.exit_price,5)}</td><td class="${cls(t.pips)}">${fmt(t.pips,1)}</td><td class="${cls(t.pl)}">${money(t.pl)}</td><td>${fmt(t.units,0)}</td></tr>`).join('');$('#mobilejournal').innerHTML=tr.map(t=>`<div class="tradecard"><div class="tradehead"><b>${esc(t.pair)} â€¢ ${esc(t.direction)}</b><strong class="${cls(t.pl)}">${money(t.pl)}</strong></div><div class="tradegrid"><div class="mini"><span>Pips</span><strong class="${cls(t.pips)}">${fmt(t.pips,1)}</strong></div><div class="mini"><span>Units</span><strong>${fmt(t.units,0)}</strong></div><div class="mini"><span>Opened</span><strong>${when(t.open_time)}</strong></div><div class="mini"><span>Closed</span><strong>${when(t.close_time)}</strong></div></div></div>`).join('')||'<div class="empty">No matching trades</div>'}
 function renderSystem(){const b=DATA.bot||{};$('#strategy').innerHTML=row('Policy','G2 | A1 .30 | 10 / 5 / 2')+row('A0 / A1','1.00x / 0.30x')+row('A2 / A3','0.00x / 0.00x state')+row('Max baskets','5')+row('Allocation cap','5.0x')+row('Same-pair overlap','ALLOWED')+row('Position fill','OPEN_ONLY')+row('Catastrophe','D72 / L150 / R35 / PB25');$('#runtime').innerHTML=row('State path',esc(b.state_source||'â€”'))+row('State updated',when(b.state_updated_at))+row('Halted',b.halted?'YES':'NO',b.halted?'neg':'pos')+row('Halt reason',esc(b.halt_reason||'None'))+row('Data generated',when(DATA.generated_at))+row('Environment',String(DATA.environment||'practice').toUpperCase())}
 async function load(){try{const r=await fetch('data/dashboard.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);DATA=await r.json();$('#err').style.display='none';render()}catch(e){$('#err').style.display='block';$('#err').textContent='Dashboard data could not be loaded: '+e.message+' â€” run Export-TestCDashboard.ps1 first.'}}
-document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.view).classList.add('active')});$('#search').addEventListener('input',()=>DATA&&renderJournal());$('#limit').addEventListener('change',()=>DATA&&renderJournal());load();setInterval(load,30000);
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(b.dataset.view).classList.add('active')});$('#search').addEventListener('input',()=>DATA&&renderJournal());$('#limit').addEventListener('change',()=>DATA&&renderJournal());load();loadNews();setInterval(load,30000);setInterval(loadNews,2000);
 </script>
 </body></html>
