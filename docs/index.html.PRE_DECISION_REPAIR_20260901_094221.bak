@@ -475,54 +475,6 @@
     class="newsgrid">
 </div>
 
-<div class="sectiontitle">
-    <h2>Latest News Decision</h2>
-    <span id="newsdecisionstatus">Waiting for a release</span>
-</div>
-
-<div id="newsdecision" class="card newsdecisioncard">
-    <div class="empty">
-        Waiting for the first NewsBot G2 decision.
-    </div>
-</div>
-
-<div class="sectiontitle">
-    <h2>News Decision History</h2>
-    <span id="newsdecisionhistorysummary">Decision audit trail</span>
-</div>
-
-<div class="card tablecard newsdecisionhistory">
-    <div class="tablewrap">
-        <table>
-            <thead>
-                <tr>
-                    <th>Time</th>
-                    <th>Currency</th>
-                    <th>Event</th>
-                    <th>Actual</th>
-                    <th>Forecast</th>
-                    <th>Bias</th>
-                    <th>ML MFE</th>
-                    <th>ML Min</th>
-                    <th>Pair</th>
-                    <th>Side</th>
-                    <th>Decision</th>
-                    <th>Reason</th>
-                </tr>
-            </thead>
-
-            <tbody id="newsdecisionbody">
-                <tr>
-                    <td colspan="12" class="empty">
-                        No NewsBot decisions recorded yet.
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-
 
 <div class="sectiontitle">
 
@@ -1651,8 +1603,6 @@ function renderNewsDecision(n){
 }
 
 function renderNews(){
-    renderNewsDecision(NEWS || {});
-
 
     const n=NEWS||{};
     const cal=n.calendar||{};
