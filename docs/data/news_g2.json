@@ -1,8 +1,8 @@
 {
-  "bridge_generated_utc": "2026-09-06T10:00:59.431618+00:00",
+  "bridge_generated_utc": "2026-09-06T10:02:58.276240+00:00",
   "calendar": {
-    "captured_utc": "2026-09-06T10:00:58.595608+00:00",
-    "schedule_updated_utc": "2026-09-06T10:00:59.431618+00:00",
+    "captured_utc": "2026-09-06T10:02:57.791902+00:00",
+    "schedule_updated_utc": "2026-09-06T10:02:58.276240+00:00",
     "row_count": 72,
     "high_impact_rows": [
       {
@@ -118,7 +118,7 @@
     ]
   },
   "runtime": {
-    "updated_utc": "2026-09-06T10:00:59.171904+00:00",
+    "updated_utc": "2026-09-06T10:02:58.044574+00:00",
     "bot": "NewsBot_G2",
     "mode": "OANDA_PRACTICE",
     "practice_only": true,
@@ -132,11 +132,31 @@
     "last_trade": null
   },
   "ml_worker": {
-    "age_seconds": null,
-    "fresh": false,
+    "worker": "NEWS_G2_ISOLATED_ML_WORKER_V1",
+    "state": "READY",
+    "worker_ready": true,
+    "pid": 9908,
+    "host": "127.0.0.1",
+    "port": 8765,
+    "started_utc": "2026-09-02T12:29:38.414394+00:00",
+    "last_heartbeat_utc": "2026-09-06T10:02:57.999552+00:00",
+    "last_request_utc": null,
+    "last_request_action": null,
+    "last_evaluation_ms": null,
+    "last_error": null,
+    "enabled": true,
+    "ready": true,
+    "model_ready": true,
+    "feature_count": 294,
+    "threshold_pips": 20.0,
+    "model_path": "H:\\Docs\\Trading\\ML Trading\\NewsBot_G2\\models\\xgb_news_move_regressor_g2.joblib",
+    "feature_path": "H:\\Docs\\Trading\\ML Trading\\NewsBot_G2\\models\\regressor_feature_columns_g2.joblib",
+    "load_error": null,
+    "age_seconds": 0.270171,
+    "fresh": true,
     "client_enabled": true,
-    "healthy": false,
-    "display_status": "NOT READY"
+    "healthy": true,
+    "display_status": "READY"
   },
   "active_trade": null,
   "orders": [],
@@ -157,11 +177,11 @@
     "decisions_recorded": 0,
     "trade_decisions": 0,
     "no_trade_decisions": 0,
-    "ml_worker_status": "NOT READY",
-    "ml_worker_healthy": false,
-    "ml_worker_age_seconds": null,
+    "ml_worker_status": "READY",
+    "ml_worker_healthy": true,
+    "ml_worker_age_seconds": 0.270171,
     "ml_client_enabled": true,
-    "ml_feature_count": 0,
-    "ml_threshold_pips": null
+    "ml_feature_count": 294,
+    "ml_threshold_pips": 20.0
   }
 }
