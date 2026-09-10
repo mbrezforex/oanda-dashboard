@@ -1,203 +1,35 @@
 ﻿{
-    "generated_at":  "2026-09-10T15:04:57.4875220+00:00",
+    "generated_at":  "2026-09-10T15:06:58.1604660+00:00",
     "tracking_start":  "2026-08-20T00:00:00.0000000-04:00",
     "challenge_name":  "Practice Challenge",
     "environment":  "practice",
     "account_mask":  "***-003",
     "signal_monitor":  {
                            "schema_version":  1,
-                           "generated_at":  "2026-09-10T14:50:35.245811+00:00",
+                           "generated_at":  "2026-09-10T15:05:39.209931+00:00",
                            "health":  "HEALTHY",
                            "read_only":  true,
                            "schedule":  "M15+4m30s",
                            "engine":  {
                                           "halted":  false,
                                           "open_baskets":  2,
-                                          "active_allocation":  1.9054308503945574,
+                                          "active_allocation":  1.75,
                                           "pairs_evaluated":  26,
                                           "pair_count":  26,
-                                          "median_cache_age_minutes":  5.587430183333334,
-                                          "oldest_cache_age_minutes":  5.587430183333334,
+                                          "median_cache_age_minutes":  5.65349885,
+                                          "oldest_cache_age_minutes":  19.653498850000002,
                                           "errors_24h":  0,
                                           "pair_errors":  0
                                       },
                            "exact_a0_24h":  {
-                                                "eligible":  1,
-                                                "opened":  1,
+                                                "eligible":  2,
+                                                "opened":  2,
                                                 "rejected":  0,
                                                 "fresh_now":  0,
                                                 "seen_unknown":  0,
                                                 "unseen_stale":  0
                                             },
                            "top_pairs":  [
-                                             {
-                                                 "pair":  "USDCHF",
-                                                 "bias":  "SHORT",
-                                                 "bias_inferred":  false,
-                                                 "level":  4,
-                                                 "priority":  4,
-                                                 "stage":  "WAIT_SLOPE",
-                                                 "setup_score":  98.4,
-                                                 "why":  "Strict H1 hook confirmed; waiting for M15 DOWN zero-cross",
-                                                 "m15_slope":  -3.5000000000007248E-05,
-                                                 "minutes_remaining":  9.412569816666666,
-                                                 "slope_needed":  "DOWN",
-                                                 "h1_time":  "2026-09-10T14:00:00+00:00",
-                                                 "m15_time":  "2026-09-10T14:45:00+00:00",
-                                                 "hook_time":  "2026-09-10T14:00:00+00:00",
-                                                 "indicators":  {
-                                                                    "rsi3":  {
-                                                                                 "value":  73.52452259771019,
-                                                                                 "threshold":  93.07078426763422,
-                                                                                 "lower":  6.430158840502757,
-                                                                                 "upper":  93.07078426763422,
-                                                                                 "extreme":  false,
-                                                                                 "hook":  "SHORT"
-                                                                             },
-                                                                    "rsi5":  {
-                                                                                 "value":  76.06338495688767,
-                                                                                 "threshold":  84.88454922825194,
-                                                                                 "lower":  13.114758319976064,
-                                                                                 "upper":  84.88454922825194,
-                                                                                 "extreme":  false,
-                                                                                 "hook":  "SHORT"
-                                                                             },
-                                                                    "roc4":  {
-                                                                                 "value":  0.23936137398363755,
-                                                                                 "threshold":  0.32292805005246006,
-                                                                                 "lower":  -0.3644297500710346,
-                                                                                 "upper":  0.32292805005246006,
-                                                                                 "extreme":  false,
-                                                                                 "hook":  "SHORT"
-                                                                             }
-                                                                }
-                                             },
-                                             {
-                                                 "pair":  "EURUSD",
-                                                 "bias":  "LONG",
-                                                 "bias_inferred":  false,
-                                                 "level":  4,
-                                                 "priority":  4,
-                                                 "stage":  "WAIT_SLOPE",
-                                                 "setup_score":  98.3,
-                                                 "why":  "Strict H1 hook confirmed; waiting for M15 UP zero-cross",
-                                                 "m15_slope":  0.000260000000000038,
-                                                 "minutes_remaining":  9.412569816666666,
-                                                 "slope_needed":  "UP",
-                                                 "h1_time":  "2026-09-10T14:00:00+00:00",
-                                                 "m15_time":  "2026-09-10T14:45:00+00:00",
-                                                 "hook_time":  "2026-09-10T14:00:00+00:00",
-                                                 "indicators":  {
-                                                                    "rsi3":  {
-                                                                                 "value":  29.969791976599993,
-                                                                                 "threshold":  6.799295416431727,
-                                                                                 "lower":  6.799295416431727,
-                                                                                 "upper":  92.77627643045355,
-                                                                                 "extreme":  false,
-                                                                                 "hook":  "LONG"
-                                                                             },
-                                                                    "rsi5":  {
-                                                                                 "value":  26.137208362168153,
-                                                                                 "threshold":  14.927191065251092,
-                                                                                 "lower":  14.927191065251092,
-                                                                                 "upper":  85.8138362125202,
-                                                                                 "extreme":  false,
-                                                                                 "hook":  "LONG"
-                                                                             },
-                                                                    "roc4":  {
-                                                                                 "value":  -0.20113633433328504,
-                                                                                 "threshold":  -0.26814405337217073,
-                                                                                 "lower":  -0.26814405337217073,
-                                                                                 "upper":  0.2774109423592445,
-                                                                                 "extreme":  false,
-                                                                                 "hook":  "LONG"
-                                                                             }
-                                                                }
-                                             },
-                                             {
-                                                 "pair":  "USDJPY",
-                                                 "bias":  "SHORT",
-                                                 "bias_inferred":  false,
-                                                 "level":  4,
-                                                 "priority":  4,
-                                                 "stage":  "WAIT_SLOPE",
-                                                 "setup_score":  97.6,
-                                                 "why":  "Strict H1 hook confirmed; waiting for M15 DOWN zero-cross",
-                                                 "m15_slope":  0.06750000000000966,
-                                                 "minutes_remaining":  9.412569816666666,
-                                                 "slope_needed":  "DOWN",
-                                                 "h1_time":  "2026-09-10T14:00:00+00:00",
-                                                 "m15_time":  "2026-09-10T14:45:00+00:00",
-                                                 "hook_time":  "2026-09-10T14:00:00+00:00",
-                                                 "indicators":  {
-                                                                    "rsi3":  {
-                                                                                 "value":  50.601642425425446,
-                                                                                 "threshold":  93.43579659932688,
-                                                                                 "lower":  6.834626901816798,
-                                                                                 "upper":  93.43579659932688,
-                                                                                 "extreme":  false,
-                                                                                 "hook":  "SHORT"
-                                                                             },
-                                                                    "rsi5":  {
-                                                                                 "value":  59.26403416210555,
-                                                                                 "threshold":  87.11492677075886,
-                                                                                 "lower":  13.625304902366516,
-                                                                                 "upper":  87.11492677075886,
-                                                                                 "extreme":  false,
-                                                                                 "hook":  "SHORT"
-                                                                             },
-                                                                    "roc4":  {
-                                                                                 "value":  0.22316781178428613,
-                                                                                 "threshold":  0.32376274068718164,
-                                                                                 "lower":  -0.37199333009296287,
-                                                                                 "upper":  0.32376274068718164,
-                                                                                 "extreme":  false,
-                                                                                 "hook":  "SHORT"
-                                                                             }
-                                                                }
-                                             },
-                                             {
-                                                 "pair":  "NZDUSD",
-                                                 "bias":  "LONG",
-                                                 "bias_inferred":  false,
-                                                 "level":  3,
-                                                 "priority":  3,
-                                                 "stage":  "H1_ARMED_3/3",
-                                                 "setup_score":  89.0,
-                                                 "why":  "All 3 H1 oscillators are same-side extreme; waiting for a qualifying return hook",
-                                                 "m15_slope":  0.0,
-                                                 "minutes_remaining":  null,
-                                                 "slope_needed":  null,
-                                                 "h1_time":  "2026-09-10T14:00:00+00:00",
-                                                 "m15_time":  "2026-09-10T14:45:00+00:00",
-                                                 "hook_time":  null,
-                                                 "indicators":  {
-                                                                    "rsi3":  {
-                                                                                 "value":  1.6186224225150738,
-                                                                                 "threshold":  6.252161405507906,
-                                                                                 "lower":  6.252161405507906,
-                                                                                 "upper":  93.30059910137531,
-                                                                                 "extreme":  true,
-                                                                                 "hook":  null
-                                                                             },
-                                                                    "rsi5":  {
-                                                                                 "value":  6.368696873534574,
-                                                                                 "threshold":  13.568807406880959,
-                                                                                 "lower":  13.568807406880959,
-                                                                                 "upper":  85.8289272637003,
-                                                                                 "extreme":  true,
-                                                                                 "hook":  null
-                                                                             },
-                                                                    "roc4":  {
-                                                                                 "value":  -0.7151411462788859,
-                                                                                 "threshold":  -0.42143732116971044,
-                                                                                 "lower":  -0.42143732116971044,
-                                                                                 "upper":  0.4200296463497244,
-                                                                                 "extreme":  true,
-                                                                                 "hook":  null
-                                                                             }
-                                                                }
-                                             },
                                              {
                                                  "pair":  "NZDCHF",
                                                  "bias":  "LONG",
@@ -207,76 +39,34 @@
                                                  "stage":  "H1_ARMED_3/3",
                                                  "setup_score":  89.0,
                                                  "why":  "All 3 H1 oscillators are same-side extreme; waiting for a qualifying return hook",
-                                                 "m15_slope":  -2.4999999999997247E-05,
+                                                 "m15_slope":  9.9999999999822453E-06,
                                                  "minutes_remaining":  null,
                                                  "slope_needed":  null,
-                                                 "h1_time":  "2026-09-10T14:00:00+00:00",
-                                                 "m15_time":  "2026-09-10T14:45:00+00:00",
+                                                 "h1_time":  "2026-09-10T15:00:00+00:00",
+                                                 "m15_time":  "2026-09-10T15:00:00+00:00",
                                                  "hook_time":  null,
                                                  "indicators":  {
                                                                     "rsi3":  {
-                                                                                 "value":  5.569485148060181,
-                                                                                 "threshold":  7.469261106314529,
-                                                                                 "lower":  7.469261106314529,
+                                                                                 "value":  4.22202362905999,
+                                                                                 "threshold":  7.4647297885676815,
+                                                                                 "lower":  7.4647297885676815,
                                                                                  "upper":  92.68045233605852,
                                                                                  "extreme":  true,
                                                                                  "hook":  null
                                                                              },
                                                                     "rsi5":  {
-                                                                                 "value":  12.697376587615423,
-                                                                                 "threshold":  15.356353859204901,
-                                                                                 "lower":  15.356353859204901,
+                                                                                 "value":  10.61837193144477,
+                                                                                 "threshold":  15.34882109957549,
+                                                                                 "lower":  15.34882109957549,
                                                                                  "upper":  84.7657357054551,
                                                                                  "extreme":  true,
                                                                                  "hook":  null
                                                                              },
                                                                     "roc4":  {
-                                                                                 "value":  -0.4749340369393229,
-                                                                                 "threshold":  -0.33106665242687316,
-                                                                                 "lower":  -0.33106665242687316,
+                                                                                 "value":  -0.4605471638322589,
+                                                                                 "threshold":  -0.3324093381545965,
+                                                                                 "lower":  -0.3324093381545965,
                                                                                  "upper":  0.3132284246969783,
-                                                                                 "extreme":  true,
-                                                                                 "hook":  null
-                                                                             }
-                                                                }
-                                             },
-                                             {
-                                                 "pair":  "NZDCAD",
-                                                 "bias":  "LONG",
-                                                 "bias_inferred":  false,
-                                                 "level":  3,
-                                                 "priority":  3,
-                                                 "stage":  "H1_ARMED_3/3",
-                                                 "setup_score":  89.0,
-                                                 "why":  "All 3 H1 oscillators are same-side extreme; waiting for a qualifying return hook",
-                                                 "m15_slope":  -0.00019500000000000073,
-                                                 "minutes_remaining":  null,
-                                                 "slope_needed":  null,
-                                                 "h1_time":  "2026-09-10T14:00:00+00:00",
-                                                 "m15_time":  "2026-09-10T14:45:00+00:00",
-                                                 "hook_time":  null,
-                                                 "indicators":  {
-                                                                    "rsi3":  {
-                                                                                 "value":  2.847008148847763,
-                                                                                 "threshold":  5.961264007360149,
-                                                                                 "lower":  5.961264007360149,
-                                                                                 "upper":  93.35426927086317,
-                                                                                 "extreme":  true,
-                                                                                 "hook":  null
-                                                                             },
-                                                                    "rsi5":  {
-                                                                                 "value":  8.361243946785436,
-                                                                                 "threshold":  13.425000370139655,
-                                                                                 "lower":  13.425000370139655,
-                                                                                 "upper":  85.40894211540396,
-                                                                                 "extreme":  true,
-                                                                                 "hook":  null
-                                                                             },
-                                                                    "roc4":  {
-                                                                                 "value":  -0.6406126090404474,
-                                                                                 "threshold":  -0.32126316533551635,
-                                                                                 "lower":  -0.32126316533551635,
-                                                                                 "upper":  0.32598036840618233,
                                                                                  "extreme":  true,
                                                                                  "hook":  null
                                                                              }
@@ -291,34 +81,244 @@
                                                  "stage":  "H1_ARMED_3/3",
                                                  "setup_score":  89.0,
                                                  "why":  "All 3 H1 oscillators are same-side extreme; waiting for a qualifying return hook",
-                                                 "m15_slope":  0.0006949999999998902,
+                                                 "m15_slope":  9.9999999999988987E-05,
                                                  "minutes_remaining":  null,
                                                  "slope_needed":  null,
-                                                 "h1_time":  "2026-09-10T14:00:00+00:00",
-                                                 "m15_time":  "2026-09-10T14:45:00+00:00",
+                                                 "h1_time":  "2026-09-10T15:00:00+00:00",
+                                                 "m15_time":  "2026-09-10T15:00:00+00:00",
                                                  "hook_time":  null,
                                                  "indicators":  {
                                                                     "rsi3":  {
-                                                                                 "value":  95.6280168243252,
-                                                                                 "threshold":  93.5866644317256,
+                                                                                 "value":  95.9160727496544,
+                                                                                 "threshold":  93.61304242992905,
                                                                                  "lower":  7.126124483294065,
-                                                                                 "upper":  93.5866644317256,
+                                                                                 "upper":  93.61304242992905,
                                                                                  "extreme":  true,
                                                                                  "hook":  null
                                                                              },
                                                                     "rsi5":  {
-                                                                                 "value":  89.26706981359084,
-                                                                                 "threshold":  85.88036677650608,
+                                                                                 "value":  89.68424263775405,
+                                                                                 "threshold":  85.88649020129543,
                                                                                  "lower":  14.852597469025264,
-                                                                                 "upper":  85.88036677650608,
+                                                                                 "upper":  85.88649020129543,
                                                                                  "extreme":  true,
                                                                                  "hook":  null
                                                                              },
                                                                     "roc4":  {
-                                                                                 "value":  0.4604218447942676,
-                                                                                 "threshold":  0.2814704396913512,
+                                                                                 "value":  0.38932146829810943,
+                                                                                 "threshold":  0.2831438580312265,
                                                                                  "lower":  -0.28852953327490616,
-                                                                                 "upper":  0.2814704396913512,
+                                                                                 "upper":  0.2831438580312265,
+                                                                                 "extreme":  true,
+                                                                                 "hook":  null
+                                                                             }
+                                                                }
+                                             },
+                                             {
+                                                 "pair":  "EURNZD",
+                                                 "bias":  "SHORT",
+                                                 "bias_inferred":  false,
+                                                 "level":  3,
+                                                 "priority":  3,
+                                                 "stage":  "H1_ARMED_3/3",
+                                                 "setup_score":  89.0,
+                                                 "why":  "All 3 H1 oscillators are same-side extreme; waiting for a qualifying return hook",
+                                                 "m15_slope":  -0.00017999999999984695,
+                                                 "minutes_remaining":  null,
+                                                 "slope_needed":  null,
+                                                 "h1_time":  "2026-09-10T15:00:00+00:00",
+                                                 "m15_time":  "2026-09-10T15:00:00+00:00",
+                                                 "hook_time":  null,
+                                                 "indicators":  {
+                                                                    "rsi3":  {
+                                                                                 "value":  97.89767782418397,
+                                                                                 "threshold":  93.569363319812,
+                                                                                 "lower":  6.428496672489583,
+                                                                                 "upper":  93.569363319812,
+                                                                                 "extreme":  true,
+                                                                                 "hook":  null
+                                                                             },
+                                                                    "rsi5":  {
+                                                                                 "value":  92.8304174498161,
+                                                                                 "threshold":  85.95867364649087,
+                                                                                 "lower":  14.110138866746135,
+                                                                                 "upper":  85.95867364649087,
+                                                                                 "extreme":  true,
+                                                                                 "hook":  null
+                                                                             },
+                                                                    "roc4":  {
+                                                                                 "value":  0.4693845790850304,
+                                                                                 "threshold":  0.2680546648489967,
+                                                                                 "lower":  -0.2726665335088395,
+                                                                                 "upper":  0.2680546648489967,
+                                                                                 "extreme":  true,
+                                                                                 "hook":  null
+                                                                             }
+                                                                }
+                                             },
+                                             {
+                                                 "pair":  "EURAUD",
+                                                 "bias":  "SHORT",
+                                                 "bias_inferred":  false,
+                                                 "level":  3,
+                                                 "priority":  3,
+                                                 "stage":  "H1_ARMED_3/3",
+                                                 "setup_score":  89.0,
+                                                 "why":  "All 3 H1 oscillators are same-side extreme; waiting for a qualifying return hook",
+                                                 "m15_slope":  6.9999999999903473E-05,
+                                                 "minutes_remaining":  null,
+                                                 "slope_needed":  null,
+                                                 "h1_time":  "2026-09-10T15:00:00+00:00",
+                                                 "m15_time":  "2026-09-10T15:00:00+00:00",
+                                                 "hook_time":  null,
+                                                 "indicators":  {
+                                                                    "rsi3":  {
+                                                                                 "value":  99.06450058179615,
+                                                                                 "threshold":  92.75265018196639,
+                                                                                 "lower":  6.217700674812933,
+                                                                                 "upper":  92.75265018196639,
+                                                                                 "extreme":  true,
+                                                                                 "hook":  null
+                                                                             },
+                                                                    "rsi5":  {
+                                                                                 "value":  96.91517292732813,
+                                                                                 "threshold":  84.49269499108496,
+                                                                                 "lower":  13.031035269715035,
+                                                                                 "upper":  84.49269499108496,
+                                                                                 "extreme":  true,
+                                                                                 "hook":  null
+                                                                             },
+                                                                    "roc4":  {
+                                                                                 "value":  0.45083261600580293,
+                                                                                 "threshold":  0.29480723692409794,
+                                                                                 "lower":  -0.29470493368646555,
+                                                                                 "upper":  0.29480723692409794,
+                                                                                 "extreme":  true,
+                                                                                 "hook":  null
+                                                                             }
+                                                                }
+                                             },
+                                             {
+                                                 "pair":  "AUDCHF",
+                                                 "bias":  "LONG",
+                                                 "bias_inferred":  false,
+                                                 "level":  3,
+                                                 "priority":  3,
+                                                 "stage":  "H1_ARMED_3/3",
+                                                 "setup_score":  89.0,
+                                                 "why":  "All 3 H1 oscillators are same-side extreme; waiting for a qualifying return hook",
+                                                 "m15_slope":  -6.500000000003725E-05,
+                                                 "minutes_remaining":  null,
+                                                 "slope_needed":  null,
+                                                 "h1_time":  "2026-09-10T15:00:00+00:00",
+                                                 "m15_time":  "2026-09-10T15:00:00+00:00",
+                                                 "hook_time":  null,
+                                                 "indicators":  {
+                                                                    "rsi3":  {
+                                                                                 "value":  4.744741062520575,
+                                                                                 "threshold":  7.358914181253911,
+                                                                                 "lower":  7.358914181253911,
+                                                                                 "upper":  93.17296420979545,
+                                                                                 "extreme":  true,
+                                                                                 "hook":  null
+                                                                             },
+                                                                    "rsi5":  {
+                                                                                 "value":  11.999523589469788,
+                                                                                 "threshold":  15.236381006563585,
+                                                                                 "lower":  15.236381006563585,
+                                                                                 "upper":  86.12455954180972,
+                                                                                 "extreme":  true,
+                                                                                 "hook":  null
+                                                                             },
+                                                                    "roc4":  {
+                                                                                 "value":  -0.4383936980905889,
+                                                                                 "threshold":  -0.3558814804101915,
+                                                                                 "lower":  -0.3558814804101915,
+                                                                                 "upper":  0.35758618009905313,
+                                                                                 "extreme":  true,
+                                                                                 "hook":  null
+                                                                             }
+                                                                }
+                                             },
+                                             {
+                                                 "pair":  "AUDCAD",
+                                                 "bias":  "LONG",
+                                                 "bias_inferred":  false,
+                                                 "level":  2,
+                                                 "priority":  2,
+                                                 "stage":  "H1_WATCH_2/3",
+                                                 "setup_score":  78.6,
+                                                 "why":  "2 of 3 H1 oscillators are same-side extreme",
+                                                 "m15_slope":  -0.00010499999999996623,
+                                                 "minutes_remaining":  null,
+                                                 "slope_needed":  null,
+                                                 "h1_time":  "2026-09-10T15:00:00+00:00",
+                                                 "m15_time":  "2026-09-10T15:00:00+00:00",
+                                                 "hook_time":  null,
+                                                 "indicators":  {
+                                                                    "rsi3":  {
+                                                                                 "value":  18.25873699098004,
+                                                                                 "threshold":  7.765928733593188,
+                                                                                 "lower":  7.765928733593188,
+                                                                                 "upper":  93.79616936989243,
+                                                                                 "extreme":  false,
+                                                                                 "hook":  "LONG"
+                                                                             },
+                                                                    "rsi5":  {
+                                                                                 "value":  15.325643384978704,
+                                                                                 "threshold":  15.33643819067157,
+                                                                                 "lower":  15.33643819067157,
+                                                                                 "upper":  86.55376372723138,
+                                                                                 "extreme":  true,
+                                                                                 "hook":  null
+                                                                             },
+                                                                    "roc4":  {
+                                                                                 "value":  -0.4242997043978347,
+                                                                                 "threshold":  -0.3235447332370939,
+                                                                                 "lower":  -0.3235447332370939,
+                                                                                 "upper":  0.33100478657354904,
+                                                                                 "extreme":  true,
+                                                                                 "hook":  null
+                                                                             }
+                                                                }
+                                             },
+                                             {
+                                                 "pair":  "AUDJPY",
+                                                 "bias":  "LONG",
+                                                 "bias_inferred":  false,
+                                                 "level":  1,
+                                                 "priority":  1,
+                                                 "stage":  "H1_WATCH_1/3",
+                                                 "setup_score":  63.7,
+                                                 "why":  "1 of 3 H1 oscillators is in an extreme zone",
+                                                 "m15_slope":  0.0049999999999954525,
+                                                 "minutes_remaining":  null,
+                                                 "slope_needed":  null,
+                                                 "h1_time":  "2026-09-10T15:00:00+00:00",
+                                                 "m15_time":  "2026-09-10T15:00:00+00:00",
+                                                 "hook_time":  null,
+                                                 "indicators":  {
+                                                                    "rsi3":  {
+                                                                                 "value":  10.312600420939589,
+                                                                                 "threshold":  7.2983605104303235,
+                                                                                 "lower":  7.2983605104303235,
+                                                                                 "upper":  93.72467539510153,
+                                                                                 "extreme":  false,
+                                                                                 "hook":  null
+                                                                             },
+                                                                    "rsi5":  {
+                                                                                 "value":  19.456525096683265,
+                                                                                 "threshold":  14.803920685010443,
+                                                                                 "lower":  14.803920685010443,
+                                                                                 "upper":  86.72101434470505,
+                                                                                 "extreme":  false,
+                                                                                 "hook":  null
+                                                                             },
+                                                                    "roc4":  {
+                                                                                 "value":  -0.547231387822078,
+                                                                                 "threshold":  -0.4517460866916565,
+                                                                                 "lower":  -0.4517460866916565,
+                                                                                 "upper":  0.423963956305173,
                                                                                  "extreme":  true,
                                                                                  "hook":  null
                                                                              }
@@ -326,174 +326,6 @@
                                              }
                                          ],
                            "pairs":  [
-                                         {
-                                             "pair":  "USDCHF",
-                                             "bias":  "SHORT",
-                                             "bias_inferred":  false,
-                                             "level":  4,
-                                             "priority":  4,
-                                             "stage":  "WAIT_SLOPE",
-                                             "setup_score":  98.4,
-                                             "why":  "Strict H1 hook confirmed; waiting for M15 DOWN zero-cross",
-                                             "m15_slope":  -3.5000000000007248E-05,
-                                             "minutes_remaining":  9.412569816666666,
-                                             "slope_needed":  "DOWN",
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
-                                             "hook_time":  "2026-09-10T14:00:00+00:00",
-                                             "indicators":  {
-                                                                "rsi3":  {
-                                                                             "value":  73.52452259771019,
-                                                                             "threshold":  93.07078426763422,
-                                                                             "lower":  6.430158840502757,
-                                                                             "upper":  93.07078426763422,
-                                                                             "extreme":  false,
-                                                                             "hook":  "SHORT"
-                                                                         },
-                                                                "rsi5":  {
-                                                                             "value":  76.06338495688767,
-                                                                             "threshold":  84.88454922825194,
-                                                                             "lower":  13.114758319976064,
-                                                                             "upper":  84.88454922825194,
-                                                                             "extreme":  false,
-                                                                             "hook":  "SHORT"
-                                                                         },
-                                                                "roc4":  {
-                                                                             "value":  0.23936137398363755,
-                                                                             "threshold":  0.32292805005246006,
-                                                                             "lower":  -0.3644297500710346,
-                                                                             "upper":  0.32292805005246006,
-                                                                             "extreme":  false,
-                                                                             "hook":  "SHORT"
-                                                                         }
-                                                            }
-                                         },
-                                         {
-                                             "pair":  "EURUSD",
-                                             "bias":  "LONG",
-                                             "bias_inferred":  false,
-                                             "level":  4,
-                                             "priority":  4,
-                                             "stage":  "WAIT_SLOPE",
-                                             "setup_score":  98.3,
-                                             "why":  "Strict H1 hook confirmed; waiting for M15 UP zero-cross",
-                                             "m15_slope":  0.000260000000000038,
-                                             "minutes_remaining":  9.412569816666666,
-                                             "slope_needed":  "UP",
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
-                                             "hook_time":  "2026-09-10T14:00:00+00:00",
-                                             "indicators":  {
-                                                                "rsi3":  {
-                                                                             "value":  29.969791976599993,
-                                                                             "threshold":  6.799295416431727,
-                                                                             "lower":  6.799295416431727,
-                                                                             "upper":  92.77627643045355,
-                                                                             "extreme":  false,
-                                                                             "hook":  "LONG"
-                                                                         },
-                                                                "rsi5":  {
-                                                                             "value":  26.137208362168153,
-                                                                             "threshold":  14.927191065251092,
-                                                                             "lower":  14.927191065251092,
-                                                                             "upper":  85.8138362125202,
-                                                                             "extreme":  false,
-                                                                             "hook":  "LONG"
-                                                                         },
-                                                                "roc4":  {
-                                                                             "value":  -0.20113633433328504,
-                                                                             "threshold":  -0.26814405337217073,
-                                                                             "lower":  -0.26814405337217073,
-                                                                             "upper":  0.2774109423592445,
-                                                                             "extreme":  false,
-                                                                             "hook":  "LONG"
-                                                                         }
-                                                            }
-                                         },
-                                         {
-                                             "pair":  "USDJPY",
-                                             "bias":  "SHORT",
-                                             "bias_inferred":  false,
-                                             "level":  4,
-                                             "priority":  4,
-                                             "stage":  "WAIT_SLOPE",
-                                             "setup_score":  97.6,
-                                             "why":  "Strict H1 hook confirmed; waiting for M15 DOWN zero-cross",
-                                             "m15_slope":  0.06750000000000966,
-                                             "minutes_remaining":  9.412569816666666,
-                                             "slope_needed":  "DOWN",
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
-                                             "hook_time":  "2026-09-10T14:00:00+00:00",
-                                             "indicators":  {
-                                                                "rsi3":  {
-                                                                             "value":  50.601642425425446,
-                                                                             "threshold":  93.43579659932688,
-                                                                             "lower":  6.834626901816798,
-                                                                             "upper":  93.43579659932688,
-                                                                             "extreme":  false,
-                                                                             "hook":  "SHORT"
-                                                                         },
-                                                                "rsi5":  {
-                                                                             "value":  59.26403416210555,
-                                                                             "threshold":  87.11492677075886,
-                                                                             "lower":  13.625304902366516,
-                                                                             "upper":  87.11492677075886,
-                                                                             "extreme":  false,
-                                                                             "hook":  "SHORT"
-                                                                         },
-                                                                "roc4":  {
-                                                                             "value":  0.22316781178428613,
-                                                                             "threshold":  0.32376274068718164,
-                                                                             "lower":  -0.37199333009296287,
-                                                                             "upper":  0.32376274068718164,
-                                                                             "extreme":  false,
-                                                                             "hook":  "SHORT"
-                                                                         }
-                                                            }
-                                         },
-                                         {
-                                             "pair":  "NZDUSD",
-                                             "bias":  "LONG",
-                                             "bias_inferred":  false,
-                                             "level":  3,
-                                             "priority":  3,
-                                             "stage":  "H1_ARMED_3/3",
-                                             "setup_score":  89.0,
-                                             "why":  "All 3 H1 oscillators are same-side extreme; waiting for a qualifying return hook",
-                                             "m15_slope":  0.0,
-                                             "minutes_remaining":  null,
-                                             "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
-                                             "hook_time":  null,
-                                             "indicators":  {
-                                                                "rsi3":  {
-                                                                             "value":  1.6186224225150738,
-                                                                             "threshold":  6.252161405507906,
-                                                                             "lower":  6.252161405507906,
-                                                                             "upper":  93.30059910137531,
-                                                                             "extreme":  true,
-                                                                             "hook":  null
-                                                                         },
-                                                                "rsi5":  {
-                                                                             "value":  6.368696873534574,
-                                                                             "threshold":  13.568807406880959,
-                                                                             "lower":  13.568807406880959,
-                                                                             "upper":  85.8289272637003,
-                                                                             "extreme":  true,
-                                                                             "hook":  null
-                                                                         },
-                                                                "roc4":  {
-                                                                             "value":  -0.7151411462788859,
-                                                                             "threshold":  -0.42143732116971044,
-                                                                             "lower":  -0.42143732116971044,
-                                                                             "upper":  0.4200296463497244,
-                                                                             "extreme":  true,
-                                                                             "hook":  null
-                                                                         }
-                                                            }
-                                         },
                                          {
                                              "pair":  "NZDCHF",
                                              "bias":  "LONG",
@@ -503,76 +335,34 @@
                                              "stage":  "H1_ARMED_3/3",
                                              "setup_score":  89.0,
                                              "why":  "All 3 H1 oscillators are same-side extreme; waiting for a qualifying return hook",
-                                             "m15_slope":  -2.4999999999997247E-05,
+                                             "m15_slope":  9.9999999999822453E-06,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  5.569485148060181,
-                                                                             "threshold":  7.469261106314529,
-                                                                             "lower":  7.469261106314529,
+                                                                             "value":  4.22202362905999,
+                                                                             "threshold":  7.4647297885676815,
+                                                                             "lower":  7.4647297885676815,
                                                                              "upper":  92.68045233605852,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  12.697376587615423,
-                                                                             "threshold":  15.356353859204901,
-                                                                             "lower":  15.356353859204901,
+                                                                             "value":  10.61837193144477,
+                                                                             "threshold":  15.34882109957549,
+                                                                             "lower":  15.34882109957549,
                                                                              "upper":  84.7657357054551,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  -0.4749340369393229,
-                                                                             "threshold":  -0.33106665242687316,
-                                                                             "lower":  -0.33106665242687316,
+                                                                             "value":  -0.4605471638322589,
+                                                                             "threshold":  -0.3324093381545965,
+                                                                             "lower":  -0.3324093381545965,
                                                                              "upper":  0.3132284246969783,
-                                                                             "extreme":  true,
-                                                                             "hook":  null
-                                                                         }
-                                                            }
-                                         },
-                                         {
-                                             "pair":  "NZDCAD",
-                                             "bias":  "LONG",
-                                             "bias_inferred":  false,
-                                             "level":  3,
-                                             "priority":  3,
-                                             "stage":  "H1_ARMED_3/3",
-                                             "setup_score":  89.0,
-                                             "why":  "All 3 H1 oscillators are same-side extreme; waiting for a qualifying return hook",
-                                             "m15_slope":  -0.00019500000000000073,
-                                             "minutes_remaining":  null,
-                                             "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
-                                             "hook_time":  null,
-                                             "indicators":  {
-                                                                "rsi3":  {
-                                                                             "value":  2.847008148847763,
-                                                                             "threshold":  5.961264007360149,
-                                                                             "lower":  5.961264007360149,
-                                                                             "upper":  93.35426927086317,
-                                                                             "extreme":  true,
-                                                                             "hook":  null
-                                                                         },
-                                                                "rsi5":  {
-                                                                             "value":  8.361243946785436,
-                                                                             "threshold":  13.425000370139655,
-                                                                             "lower":  13.425000370139655,
-                                                                             "upper":  85.40894211540396,
-                                                                             "extreme":  true,
-                                                                             "hook":  null
-                                                                         },
-                                                                "roc4":  {
-                                                                             "value":  -0.6406126090404474,
-                                                                             "threshold":  -0.32126316533551635,
-                                                                             "lower":  -0.32126316533551635,
-                                                                             "upper":  0.32598036840618233,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          }
@@ -587,34 +377,34 @@
                                              "stage":  "H1_ARMED_3/3",
                                              "setup_score":  89.0,
                                              "why":  "All 3 H1 oscillators are same-side extreme; waiting for a qualifying return hook",
-                                             "m15_slope":  0.0006949999999998902,
+                                             "m15_slope":  9.9999999999988987E-05,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  95.6280168243252,
-                                                                             "threshold":  93.5866644317256,
+                                                                             "value":  95.9160727496544,
+                                                                             "threshold":  93.61304242992905,
                                                                              "lower":  7.126124483294065,
-                                                                             "upper":  93.5866644317256,
+                                                                             "upper":  93.61304242992905,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  89.26706981359084,
-                                                                             "threshold":  85.88036677650608,
+                                                                             "value":  89.68424263775405,
+                                                                             "threshold":  85.88649020129543,
                                                                              "lower":  14.852597469025264,
-                                                                             "upper":  85.88036677650608,
+                                                                             "upper":  85.88649020129543,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  0.4604218447942676,
-                                                                             "threshold":  0.2814704396913512,
+                                                                             "value":  0.38932146829810943,
+                                                                             "threshold":  0.2831438580312265,
                                                                              "lower":  -0.28852953327490616,
-                                                                             "upper":  0.2814704396913512,
+                                                                             "upper":  0.2831438580312265,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          }
@@ -629,34 +419,34 @@
                                              "stage":  "H1_ARMED_3/3",
                                              "setup_score":  89.0,
                                              "why":  "All 3 H1 oscillators are same-side extreme; waiting for a qualifying return hook",
-                                             "m15_slope":  0.00045999999999990493,
+                                             "m15_slope":  -0.00017999999999984695,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  97.36026694410623,
-                                                                             "threshold":  93.55990025882453,
+                                                                             "value":  97.89767782418397,
+                                                                             "threshold":  93.569363319812,
                                                                              "lower":  6.428496672489583,
-                                                                             "upper":  93.55990025882453,
+                                                                             "upper":  93.569363319812,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  91.74175501287837,
-                                                                             "threshold":  85.9532067703145,
+                                                                             "value":  92.8304174498161,
+                                                                             "threshold":  85.95867364649087,
                                                                              "lower":  14.110138866746135,
-                                                                             "upper":  85.9532067703145,
+                                                                             "upper":  85.95867364649087,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  0.5135859050318325,
-                                                                             "threshold":  0.2676346196796455,
+                                                                             "value":  0.4693845790850304,
+                                                                             "threshold":  0.2680546648489967,
                                                                              "lower":  -0.2726665335088395,
-                                                                             "upper":  0.2676346196796455,
+                                                                             "upper":  0.2680546648489967,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          }
@@ -671,41 +461,41 @@
                                              "stage":  "H1_ARMED_3/3",
                                              "setup_score":  89.0,
                                              "why":  "All 3 H1 oscillators are same-side extreme; waiting for a qualifying return hook",
-                                             "m15_slope":  0.00018499999999999073,
+                                             "m15_slope":  6.9999999999903473E-05,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  98.57645271896304,
-                                                                             "threshold":  92.74727423296376,
+                                                                             "value":  99.06450058179615,
+                                                                             "threshold":  92.75265018196639,
                                                                              "lower":  6.217700674812933,
-                                                                             "upper":  92.74727423296376,
+                                                                             "upper":  92.75265018196639,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  95.91759840064064,
-                                                                             "threshold":  84.48484328475877,
+                                                                             "value":  96.91517292732813,
+                                                                             "threshold":  84.49269499108496,
                                                                              "lower":  13.031035269715035,
-                                                                             "upper":  84.48484328475877,
+                                                                             "upper":  84.49269499108496,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  0.4481719790233152,
-                                                                             "threshold":  0.29455642019260164,
+                                                                             "value":  0.45083261600580293,
+                                                                             "threshold":  0.29480723692409794,
                                                                              "lower":  -0.29470493368646555,
-                                                                             "upper":  0.29455642019260164,
+                                                                             "upper":  0.29480723692409794,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          }
                                                             }
                                          },
                                          {
-                                             "pair":  "AUDUSD",
+                                             "pair":  "AUDCHF",
                                              "bias":  "LONG",
                                              "bias_inferred":  false,
                                              "level":  3,
@@ -713,34 +503,34 @@
                                              "stage":  "H1_ARMED_3/3",
                                              "setup_score":  89.0,
                                              "why":  "All 3 H1 oscillators are same-side extreme; waiting for a qualifying return hook",
-                                             "m15_slope":  7.00000000000145E-05,
+                                             "m15_slope":  -6.500000000003725E-05,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  0.6590903828711419,
-                                                                             "threshold":  7.622106932656308,
-                                                                             "lower":  7.622106932656308,
-                                                                             "upper":  93.3463483924646,
+                                                                             "value":  4.744741062520575,
+                                                                             "threshold":  7.358914181253911,
+                                                                             "lower":  7.358914181253911,
+                                                                             "upper":  93.17296420979545,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  3.60603637367673,
-                                                                             "threshold":  15.67540963035981,
-                                                                             "lower":  15.67540963035981,
-                                                                             "upper":  85.9898846538711,
+                                                                             "value":  11.999523589469788,
+                                                                             "threshold":  15.236381006563585,
+                                                                             "lower":  15.236381006563585,
+                                                                             "upper":  86.12455954180972,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  -0.6476486332810949,
-                                                                             "threshold":  -0.4014569816219895,
-                                                                             "lower":  -0.4014569816219895,
-                                                                             "upper":  0.42174059643019907,
+                                                                             "value":  -0.4383936980905889,
+                                                                             "threshold":  -0.3558814804101915,
+                                                                             "lower":  -0.3558814804101915,
+                                                                             "upper":  0.35758618009905313,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          }
@@ -750,38 +540,38 @@
                                              "pair":  "AUDCAD",
                                              "bias":  "LONG",
                                              "bias_inferred":  false,
-                                             "level":  3,
-                                             "priority":  3,
-                                             "stage":  "H1_ARMED_3/3",
-                                             "setup_score":  89.0,
-                                             "why":  "All 3 H1 oscillators are same-side extreme; waiting for a qualifying return hook",
-                                             "m15_slope":  -0.00012500000000004174,
+                                             "level":  2,
+                                             "priority":  2,
+                                             "stage":  "H1_WATCH_2/3",
+                                             "setup_score":  78.6,
+                                             "why":  "2 of 3 H1 oscillators are same-side extreme",
+                                             "m15_slope":  -0.00010499999999996623,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  1.5216028812604065,
-                                                                             "threshold":  7.812820563433096,
-                                                                             "lower":  7.812820563433096,
+                                                                             "value":  18.25873699098004,
+                                                                             "threshold":  7.765928733593188,
+                                                                             "lower":  7.765928733593188,
                                                                              "upper":  93.79616936989243,
-                                                                             "extreme":  true,
-                                                                             "hook":  null
+                                                                             "extreme":  false,
+                                                                             "hook":  "LONG"
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  4.877864076795987,
-                                                                             "threshold":  15.350117155547162,
-                                                                             "lower":  15.350117155547162,
+                                                                             "value":  15.325643384978704,
+                                                                             "threshold":  15.33643819067157,
+                                                                             "lower":  15.33643819067157,
                                                                              "upper":  86.55376372723138,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  -0.5765251802896665,
-                                                                             "threshold":  -0.3220574822522201,
-                                                                             "lower":  -0.3220574822522201,
+                                                                             "value":  -0.4242997043978347,
+                                                                             "threshold":  -0.3235447332370939,
+                                                                             "lower":  -0.3235447332370939,
                                                                              "upper":  0.33100478657354904,
                                                                              "extreme":  true,
                                                                              "hook":  null
@@ -789,84 +579,42 @@
                                                             }
                                          },
                                          {
-                                             "pair":  "GBPCAD",
-                                             "bias":  "LONG",
-                                             "bias_inferred":  false,
-                                             "level":  2,
-                                             "priority":  2,
-                                             "stage":  "H1_WATCH_2/3",
-                                             "setup_score":  78.4,
-                                             "why":  "2 of 3 H1 oscillators are same-side extreme",
-                                             "m15_slope":  7.5000000000047251E-05,
-                                             "minutes_remaining":  null,
-                                             "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
-                                             "hook_time":  null,
-                                             "indicators":  {
-                                                                "rsi3":  {
-                                                                             "value":  1.8963870818656972,
-                                                                             "threshold":  6.264020337509574,
-                                                                             "lower":  6.264020337509574,
-                                                                             "upper":  93.35917265451292,
-                                                                             "extreme":  true,
-                                                                             "hook":  null
-                                                                         },
-                                                                "rsi5":  {
-                                                                             "value":  8.956680117470029,
-                                                                             "threshold":  13.333093584336478,
-                                                                             "lower":  13.333093584336478,
-                                                                             "upper":  85.90935748232171,
-                                                                             "extreme":  true,
-                                                                             "hook":  null
-                                                                         },
-                                                                "roc4":  {
-                                                                             "value":  -0.17747177557304594,
-                                                                             "threshold":  -0.2772222567827435,
-                                                                             "lower":  -0.2772222567827435,
-                                                                             "upper":  0.2522367358052499,
-                                                                             "extreme":  false,
-                                                                             "hook":  null
-                                                                         }
-                                                            }
-                                         },
-                                         {
-                                             "pair":  "AUDCHF",
+                                             "pair":  "AUDJPY",
                                              "bias":  "LONG",
                                              "bias_inferred":  false,
                                              "level":  1,
                                              "priority":  1,
                                              "stage":  "H1_WATCH_1/3",
-                                             "setup_score":  64.0,
+                                             "setup_score":  63.7,
                                              "why":  "1 of 3 H1 oscillators is in an extreme zone",
-                                             "m15_slope":  4.4999999999961737E-05,
+                                             "m15_slope":  0.0049999999999954525,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  7.572091651243767,
-                                                                             "threshold":  7.358914181253911,
-                                                                             "lower":  7.358914181253911,
-                                                                             "upper":  93.17296420979545,
+                                                                             "value":  10.312600420939589,
+                                                                             "threshold":  7.2983605104303235,
+                                                                             "lower":  7.2983605104303235,
+                                                                             "upper":  93.72467539510153,
                                                                              "extreme":  false,
                                                                              "hook":  null
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  16.072932498971795,
-                                                                             "threshold":  15.236381006563585,
-                                                                             "lower":  15.236381006563585,
-                                                                             "upper":  86.12455954180972,
+                                                                             "value":  19.456525096683265,
+                                                                             "threshold":  14.803920685010443,
+                                                                             "lower":  14.803920685010443,
+                                                                             "upper":  86.72101434470505,
                                                                              "extreme":  false,
                                                                              "hook":  null
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  -0.41234643944838556,
-                                                                             "threshold":  -0.35578689106579475,
-                                                                             "lower":  -0.35578689106579475,
-                                                                             "upper":  0.35758618009905313,
+                                                                             "value":  -0.547231387822078,
+                                                                             "threshold":  -0.4517460866916565,
+                                                                             "lower":  -0.4517460866916565,
+                                                                             "upper":  0.423963956305173,
                                                                              "extreme":  true,
                                                                              "hook":  null
                                                                          }
@@ -881,15 +629,15 @@
                                              "stage":  "H1_WATCH_1/3",
                                              "setup_score":  63.6,
                                              "why":  "1 of 3 H1 oscillators is in an extreme zone",
-                                             "m15_slope":  0.0379999999999967,
+                                             "m15_slope":  0.013500000000000512,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  10.352365202618444,
+                                                                             "value":  12.05998492728041,
                                                                              "threshold":  6.7253538247907025,
                                                                              "lower":  6.7253538247907025,
                                                                              "upper":  93.79568458462235,
@@ -897,7 +645,7 @@
                                                                              "hook":  null
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  19.634973754925014,
+                                                                             "value":  20.580689462869714,
                                                                              "threshold":  14.182612840122173,
                                                                              "lower":  14.182612840122173,
                                                                              "upper":  86.77344401770671,
@@ -905,9 +653,9 @@
                                                                              "hook":  null
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  -0.49423393739703725,
-                                                                             "threshold":  -0.4291219321312173,
-                                                                             "lower":  -0.4291219321312173,
+                                                                             "value":  -0.5716700774090366,
+                                                                             "threshold":  -0.42963544388744057,
+                                                                             "lower":  -0.42963544388744057,
                                                                              "upper":  0.3949550753726283,
                                                                              "extreme":  true,
                                                                              "hook":  null
@@ -915,211 +663,127 @@
                                                             }
                                          },
                                          {
-                                             "pair":  "AUDJPY",
+                                             "pair":  "AUDUSD",
                                              "bias":  "LONG",
-                                             "bias_inferred":  true,
-                                             "level":  0,
-                                             "priority":  0,
-                                             "stage":  "FAR",
-                                             "setup_score":  47.2,
-                                             "why":  "No same-side H1 extreme setup",
-                                             "m15_slope":  0.05850000000000222,
+                                             "bias_inferred":  false,
+                                             "level":  1,
+                                             "priority":  1,
+                                             "stage":  "H1_WATCH_1/3",
+                                             "setup_score":  63.5,
+                                             "why":  "1 of 3 H1 oscillators is in an extreme zone",
+                                             "m15_slope":  0.00022499999999997522,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  11.614592045372689,
-                                                                             "threshold":  7.2983605104303235,
-                                                                             "lower":  7.2983605104303235,
-                                                                             "upper":  93.72467539510153,
+                                                                             "value":  21.011964222715946,
+                                                                             "threshold":  7.616788077159,
+                                                                             "lower":  7.616788077159,
+                                                                             "upper":  93.3463483924646,
                                                                              "extreme":  false,
-                                                                             "hook":  null
+                                                                             "hook":  "LONG"
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  20.93729877547314,
-                                                                             "threshold":  14.803920685010443,
-                                                                             "lower":  14.803920685010443,
-                                                                             "upper":  86.72101434470505,
+                                                                             "value":  16.13729170496785,
+                                                                             "threshold":  15.65426508740407,
+                                                                             "lower":  15.65426508740407,
+                                                                             "upper":  85.9898846538711,
                                                                              "extreme":  false,
-                                                                             "hook":  null
+                                                                             "hook":  "LONG"
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  -0.42318207656978357,
-                                                                             "threshold":  -0.4517460866916565,
-                                                                             "lower":  -0.4517460866916565,
-                                                                             "upper":  0.423963956305173,
-                                                                             "extreme":  false,
+                                                                             "value":  -0.4264362706967506,
+                                                                             "threshold":  -0.4023934603904049,
+                                                                             "lower":  -0.4023934603904049,
+                                                                             "upper":  0.42174059643019907,
+                                                                             "extreme":  true,
                                                                              "hook":  null
                                                                          }
                                                             }
                                          },
                                          {
-                                             "pair":  "GBPUSD",
+                                             "pair":  "NZDUSD",
                                              "bias":  "LONG",
-                                             "bias_inferred":  true,
-                                             "level":  0,
-                                             "priority":  0,
-                                             "stage":  "FAR",
-                                             "setup_score":  44.9,
-                                             "why":  "No same-side H1 extreme setup",
-                                             "m15_slope":  0.00038000000000004697,
+                                             "bias_inferred":  false,
+                                             "level":  1,
+                                             "priority":  1,
+                                             "stage":  "H1_WATCH_1/3",
+                                             "setup_score":  62.9,
+                                             "why":  "1 of 3 H1 oscillators is in an extreme zone",
+                                             "m15_slope":  0.00024999999999997247,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  19.30529694657382,
-                                                                             "threshold":  7.041265059714366,
-                                                                             "lower":  7.041265059714366,
-                                                                             "upper":  92.78176649288211,
+                                                                             "value":  28.11475002810505,
+                                                                             "threshold":  6.230162897802878,
+                                                                             "lower":  6.230162897802878,
+                                                                             "upper":  93.30059910137531,
                                                                              "extreme":  false,
                                                                              "hook":  "LONG"
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  19.54186652504403,
-                                                                             "threshold":  15.072653661204829,
-                                                                             "lower":  15.072653661204829,
-                                                                             "upper":  85.77714099617901,
+                                                                             "value":  22.747638439826588,
+                                                                             "threshold":  13.55921284751468,
+                                                                             "lower":  13.55921284751468,
+                                                                             "upper":  85.8289272637003,
                                                                              "extreme":  false,
                                                                              "hook":  "LONG"
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  -0.2502085070892446,
-                                                                             "threshold":  -0.3125916808277609,
-                                                                             "lower":  -0.3125916808277609,
-                                                                             "upper":  0.32213514638822094,
-                                                                             "extreme":  false,
-                                                                             "hook":  "LONG"
-                                                                         }
-                                                            }
-                                         },
-                                         {
-                                             "pair":  "CADCHF",
-                                             "bias":  "SHORT",
-                                             "bias_inferred":  true,
-                                             "level":  0,
-                                             "priority":  0,
-                                             "stage":  "FAR",
-                                             "setup_score":  43.8,
-                                             "why":  "No same-side H1 extreme setup",
-                                             "m15_slope":  0.00010500000000002174,
-                                             "minutes_remaining":  null,
-                                             "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
-                                             "hook_time":  null,
-                                             "indicators":  {
-                                                                "rsi3":  {
-                                                                             "value":  82.40495098344596,
-                                                                             "threshold":  92.51905523994013,
-                                                                             "lower":  7.193171206141276,
-                                                                             "upper":  92.51905523994013,
-                                                                             "extreme":  false,
-                                                                             "hook":  "SHORT"
-                                                                         },
-                                                                "rsi5":  {
-                                                                             "value":  81.2902664001195,
-                                                                             "threshold":  84.57837384869421,
-                                                                             "lower":  14.607997228884242,
-                                                                             "upper":  84.57837384869421,
-                                                                             "extreme":  false,
-                                                                             "hook":  "SHORT"
-                                                                         },
-                                                                "roc4":  {
-                                                                             "value":  0.16526109549366286,
-                                                                             "threshold":  0.28119493740721746,
-                                                                             "lower":  -0.2878948823256168,
-                                                                             "upper":  0.28119493740721746,
-                                                                             "extreme":  false,
+                                                                             "value":  -0.4523878883424537,
+                                                                             "threshold":  -0.4218760100514066,
+                                                                             "lower":  -0.4218760100514066,
+                                                                             "upper":  0.4200296463497244,
+                                                                             "extreme":  true,
                                                                              "hook":  null
                                                                          }
                                                             }
                                          },
                                          {
-                                             "pair":  "EURCAD",
+                                             "pair":  "NZDCAD",
                                              "bias":  "LONG",
-                                             "bias_inferred":  true,
-                                             "level":  0,
-                                             "priority":  0,
-                                             "stage":  "FAR",
-                                             "setup_score":  41.4,
-                                             "why":  "No same-side H1 extreme setup",
-                                             "m15_slope":  -4.9999999999217337E-06,
+                                             "bias_inferred":  false,
+                                             "level":  1,
+                                             "priority":  1,
+                                             "stage":  "H1_WATCH_1/3",
+                                             "setup_score":  62.9,
+                                             "why":  "1 of 3 H1 oscillators is in an extreme zone",
+                                             "m15_slope":  2.0000000000020002E-05,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  21.356490541410267,
-                                                                             "threshold":  6.663454698391677,
-                                                                             "lower":  6.663454698391677,
-                                                                             "upper":  92.80452330905636,
+                                                                             "value":  26.992114566874648,
+                                                                             "threshold":  5.957987276206472,
+                                                                             "lower":  5.957987276206472,
+                                                                             "upper":  93.35426927086317,
                                                                              "extreme":  false,
                                                                              "hook":  "LONG"
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  23.495289018911407,
-                                                                             "threshold":  14.352711584328928,
-                                                                             "lower":  14.352711584328928,
-                                                                             "upper":  85.01795771110461,
+                                                                             "value":  23.290066911637055,
+                                                                             "threshold":  13.337276568003446,
+                                                                             "lower":  13.337276568003446,
+                                                                             "upper":  85.40894211540396,
                                                                              "extreme":  false,
                                                                              "hook":  "LONG"
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  -0.1276121586374801,
-                                                                             "threshold":  -0.22392278046439296,
-                                                                             "lower":  -0.22392278046439296,
-                                                                             "upper":  0.22191872452508507,
-                                                                             "extreme":  false,
-                                                                             "hook":  null
-                                                                         }
-                                                            }
-                                         },
-                                         {
-                                             "pair":  "EURCHF",
-                                             "bias":  "SHORT",
-                                             "bias_inferred":  true,
-                                             "level":  0,
-                                             "priority":  0,
-                                             "stage":  "FAR",
-                                             "setup_score":  40.0,
-                                             "why":  "No same-side H1 extreme setup",
-                                             "m15_slope":  0.00015999999999999348,
-                                             "minutes_remaining":  null,
-                                             "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
-                                             "hook_time":  null,
-                                             "indicators":  {
-                                                                "rsi3":  {
-                                                                             "value":  79.55700814742613,
-                                                                             "threshold":  91.1403943900854,
-                                                                             "lower":  7.620281665470984,
-                                                                             "upper":  91.1403943900854,
-                                                                             "extreme":  false,
-                                                                             "hook":  null
-                                                                         },
-                                                                "rsi5":  {
-                                                                             "value":  77.06092874709924,
-                                                                             "threshold":  82.78606519683808,
-                                                                             "lower":  15.412578032222994,
-                                                                             "upper":  82.78606519683808,
-                                                                             "extreme":  false,
-                                                                             "hook":  null
-                                                                         },
-                                                                "roc4":  {
-                                                                             "value":  0.04029777938026058,
-                                                                             "threshold":  0.17678586811014552,
-                                                                             "lower":  -0.18645452759398784,
-                                                                             "upper":  0.17678586811014552,
-                                                                             "extreme":  false,
+                                                                             "value":  -0.444064054379234,
+                                                                             "threshold":  -0.32196739089005955,
+                                                                             "lower":  -0.32196739089005955,
+                                                                             "upper":  0.32598036840618233,
+                                                                             "extreme":  true,
                                                                              "hook":  null
                                                                          }
                                                             }
@@ -1131,17 +795,17 @@
                                              "level":  0,
                                              "priority":  0,
                                              "stage":  "FAR",
-                                             "setup_score":  39.8,
+                                             "setup_score":  45.2,
                                              "why":  "No same-side H1 extreme setup",
-                                             "m15_slope":  -4.5000000000017248E-05,
+                                             "m15_slope":  -0.00010999999999999899,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  83.0866673190095,
+                                                                             "value":  91.72737360731314,
                                                                              "threshold":  91.80762412609948,
                                                                              "lower":  7.658398104004315,
                                                                              "upper":  91.80762412609948,
@@ -1149,7 +813,7 @@
                                                                              "hook":  null
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  74.21120701024347,
+                                                                             "value":  83.45512151906208,
                                                                              "threshold":  84.10097040341674,
                                                                              "lower":  15.59131467859136,
                                                                              "upper":  84.10097040341674,
@@ -1157,7 +821,7 @@
                                                                              "hook":  null
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  0.050080361510329574,
+                                                                             "value":  0.0815157267127109,
                                                                              "threshold":  0.18018007542039993,
                                                                              "lower":  -0.17784533047437712,
                                                                              "upper":  0.18018007542039993,
@@ -1167,84 +831,84 @@
                                                             }
                                          },
                                          {
-                                             "pair":  "USDCAD",
-                                             "bias":  "SHORT",
+                                             "pair":  "GBPCHF",
+                                             "bias":  "LONG",
                                              "bias_inferred":  true,
                                              "level":  0,
                                              "priority":  0,
                                              "stage":  "FAR",
-                                             "setup_score":  33.4,
+                                             "setup_score":  35.3,
                                              "why":  "No same-side H1 extreme setup",
-                                             "m15_slope":  -0.0003349999999999742,
+                                             "m15_slope":  8.4999999999890719E-05,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  58.51034693453172,
-                                                                             "threshold":  93.23464688806031,
-                                                                             "lower":  6.690215310864346,
-                                                                             "upper":  93.23464688806031,
+                                                                             "value":  22.099986079718192,
+                                                                             "threshold":  7.850355164281181,
+                                                                             "lower":  7.850355164281181,
+                                                                             "upper":  92.00793115906454,
                                                                              "extreme":  false,
                                                                              "hook":  null
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  63.5958395758992,
-                                                                             "threshold":  85.43222428652703,
-                                                                             "lower":  13.056651453179008,
-                                                                             "upper":  85.43222428652703,
+                                                                             "value":  38.684022036863276,
+                                                                             "threshold":  15.840546723369767,
+                                                                             "lower":  15.840546723369767,
+                                                                             "upper":  83.77379755778438,
                                                                              "extreme":  false,
                                                                              "hook":  null
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  0.07386487073648418,
-                                                                             "threshold":  0.1971056213766067,
-                                                                             "lower":  -0.22653565631762174,
-                                                                             "upper":  0.1971056213766067,
+                                                                             "value":  -0.07102919482033787,
+                                                                             "threshold":  -0.2633518947011524,
+                                                                             "lower":  -0.2633518947011524,
+                                                                             "upper":  0.25132732491405974,
                                                                              "extreme":  false,
                                                                              "hook":  null
                                                                          }
                                                             }
                                          },
                                          {
-                                             "pair":  "CHFJPY",
-                                             "bias":  "LONG",
+                                             "pair":  "EURCAD",
+                                             "bias":  "SHORT",
                                              "bias_inferred":  true,
                                              "level":  0,
                                              "priority":  0,
                                              "stage":  "FAR",
-                                             "setup_score":  33.2,
+                                             "setup_score":  34.1,
                                              "why":  "No same-side H1 extreme setup",
-                                             "m15_slope":  0.09449999999999648,
+                                             "m15_slope":  -8.5000000000001741E-05,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  25.62835699321198,
-                                                                             "threshold":  6.900090419128943,
-                                                                             "lower":  6.900090419128943,
-                                                                             "upper":  93.89998078327055,
+                                                                             "value":  74.55622840640505,
+                                                                             "threshold":  92.80452330905636,
+                                                                             "lower":  6.663454698391677,
+                                                                             "upper":  92.80452330905636,
                                                                              "extreme":  false,
                                                                              "hook":  null
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  37.36986961617865,
-                                                                             "threshold":  13.986029360014486,
-                                                                             "lower":  13.986029360014486,
-                                                                             "upper":  86.9269580664068,
+                                                                             "value":  64.20322840804309,
+                                                                             "threshold":  85.01795771110461,
+                                                                             "lower":  14.352711584328928,
+                                                                             "upper":  85.01795771110461,
                                                                              "extreme":  false,
                                                                              "hook":  null
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  -0.021624244469997667,
-                                                                             "threshold":  -0.3185116557057308,
-                                                                             "lower":  -0.3185116557057308,
-                                                                             "upper":  0.30815512095790226,
+                                                                             "value":  0.023657734834148236,
+                                                                             "threshold":  0.22191872452508507,
+                                                                             "lower":  -0.22392278046439296,
+                                                                             "upper":  0.22191872452508507,
                                                                              "extreme":  false,
                                                                              "hook":  null
                                                                          }
@@ -1257,17 +921,17 @@
                                              "level":  0,
                                              "priority":  0,
                                              "stage":  "FAR",
-                                             "setup_score":  30.9,
+                                             "setup_score":  33.9,
                                              "why":  "No same-side H1 extreme setup",
-                                             "m15_slope":  0.1490000000000009,
+                                             "m15_slope":  0.04349999999999454,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  29.031003850468622,
+                                                                             "value":  32.88808732282638,
                                                                              "threshold":  7.077782097790568,
                                                                              "lower":  7.077782097790568,
                                                                              "upper":  93.56740283386807,
@@ -1275,7 +939,7 @@
                                                                              "hook":  null
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  42.644492616470195,
+                                                                             "value":  44.37318662108924,
                                                                              "threshold":  14.097455567246858,
                                                                              "lower":  14.097455567246858,
                                                                              "upper":  86.7578976098428,
@@ -1283,7 +947,7 @@
                                                                              "hook":  null
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  -0.024971307007815025,
+                                                                             "value":  -0.1860045925876186,
                                                                              "threshold":  -0.3526822931714415,
                                                                              "lower":  -0.3526822931714415,
                                                                              "upper":  0.30507973654089476,
@@ -1293,44 +957,380 @@
                                                             }
                                          },
                                          {
-                                             "pair":  "CADJPY",
+                                             "pair":  "EURCHF",
                                              "bias":  "SHORT",
                                              "bias_inferred":  true,
                                              "level":  0,
                                              "priority":  0,
                                              "stage":  "FAR",
-                                             "setup_score":  29.9,
+                                             "setup_score":  31.7,
                                              "why":  "No same-side H1 extreme setup",
-                                             "m15_slope":  0.07500000000000284,
+                                             "m15_slope":  -5.4999999999971738E-05,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  47.11759148763839,
-                                                                             "threshold":  93.82154429306294,
+                                                                             "value":  58.35972687190646,
+                                                                             "threshold":  91.1403943900854,
+                                                                             "lower":  7.620281665470984,
+                                                                             "upper":  91.1403943900854,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "rsi5":  {
+                                                                             "value":  66.85153966315053,
+                                                                             "threshold":  82.78606519683808,
+                                                                             "lower":  15.412578032222994,
+                                                                             "upper":  82.78606519683808,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "roc4":  {
+                                                                             "value":  0.006361727845294318,
+                                                                             "threshold":  0.17678586811014552,
+                                                                             "lower":  -0.18645452759398784,
+                                                                             "upper":  0.17678586811014552,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         }
+                                                            }
+                                         },
+                                         {
+                                             "pair":  "GBPUSD",
+                                             "bias":  "LONG",
+                                             "bias_inferred":  true,
+                                             "level":  0,
+                                             "priority":  0,
+                                             "stage":  "FAR",
+                                             "setup_score":  31.6,
+                                             "why":  "No same-side H1 extreme setup",
+                                             "m15_slope":  0.0003450000000000397,
+                                             "minutes_remaining":  null,
+                                             "slope_needed":  null,
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
+                                             "hook_time":  null,
+                                             "indicators":  {
+                                                                "rsi3":  {
+                                                                             "value":  46.77630946158019,
+                                                                             "threshold":  7.041265059714366,
+                                                                             "lower":  7.041265059714366,
+                                                                             "upper":  92.78176649288211,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "rsi5":  {
+                                                                             "value":  37.65363563822531,
+                                                                             "threshold":  15.072653661204829,
+                                                                             "lower":  15.072653661204829,
+                                                                             "upper":  85.77714099617901,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "roc4":  {
+                                                                             "value":  -0.10784060272556184,
+                                                                             "threshold":  -0.3125916808277609,
+                                                                             "lower":  -0.3125916808277609,
+                                                                             "upper":  0.32213514638822094,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         }
+                                                            }
+                                         },
+                                         {
+                                             "pair":  "CADJPY",
+                                             "bias":  "LONG",
+                                             "bias_inferred":  true,
+                                             "level":  0,
+                                             "priority":  0,
+                                             "stage":  "FAR",
+                                             "setup_score":  31.6,
+                                             "why":  "No same-side H1 extreme setup",
+                                             "m15_slope":  0.015000000000000568,
+                                             "minutes_remaining":  null,
+                                             "slope_needed":  null,
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
+                                             "hook_time":  null,
+                                             "indicators":  {
+                                                                "rsi3":  {
+                                                                             "value":  34.439100055032185,
+                                                                             "threshold":  6.421248635975173,
                                                                              "lower":  6.421248635975173,
                                                                              "upper":  93.82154429306294,
                                                                              "extreme":  false,
                                                                              "hook":  null
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  56.35089058243369,
-                                                                             "threshold":  86.53827537877378,
+                                                                             "value":  46.98218710298963,
+                                                                             "threshold":  14.035386738160256,
                                                                              "lower":  14.035386738160256,
                                                                              "upper":  86.53827537877378,
                                                                              "extreme":  false,
                                                                              "hook":  null
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  0.14734685809778547,
-                                                                             "threshold":  0.31434211279797786,
+                                                                             "value":  -0.12733370397604027,
+                                                                             "threshold":  -0.3443230069645924,
                                                                              "lower":  -0.3443230069645924,
                                                                              "upper":  0.31434211279797786,
                                                                              "extreme":  false,
-                                                                             "hook":  "SHORT"
+                                                                             "hook":  null
+                                                                         }
+                                                            }
+                                         },
+                                         {
+                                             "pair":  "EURUSD",
+                                             "bias":  "SHORT",
+                                             "bias_inferred":  true,
+                                             "level":  0,
+                                             "priority":  0,
+                                             "stage":  "FAR",
+                                             "setup_score":  30.4,
+                                             "why":  "No same-side H1 extreme setup",
+                                             "m15_slope":  0.00040000000000006697,
+                                             "minutes_remaining":  null,
+                                             "slope_needed":  null,
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
+                                             "hook_time":  null,
+                                             "indicators":  {
+                                                                "rsi3":  {
+                                                                             "value":  67.91868363879368,
+                                                                             "threshold":  92.77627643045355,
+                                                                             "lower":  6.799295416431727,
+                                                                             "upper":  92.77627643045355,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "rsi5":  {
+                                                                             "value":  56.96767750636786,
+                                                                             "threshold":  85.8138362125202,
+                                                                             "lower":  14.927191065251092,
+                                                                             "upper":  85.8138362125202,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "roc4":  {
+                                                                             "value":  0.014621140448944914,
+                                                                             "threshold":  0.2774109423592445,
+                                                                             "lower":  -0.26814405337217073,
+                                                                             "upper":  0.2774109423592445,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         }
+                                                            }
+                                         },
+                                         {
+                                             "pair":  "USDJPY",
+                                             "bias":  "LONG",
+                                             "bias_inferred":  true,
+                                             "level":  0,
+                                             "priority":  0,
+                                             "stage":  "FAR",
+                                             "setup_score":  30.1,
+                                             "why":  "No same-side H1 extreme setup",
+                                             "m15_slope":  -0.04049999999999443,
+                                             "minutes_remaining":  null,
+                                             "slope_needed":  null,
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
+                                             "hook_time":  null,
+                                             "indicators":  {
+                                                                "rsi3":  {
+                                                                             "value":  37.245204297544106,
+                                                                             "threshold":  6.834626901816798,
+                                                                             "lower":  6.834626901816798,
+                                                                             "upper":  93.43579659932688,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "rsi5":  {
+                                                                             "value":  49.176927206247555,
+                                                                             "threshold":  13.625304902366516,
+                                                                             "lower":  13.625304902366516,
+                                                                             "upper":  87.11492677075886,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "roc4":  {
+                                                                             "value":  -0.12137340170051969,
+                                                                             "threshold":  -0.37199333009296287,
+                                                                             "lower":  -0.37199333009296287,
+                                                                             "upper":  0.3230773448624258,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         }
+                                                            }
+                                         },
+                                         {
+                                             "pair":  "CADCHF",
+                                             "bias":  "LONG",
+                                             "bias_inferred":  true,
+                                             "level":  0,
+                                             "priority":  0,
+                                             "stage":  "FAR",
+                                             "setup_score":  29.5,
+                                             "why":  "No same-side H1 extreme setup",
+                                             "m15_slope":  0.0,
+                                             "minutes_remaining":  null,
+                                             "slope_needed":  null,
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
+                                             "hook_time":  null,
+                                             "indicators":  {
+                                                                "rsi3":  {
+                                                                             "value":  32.60001875563471,
+                                                                             "threshold":  7.193171206141276,
+                                                                             "lower":  7.193171206141276,
+                                                                             "upper":  92.51905523994013,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "rsi5":  {
+                                                                             "value":  45.959046523646,
+                                                                             "threshold":  14.607997228884242,
+                                                                             "lower":  14.607997228884242,
+                                                                             "upper":  84.57837384869421,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "roc4":  {
+                                                                             "value":  -0.013626530855570529,
+                                                                             "threshold":  -0.2878948823256168,
+                                                                             "lower":  -0.2878948823256168,
+                                                                             "upper":  0.28119493740721746,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         }
+                                                            }
+                                         },
+                                         {
+                                             "pair":  "CHFJPY",
+                                             "bias":  "LONG",
+                                             "bias_inferred":  true,
+                                             "level":  0,
+                                             "priority":  0,
+                                             "stage":  "FAR",
+                                             "setup_score":  28.4,
+                                             "why":  "No same-side H1 extreme setup",
+                                             "m15_slope":  0.02400000000000091,
+                                             "minutes_remaining":  null,
+                                             "slope_needed":  null,
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
+                                             "hook_time":  null,
+                                             "indicators":  {
+                                                                "rsi3":  {
+                                                                             "value":  49.00396480084015,
+                                                                             "threshold":  6.900090419128943,
+                                                                             "lower":  6.900090419128943,
+                                                                             "upper":  93.89998078327055,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "rsi5":  {
+                                                                             "value":  49.89157783803136,
+                                                                             "threshold":  13.986029360014486,
+                                                                             "lower":  13.986029360014486,
+                                                                             "upper":  86.9269580664068,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "roc4":  {
+                                                                             "value":  -0.11793756680058554,
+                                                                             "threshold":  -0.3185116557057308,
+                                                                             "lower":  -0.3185116557057308,
+                                                                             "upper":  0.30815512095790226,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         }
+                                                            }
+                                         },
+                                         {
+                                             "pair":  "USDCAD",
+                                             "bias":  "SHORT",
+                                             "bias_inferred":  true,
+                                             "level":  0,
+                                             "priority":  0,
+                                             "stage":  "FAR",
+                                             "setup_score":  27.5,
+                                             "why":  "No same-side H1 extreme setup",
+                                             "m15_slope":  -0.0005500000000000504,
+                                             "minutes_remaining":  null,
+                                             "slope_needed":  null,
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
+                                             "hook_time":  null,
+                                             "indicators":  {
+                                                                "rsi3":  {
+                                                                             "value":  48.99062509445122,
+                                                                             "threshold":  93.23464688806031,
+                                                                             "lower":  6.690215310864346,
+                                                                             "upper":  93.23464688806031,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "rsi5":  {
+                                                                             "value":  57.33060145966274,
+                                                                             "threshold":  85.43222428652703,
+                                                                             "lower":  13.056651453179008,
+                                                                             "upper":  85.43222428652703,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "roc4":  {
+                                                                             "value":  0.00651409215268739,
+                                                                             "threshold":  0.1971056213766067,
+                                                                             "lower":  -0.22653565631762174,
+                                                                             "upper":  0.1971056213766067,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         }
+                                                            }
+                                         },
+                                         {
+                                             "pair":  "USDCHF",
+                                             "bias":  "LONG",
+                                             "bias_inferred":  true,
+                                             "level":  0,
+                                             "priority":  0,
+                                             "stage":  "FAR",
+                                             "setup_score":  27.2,
+                                             "why":  "No same-side H1 extreme setup",
+                                             "m15_slope":  -0.0003349999999999742,
+                                             "minutes_remaining":  null,
+                                             "slope_needed":  null,
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
+                                             "hook_time":  null,
+                                             "indicators":  {
+                                                                "rsi3":  {
+                                                                             "value":  36.50534699468471,
+                                                                             "threshold":  6.430158840502757,
+                                                                             "lower":  6.430158840502757,
+                                                                             "upper":  93.07078426763422,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "rsi5":  {
+                                                                             "value":  49.10767396276597,
+                                                                             "threshold":  13.114758319976064,
+                                                                             "lower":  13.114758319976064,
+                                                                             "upper":  84.88454922825194,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
+                                                                         },
+                                                                "roc4":  {
+                                                                             "value":  -0.007397452810409266,
+                                                                             "threshold":  -0.3644297500710346,
+                                                                             "lower":  -0.3644297500710346,
+                                                                             "upper":  0.32292805005246006,
+                                                                             "extreme":  false,
+                                                                             "hook":  null
                                                                          }
                                                             }
                                          },
@@ -1341,17 +1341,17 @@
                                              "level":  0,
                                              "priority":  0,
                                              "stage":  "FAR",
-                                             "setup_score":  27.3,
+                                             "setup_score":  25.9,
                                              "why":  "No same-side H1 extreme setup",
-                                             "m15_slope":  0.11700000000000443,
+                                             "m15_slope":  0.01650000000000773,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  35.80668556086147,
+                                                                             "value":  51.915512251238475,
                                                                              "threshold":  7.077184725652824,
                                                                              "lower":  7.077184725652824,
                                                                              "upper":  93.73367383379424,
@@ -1359,7 +1359,7 @@
                                                                              "hook":  null
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  48.037117585241994,
+                                                                             "value":  55.93808162602535,
                                                                              "threshold":  14.478220488961554,
                                                                              "lower":  14.478220488961554,
                                                                              "upper":  87.3160890459265,
@@ -1367,7 +1367,7 @@
                                                                              "hook":  null
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  0.021810250817888566,
+                                                                             "value":  -0.10215359882104202,
                                                                              "threshold":  -0.3120161457206766,
                                                                              "lower":  -0.3120161457206766,
                                                                              "upper":  0.27259099346024374,
@@ -1377,42 +1377,42 @@
                                                             }
                                          },
                                          {
-                                             "pair":  "GBPCHF",
+                                             "pair":  "GBPCAD",
                                              "bias":  "SHORT",
                                              "bias_inferred":  true,
                                              "level":  0,
                                              "priority":  0,
                                              "stage":  "FAR",
-                                             "setup_score":  26.7,
+                                             "setup_score":  25.1,
                                              "why":  "No same-side H1 extreme setup",
-                                             "m15_slope":  0.00024500000000005073,
+                                             "m15_slope":  0.000140000000000029,
                                              "minutes_remaining":  null,
                                              "slope_needed":  null,
-                                             "h1_time":  "2026-09-10T14:00:00+00:00",
-                                             "m15_time":  "2026-09-10T14:45:00+00:00",
+                                             "h1_time":  "2026-09-10T15:00:00+00:00",
+                                             "m15_time":  "2026-09-10T15:00:00+00:00",
                                              "hook_time":  null,
                                              "indicators":  {
                                                                 "rsi3":  {
-                                                                             "value":  48.08230926570836,
-                                                                             "threshold":  92.00793115906454,
-                                                                             "lower":  7.850355164281181,
-                                                                             "upper":  92.00793115906454,
+                                                                             "value":  58.74510484932067,
+                                                                             "threshold":  93.35917265451292,
+                                                                             "lower":  6.223158696927688,
+                                                                             "upper":  93.35917265451292,
                                                                              "extreme":  false,
-                                                                             "hook":  null
+                                                                             "hook":  "LONG"
                                                                          },
                                                                 "rsi5":  {
-                                                                             "value":  59.24557692101575,
-                                                                             "threshold":  83.77379755778438,
-                                                                             "lower":  15.840546723369767,
-                                                                             "upper":  83.77379755778438,
+                                                                             "value":  48.436894598854266,
+                                                                             "threshold":  85.90935748232171,
+                                                                             "lower":  13.284183175210178,
+                                                                             "upper":  85.90935748232171,
                                                                              "extreme":  false,
-                                                                             "hook":  null
+                                                                             "hook":  "LONG"
                                                                          },
                                                                 "roc4":  {
-                                                                             "value":  -0.013659336156246482,
-                                                                             "threshold":  0.25132732491405974,
-                                                                             "lower":  -0.2633518947011524,
-                                                                             "upper":  0.25132732491405974,
+                                                                             "value":  -0.05400347547118711,
+                                                                             "threshold":  0.2522367358052499,
+                                                                             "lower":  -0.2772222567827435,
+                                                                             "upper":  0.2522367358052499,
                                                                              "extreme":  false,
                                                                              "hook":  null
                                                                          }
@@ -1421,38 +1421,45 @@
                                      ],
                            "recent_signals":  [
                                                   {
+                                                      "pair":  "USDJPY",
+                                                      "direction":  "SHORT",
+                                                      "entry_time":  "2026-09-10T15:00:00+00:00",
+                                                      "age_minutes":  5.65349885,
+                                                      "status":  "OPENED"
+                                                  },
+                                                  {
                                                       "pair":  "GBPUSD",
                                                       "direction":  "LONG",
                                                       "entry_time":  "2026-09-10T14:30:00+00:00",
-                                                      "age_minutes":  20.587430183333332,
+                                                      "age_minutes":  35.65349885,
                                                       "status":  "OPENED"
                                                   }
                                               ],
                            "note":  "Setup score is a diagnostic distance-to-setup measure, not a trade probability.",
                            "snapshot_present":  true,
-                           "snapshot_age_minutes":  14
+                           "snapshot_age_minutes":  1
                        },
     "account":  {
                     "balance":  100035.16,
-                    "nav":  99946.68,
-                    "unrealized_pl":  -88.48,
+                    "nav":  99942.48,
+                    "unrealized_pl":  -92.68,
                     "realized_pl":  35.16,
-                    "today_pl":  -78.48,
+                    "today_pl":  -82.68,
                     "broker_balance":  98824.11,
-                    "broker_nav":  98735.63,
-                    "broker_unrealized_pl":  -88.47
+                    "broker_nav":  98731.43,
+                    "broker_unrealized_pl":  -92.67
                 },
     "prop":  {
                  "profit_target_dollars":  10000,
                  "profit_progress_dollars":  0,
                  "profit_progress_percent":  0,
                  "daily_loss_limit_dollars":  5000,
-                 "daily_loss_room":  4921.52,
+                 "daily_loss_room":  4917.32,
                  "max_loss_limit_dollars":  10000,
                  "max_loss_floor":  90000,
-                 "max_loss_room":  9946.6800000000076,
-                 "current_drawdown_percent":  -0.080897672242459334,
-                 "drawdown_room":  9946.6800000000076
+                 "max_loss_room":  9942.48000000001,
+                 "current_drawdown_percent":  -0.085096513362307336,
+                 "drawdown_room":  9942.48000000001
              },
     "summary":  {
                     "open_baskets":  2,
@@ -1473,7 +1480,7 @@
     "bot":  {
                 "halted":  false,
                 "halt_reason":  "",
-                "state_updated_at":  "2026-09-10T15:04:56.333968+00:00",
+                "state_updated_at":  "2026-09-10T15:06:01.781957+00:00",
                 "state_source":  "C:\\Users\\mbreslin\\AppData\\Local\\TestC_Generation2\\state\\bot_state.json"
             },
     "baskets":  [
@@ -1481,12 +1488,12 @@
                         "basket_id_short":  "NZDUSD|2026-09-08T05:4",
                         "pair":  "NZDUSD",
                         "direction":  "LONG",
-                        "current_pips":  -55.06,
-                        "open_pl":  -90.68,
+                        "current_pips":  -54.26,
+                        "open_pl":  -89.38,
                         "target_pips":  2,
                         "allocation":  1.25,
                         "average_entry":  0.58615615384615383,
-                        "current_price":  0.58065,
+                        "current_price":  0.58073,
                         "adds_state":  2,
                         "funded_adds":  1,
                         "rejected_rescues":  0,
@@ -1504,12 +1511,12 @@
                         "basket_id_short":  "USDJPY|2026-09-10T15:0",
                         "pair":  "USDJPY",
                         "direction":  "SHORT",
-                        "current_pips":  -2.2,
-                        "open_pl":  2.2,
+                        "current_pips":  -7.6,
+                        "open_pl":  -3.3,
                         "target_pips":  10,
                         "allocation":  0.5,
                         "average_entry":  153.883,
-                        "current_price":  153.905,
+                        "current_price":  153.959,
                         "adds_state":  0,
                         "funded_adds":  0,
                         "rejected_rescues":  0,
@@ -1517,7 +1524,7 @@
                         "overlay":  false,
                         "server_tp":  153.827,
                         "tp_protected":  true,
-                        "age_text":  "0h 4m",
+                        "age_text":  "0h 6m",
                         "trade_ids":  [
                                           "1166"
                                       ]
@@ -1593,8 +1600,8 @@
                              "equity":  100035.16
                          },
                          {
-                             "time":  "2026-09-10T15:04:57.4770095+00:00",
-                             "equity":  99946.68
+                             "time":  "2026-09-10T15:06:58.1338849+00:00",
+                             "equity":  99942.48
                          }
                      ],
     "analytics":  {
