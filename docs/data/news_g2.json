@@ -1,8 +1,8 @@
 {
-  "bridge_generated_utc": "2026-09-13T19:33:44.129919+00:00",
+  "bridge_generated_utc": "2026-09-13T19:35:33.985479+00:00",
   "calendar": {
-    "captured_utc": "2026-09-13T19:33:40.468912+00:00",
-    "schedule_updated_utc": "2026-09-13T19:33:44.129919+00:00",
+    "captured_utc": "2026-09-13T19:35:32.100176+00:00",
+    "schedule_updated_utc": "2026-09-13T19:35:33.985479+00:00",
     "row_count": 0,
     "high_impact_rows": [
       {
@@ -183,7 +183,20 @@
       }
     ]
   },
-  "runtime": {},
+  "runtime": {
+    "updated_utc": "2026-09-13T19:35:33.170733+00:00",
+    "bot": "NewsBot_G2",
+    "mode": "OANDA_PRACTICE",
+    "practice_only": true,
+    "trading_enabled": true,
+    "units": 50000,
+    "lots": 0.5,
+    "tp_pips": 10.0,
+    "sl_pips": 5.0,
+    "max_hold_seconds": 600.0,
+    "active_trade": null,
+    "last_trade": null
+  },
   "ml_worker": {
     "worker": "NEWS_G2_ISOLATED_ML_WORKER_V1",
     "state": "READY",
@@ -192,7 +205,7 @@
     "host": "127.0.0.1",
     "port": 8765,
     "started_utc": "2026-09-02T12:29:38.414394+00:00",
-    "last_heartbeat_utc": "2026-09-13T19:33:39.819646+00:00",
+    "last_heartbeat_utc": "2026-09-13T19:35:32.948067+00:00",
     "last_request_utc": null,
     "last_request_action": null,
     "last_evaluation_ms": null,
@@ -205,4 +218,36 @@
     "model_path": "H:\\Docs\\Trading\\ML Trading\\NewsBot_G2\\models\\xgb_news_move_regressor_g2.joblib",
     "feature_path": "H:\\Docs\\Trading\\ML Trading\\NewsBot_G2\\models\\regressor_feature_columns_g2.joblib",
     "load_error": null,
-    "age_seconds": 3.827092,
+    "age_seconds": 0.91634,
+    "fresh": true,
+    "client_enabled": true,
+    "healthy": true,
+    "display_status": "READY"
+  },
+  "active_trade": null,
+  "orders": [],
+  "trades": [],
+  "latest_decision": null,
+  "decisions": [],
+  "summary": {
+    "high_impact_events": 16,
+    "released_events": 0,
+    "waiting_events": 16,
+    "closed_trades": 0,
+    "wins": 0,
+    "losses": 0,
+    "win_rate": 0.0,
+    "net_pips": 0.0,
+    "profit_factor": 0.0,
+    "avg_detection_ms": null,
+    "decisions_recorded": 0,
+    "trade_decisions": 0,
+    "no_trade_decisions": 0,
+    "ml_worker_status": "READY",
+    "ml_worker_healthy": true,
+    "ml_worker_age_seconds": 0.91634,
+    "ml_client_enabled": true,
+    "ml_feature_count": 294,
+    "ml_threshold_pips": 20.0
+  }
+}
