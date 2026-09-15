@@ -1,7 +1,7 @@
 {
-  "bridge_generated_utc": "2026-09-15T05:57:28.473194+00:00",
+  "bridge_generated_utc": "2026-09-15T05:59:29.880600+00:00",
   "calendar": {
-    "captured_utc": "2026-09-15T05:57:27.879103+00:00",
+    "captured_utc": "2026-09-15T05:59:28.851294+00:00",
     "row_count": 43,
     "high_impact_rows": [
       {
@@ -171,7 +171,7 @@
         "time_text": "2:00am",
         "currency": "GBP",
         "event_name": "Claimant Count Change",
-        "actual": "",
+        "actual": "0:32",
         "forecast": "8.3K",
         "previous": "-11.0K",
         "impact": "High Impact Expected"
@@ -179,7 +179,7 @@
     ]
   },
   "runtime": {
-    "updated_utc": "2026-09-15T05:57:27.981229+00:00",
+    "updated_utc": "2026-09-15T05:59:29.530820+00:00",
     "mode": "OANDA_PRACTICE",
     "units": 50000,
     "lots": 0.5,
@@ -188,7 +188,33 @@
     "practice_hard_restriction": true,
     "model_loaded": false,
     "practice_requires_model": false,
-    "campaign": null,
+    "campaign": {
+      "campaign_id": "20260915T060000Z_GBP_468f77",
+      "action": "RUNTIME",
+      "mode": "POLICY_OR_NONNUMERIC",
+      "state": "ARMED",
+      "event_time": "2026-09-15T06:00:00+00:00",
+      "currency": "GBP",
+      "event_name": "Claimant Count Change",
+      "baseline_mid": 208.711,
+      "trade_count": 0,
+      "net_pips": 0.0,
+      "events": [
+        {
+          "scheduled_time_utc": "2026-09-15T06:00:00+00:00",
+          "currency": "GBP",
+          "event_name": "Claimant Count Change",
+          "impact": "High",
+          "actual": null,
+          "forecast": "8.3K",
+          "previous": "-11.0K"
+        }
+      ],
+      "locked_reason": null,
+      "metadata": {
+        "armed_source": "SCHEDULE_CACHE"
+      }
+    },
     "active_trade": null,
     "last_trade": null,
     "thresholds": {
@@ -211,8 +237,8 @@
   "latest_decision": null,
   "decisions": [],
   "summary": {
-    "released_events": 3,
-    "waiting_events": 17,
+    "released_events": 4,
+    "waiting_events": 16,
     "closed_trades": 0,
     "wins": 0,
     "losses": 0,
