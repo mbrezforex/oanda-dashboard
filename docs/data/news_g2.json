@@ -1,7 +1,7 @@
 {
-  "bridge_generated_utc": "2026-09-16T05:58:04.184204+00:00",
+  "bridge_generated_utc": "2026-09-16T06:00:05.000376+00:00",
   "calendar": {
-    "captured_utc": "2026-09-16T05:58:03.805242+00:00",
+    "captured_utc": "2026-09-16T06:00:03.974285+00:00",
     "row_count": 43,
     "high_impact_rows": [
       {
@@ -179,7 +179,7 @@
     ]
   },
   "runtime": {
-    "updated_utc": "2026-09-16T05:58:04.094610+00:00",
+    "updated_utc": "2026-09-16T06:00:04.761030+00:00",
     "mode": "OANDA_PRACTICE",
     "units": 50000,
     "lots": 0.5,
@@ -192,7 +192,7 @@
       "campaign_id": "20260916T060000Z_GBP_70242b",
       "action": "RUNTIME",
       "mode": "POLICY_OR_NONNUMERIC",
-      "state": "ARMED",
+      "state": "SHOCK_WATCH",
       "event_time": "2026-09-16T06:00:00+00:00",
       "currency": "GBP",
       "event_name": "CPI y/y",
@@ -234,8 +234,89 @@
   },
   "active_trade": null,
   "trades": [],
-  "latest_decision": null,
-  "decisions": [],
+  "latest_decision": {
+    "time_utc": "2026-09-16T06:00:04.754030+00:00",
+    "campaign_id": "20260916T060000Z_GBP_70242b",
+    "phase": "EARLY_WATCH",
+    "pair": "GBP_JPY",
+    "side": "",
+    "decision": "WATCH_ONLY",
+    "reason": "WATCH_ONLY",
+    "move_pips": -5.000000000001137,
+    "spread_pips": 8.099999999998886,
+    "clean_score": null,
+    "direction_confidence": null,
+    "metadata": {
+      "currency": "GBP",
+      "event_name": "CPI y/y",
+      "actual": null,
+      "forecast": "3.1%",
+      "previous": "2.9%",
+      "surprise": 0.0,
+      "currency_bias": "",
+      "entry_spread_pips": 8.099999999998886,
+      "direction_pause_elapsed_seconds": null,
+      "clean_score": null,
+      "direction_confidence": null,
+      "decision": "WATCH_ONLY"
+    }
+  },
+  "decisions": [
+    {
+      "time_utc": "2026-09-16T06:00:03.687319+00:00",
+      "campaign_id": "20260916T060000Z_GBP_70242b",
+      "phase": "EARLY_WATCH",
+      "pair": "GBP_JPY",
+      "side": "",
+      "decision": "WATCH_ONLY",
+      "reason": "WATCH_ONLY",
+      "move_pips": -6.700000000000728,
+      "spread_pips": 10.699999999999932,
+      "clean_score": null,
+      "direction_confidence": null,
+      "metadata": {
+        "currency": "GBP",
+        "event_name": "CPI y/y",
+        "actual": null,
+        "forecast": "3.1%",
+        "previous": "2.9%",
+        "surprise": 0.0,
+        "currency_bias": "",
+        "entry_spread_pips": 10.699999999999932,
+        "direction_pause_elapsed_seconds": null,
+        "clean_score": null,
+        "direction_confidence": null,
+        "decision": "WATCH_ONLY"
+      }
+    },
+    {
+      "time_utc": "2026-09-16T06:00:04.754030+00:00",
+      "campaign_id": "20260916T060000Z_GBP_70242b",
+      "phase": "EARLY_WATCH",
+      "pair": "GBP_JPY",
+      "side": "",
+      "decision": "WATCH_ONLY",
+      "reason": "WATCH_ONLY",
+      "move_pips": -5.000000000001137,
+      "spread_pips": 8.099999999998886,
+      "clean_score": null,
+      "direction_confidence": null,
+      "metadata": {
+        "currency": "GBP",
+        "event_name": "CPI y/y",
+        "actual": null,
+        "forecast": "3.1%",
+        "previous": "2.9%",
+        "surprise": 0.0,
+        "currency_bias": "",
+        "entry_spread_pips": 8.099999999998886,
+        "direction_pause_elapsed_seconds": null,
+        "clean_score": null,
+        "direction_confidence": null,
+        "decision": "WATCH_ONLY"
+      }
+    }
+  ],
   "summary": {
     "released_events": 4,
     "waiting_events": 16,
