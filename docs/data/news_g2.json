@@ -1,8 +1,8 @@
 {
-  "bridge_generated_utc": "2026-09-24T01:21:22.465747+00:00",
+  "bridge_generated_utc": "2026-09-24T01:23:20.964695+00:00",
   "calendar": {
-    "captured_utc": null,
-    "row_count": 0,
+    "captured_utc": "2026-09-24T01:23:20.584914+00:00",
+    "row_count": 42,
     "high_impact_rows": [
       {
         "title": "CPI m/m",
@@ -131,19 +131,52 @@
         "impact": "High",
         "forecast": "",
         "previous": ""
+      },
+      {
+        "key": "153482",
+        "date_text": "Mon Sep 21",
+        "time_text": "11:10pm",
+        "currency": "AUD",
+        "event_name": "RBA Gov Bullock Speaks",
+        "actual": "",
+        "forecast": "",
+        "previous": "",
+        "impact": "High Impact Expected"
+      },
+      {
+        "key": "148146",
+        "date_text": "Wed Sep 23",
+        "time_text": "9:30pm",
+        "currency": "AUD",
+        "event_name": "Employment Change",
+        "actual": "",
+        "forecast": "22.5K",
+        "previous": "-15.8K",
+        "impact": "High Impact Expected"
+      },
+      {
+        "key": "148147",
+        "date_text": "Wed Sep 23",
+        "time_text": "9:30pm",
+        "currency": "AUD",
+        "event_name": "Unemployment Rate",
+        "actual": "",
+        "forecast": "4.5%",
+        "previous": "4.5%",
+        "impact": "High Impact Expected"
       }
     ]
   },
   "runtime": {
-    "updated_utc": "2026-09-24T01:21:22.462744+00:00",
-    "mode": "SHADOW",
+    "updated_utc": "2026-09-24T01:23:20.807096+00:00",
+    "mode": "OANDA_PRACTICE",
     "units": 50000,
     "lots": 0.5,
     "engine": "GBPJPY_EARLY_NEWS_BURST_V1",
-    "execution_mode": "",
+    "execution_mode": "PRACTICE",
     "practice_hard_restriction": true,
-    "model_loaded": null,
-    "practice_requires_model": null,
+    "model_loaded": false,
+    "practice_requires_model": false,
     "campaign": null,
     "active_trade": null,
     "last_trade": {
@@ -175,7 +208,19 @@
         "decision": "TRADE"
       }
     },
-    "thresholds": {},
+    "thresholds": {
+      "wake_pips": 5.0,
+      "min_trade_move_pips": 20.0,
+      "min_move_spread_ratio": 4.0,
+      "clean_score": 0.65,
+      "direction_confidence": 0.6,
+      "tp_pips": 10.0,
+      "sl_pips": 15.0,
+      "max_hold_seconds": 120,
+      "direction_pause_seconds": 3.0,
+      "direction_hold_fraction_min": 0.65,
+      "direction_confirm_seconds": 2
+    },
     "version": "v4.3 Practice Execution"
   },
   "active_trade": null,
@@ -3637,7 +3682,7 @@
   ],
   "summary": {
     "released_events": 0,
-    "waiting_events": 16,
+    "waiting_events": 19,
     "closed_trades": 25,
     "wins": 11,
     "losses": 14,
@@ -3648,8 +3693,8 @@
   },
   "ml_worker": {
     "display_status": "V4.3 LIVE GATE",
-    "healthy": false,
-    "ready": false,
+    "healthy": true,
+    "ready": true,
     "feature_count": null,
     "threshold_pips": 20.0
   }
